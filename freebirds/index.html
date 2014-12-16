@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Free Birds</title>
+
+	<meta name="description" content="Our stab at the Google dev-art project using Three.js and WebAudioAPI">
+	<meta name="author" content="Chinmay Pendharkar">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="css/reveal.min.css">
+	<link rel="stylesheet" href="css/theme/beige_brown.css" id="beige_brown">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+	<script>
+		if( window.location.search.match( /print-pdf/gi ) ) {
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = 'css/print/pdf.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		}
+	</script>
+
+	<script src="js/bird.js"></script>
+	<script src="js/xgui.js"></script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+		<div class="slides">
+		    <section data-id="3b996c7049053b5df7e279a6750075af">
+		        <section data-id="1987a6f9b7c245862c84f3501959f056">
+		            <h1>Free Birds</h1>
+		<div>
+		            <br>
+		        </div>
+		        <div>
+		            <br>
+		        </div>
+		        <div>
+		            <br>
+		        </div>
+		        <div>
+		            <span>
+		                <i>"Born free, as free as the wind blows"</i>
+		            </span>
+		        </div>
+		        <div>
+		            <span>
+		                <br>
+		            </span>
+		        </div>
+		        <div>
+		            <span>
+		                <br>
+		            </span>
+		        </div>
+		        <div>
+		            <br>
+		        </div>
+		        <div>
+		            <span>Chinmay - Audio Guy, <a href="http://www.sonoport.com/">Sonoport</a></span>
+		            <br>
+		        </div>
+		        <div>
+		            <div style="font-size: 36.18693161010742px; font-style: normal; font-variant: normal;">Joshua Koo - Troublemaker, <a href="http://zopim.com">Zopim</a></div>
+		        </div>
+		    </section>
+		    <section data-id="44da685950d5e2c3bc2e16051b973f34">
+		       <!-- <h2><a href="bokeh/us.html">Bla Us</a></h2> -->
+		        
+		        <small><a href="http://jabtunes.com/labs/lensblur/chinmay.html">(For the interactive bokeh edition)</a></small>
+		        <br/>
+		        <img src="img/chinmay_joshua.jpg" />
+
+
+
+		    </section>
+
+
+		</section>
+		    <section data-id="747bb3893b85d5e996eddaf3125b1cb4">
+		        <section data-id="5a0a6a793df92fa919a03ff0f332e19d">
+		    <h2>Background</h2>
+		<div>
+		    <br>
+		</div>
+		<div>
+		        <img src="img/devartlede_large_verge_medium_landscape.jpg">
+		        <br>
+		    </div>
+		</section>
+		    <section data-id="36347cbbf24a5dee23f7799743bb2f19">
+		        <h2>
+		            
+		            <div style="font-size: 36px; font-style: normal; font-variant: normal;">
+		                <br>
+		            </div>
+		            <div style="font-size: 36px; font-style: normal; font-variant: normal;">
+		                <br>
+		            </div>
+		            <div style="font-size: 36px; font-style: normal; font-variant: normal;">
+		                <span style="font-size: 36.18693161010742px; font-style: normal; font-variant: normal;">Stab at Art Installation Project</span>
+		                <span style="font-size: 36px; font-style: normal; font-variant: normal;">&nbsp;</span>
+		                <br/>
+		                <img src="img/collaboration.jpg" />
+		                <br>
+		            </div>
+		        </h2>
+		    </section>
+
+			<section data-id="36347cbbf24a5dee23f7799743bb2f19">
+			<h2>
+			    <div style="font-size: 36px; font-style: normal; font-variant: normal;">
+			        <br>
+			    </div>
+			    <div style="font-size: 36px; font-style: normal; font-variant: normal;">
+			        <br>
+			    </div>
+			    <div style="font-size: 36px; font-style: normal; font-variant: normal;">
+			        <br>
+			    </div>
+			    <div style="font-size: 36px; font-style: normal; font-variant: normal;">
+			        <span>Collaboration to create a visual and aural experience</span>
+			        <br>
+			    </div>
+			    <div style="font-size: 36px; font-style: normal; font-variant: normal;">
+			        <br>
+			    </div>
+			   
+			</h2>
+			</section>
+
+			<section data-id="36347cbbf24a5dee23f7799743bb2f19">
+			<h2>
+			    We had really little time...
+			   
+			</h2>
+			</section>
+
+		     <section data-id="44da685950d5e2c3bc2e16051b973f34">
+		        <img src="img/announce_zd_zop.gif" height="100%"/>
+		    </section>
+
+
+		     <section data-id="44da685950d5e2c3bc2e16051b973f34">
+		        <img src="img/nepal.jpg" width="100%"  />
+		    </section>
+
+			<section data-id="36347cbbf24a5dee23f7799743bb2f19">
+			<h2>
+			   But we wanted to try creating something...
+			   
+			</h2>
+			</section>
+
+			<section data-id="36347cbbf24a5dee23f7799743bb2f19">
+			<h2>
+			 	Release something...
+			</h2>
+			</section>
+
+			<section data-id="36347cbbf24a5dee23f7799743bb2f19">
+			<h2>
+			 	And hopefully help start a new scene in Singapore.
+			</h2>
+			</section>
+
+		</section>
+		<section data-id="1d77671f8e5a9936ac79372d0f107d83">
+		    <section data-id="da0f80106585a6e0454e1e2bbcfe4ddb">
+		        <h2>
+		            <span style="font-size: 64.566px;">Concept</span>
+		            <br>
+		        </h2>
+		    </section>
+		    <section data-id="a0afb2da8481aca5db731d94ca093af0">
+		        <h2>
+		            Lonely Birds<br>
+		        </h2>
+		    </section>
+
+		    <section data-id="a0afb2da8481aca5db731d94ca093af0">
+		        <h3>
+		            They are trapped in your mobile devices<br>
+		        </h3>
+		    </section>
+
+			<section data-id="a0afb2da8481aca5db731d94ca093af0">
+				<h2>
+		            Free them!<br>
+		        </h2>
+		    </section>
+
+			<section data-id="a0afb2da8481aca5db731d94ca093af0">
+				<h2>
+		            Let the birds interact as a flock!<br>
+		        </h2>
+		    </section>
+
+			<section data-id="a0afb2da8481aca5db731d94ca093af0">
+				<h2>
+		           <img src="img/diagram.jpg" />
+		        </h2>
+		    </section>
+
+		    <section data-id="a0afb2da8481aca5db731d94ca093af0">
+				<h2>
+		           <img src="img/draft_picking_emotions_1.jpg" />
+		        </h2>
+		    </section>
+
+		    <section data-id="a0afb2da8481aca5db731d94ca093af0">
+				<h2>
+		           <img src="img/emo_prototype.jpg" />
+		        </h2>
+		    </section>
+
+	
+		</section>
+
+
+		<section data-id="751ff06a9eb0a86f6161b566b46eea83">
+		    <h2>Architectural</h2>
+		    <div>
+		        <br>
+		    </div>
+		    <div>
+		        <a href="https://raw.github.com/zz85/devart-template/master/project_images/installation.jpg" target="_blank" style="background-color: rgb(255, 255, 255); list-style-type: none; -webkit-margin-start: 0px; -webkit-margin-end: 0px; -webkit-margin-before: 0px; -webkit-margin-after: 0px; -webkit-user-drag: none; -webkit-user-select: text; color: rgb(84, 128, 239); display: inline-block; font-size: 15px; font-style: normal; font-variant: normal; text-align: start;">
+		            <img src="https://lh4.ggpht.com/aDhGODLvUIKqIcp2D2NPgBQdV5yWvThLOyNCrcv4XNXLgRyxLYxUxvQ2ZU14uQSf1S5sddHNyLopXp5jDS5LdBY=s1000" alt="installation vision" title="Installation Vision" style="margin: 1em 0px; border: 0px; outline: 0px; background-color: transparent; list-style-type: none; -webkit-margin-start: 0px; -webkit-margin-end: 0px; -webkit-margin-before: 0px; -webkit-margin-after: 0px; -webkit-user-drag: none; -webkit-user-select: text; width: 842.25px;">
+		        </a>
+		        <br>
+		    </div>
+		</section>
+		<section data-id="052e1a93696e6127ff5ead41e5b38d47">
+		    <section data-id="57919e4957809b9dd13a3bfe4d459568">
+		    <h2>Audio</h2>
+		<div>
+		    <br>
+		</div>
+		<div>
+		<span style="font-size: 15px; font-style: normal; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255);">&nbsp;</span>
+		<a href="https://github.com/zz85/devart-template/blob/master/project_images/screenshot_bird_controls.png" target="_blank" style="color: rgb(65, 131, 196); text-decoration: underline; font-size: 15px; font-style: normal; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255);">
+		    <img src="https://github.com/zz85/devart-template/raw/master/project_images/screenshot_bird_controls.png" alt="Controls for Synthesized Birds" title="Controls for Synthesized Birds" style="border: 0px; max-width: 100%;">
+		</a>
+		<br>
+		</div>
+		</section>
+		    <section data-id="30d21b7ec9589bb1316a23bafd847920">
+		                <h2>Bird Sounds</h2>
+		    <div>Add sounds to :</div>
+		    <img src="img/rendering.png" style="width: 683.774177954603px; height: 488.9458983279063px; max-height: none; max-width: none;">
+		            </section>
+		            <section data-id="b78ece2d7cd2b9db82c5189ac5418978">
+		                <h2>Sounds</h2>
+		    <div>
+		                <br>
+		            </div>
+		    <div>Realistic? &nbsp;- <font style="font-size: 24px;">Maybe</font>
+		    </div>
+		    <div>
+		            <br>
+		        </div>
+		    <div>
+		        <br>
+		        </div>
+		    <div>Interactive?&nbsp;<span style="font-size: 35.591556549072266px; font-style: normal; font-variant: normal;">-&nbsp;</span>
+		        <font style="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-size: 24px;">Definitely!</font>
+		    </div>
+		    <div>
+		        <br>
+		    </div>
+		    <div>
+		    <br>
+		    </div>
+		    <div>Browser Based?&nbsp;<span style="font-size: 35.591556549072266px; font-style: normal; font-variant: normal;">-&nbsp;</span>
+		    <font style="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-size: 24px;">Definitely!</font>
+		    </div>
+		    <div>
+		    <br>
+		    </div>
+		    <div>
+		        <br>
+		    </div>
+		    <div>YAY!! I GET TO USE <u>WEBAUDIO</u> API !!!!!</div>
+		    </section>
+		    <section data-id="4016ae11224f01350893b45a550871f7">
+		        <h2>Sound Design</h2>
+		    <div>Andy Farnell -&nbsp;http://obiwannabe.co.uk/</div>
+		    <img src="img/9780262014410.jpg" style="width: 399.13696636893786px; height: 528.2368292016496px; max-height: none; max-width: none;">
+		    </section>
+		    <section data-id="81b4193c4cde37a22e17307c7efb35a8">
+		        <h2>Bird Sound Synthesis</h2>
+		    <div>
+		        <a href="http://www.obiwannabe.co.uk/tutorials/html/tutorial_birds.html">Modeling Bird Syrinx</a>
+		    </div>
+		    <img src="img/syrinx.png" height="546" width="1025">
+		    </section>
+		    <section data-id="163a1b6506dab2463594d58ea03616ff">
+		        <h2 style="font-style: normal; font-variant: normal;">Moar Bird Sounds!</h2>
+		    <div>Amplitude Modulation + Frequency Modulation</div>
+		        <img src="img/pd-synth.png" height="550">
+		    </section>
+		    <section data-id="64a6d399932d327575b2f827e439d3a8">
+		        <h2>Pure-Data -&gt; WebAudio</h2>
+		        <img src="img/BirdcallSynthesis.jpg" style="width: 712.5910655343772px; height: 533.5830968130782px; max-height: none; max-width: none;">
+		    </section>
+		    <section data-id="21965282e116efffd13b61ac9fc5e7ad">
+		    <h2>Psst.. Wanna see some code?</h2>
+		    <div>Oscillators</div>
+		    <div>
+<pre><code>  // Create Oscillators
+  var carrierOsc = audioContext.createOscillator();
+  var modOsc = audioContext.createOscillator();
+  var amOsc = audioContext.createOscillator();
+
+  var modOscGain = audioContext.createGain();
+  var amOscGain = audioContext.createGain();
+</code></pre>
+		    </div>
+		    <div>
+		    <br>
+		    </div>
+		    <div>AM + FM</div>
+<pre><code>  // Create the AM/FM structures
+  var fm = new fmSynth(audioContext, carrierOsc, modOscGain);
+  var am = new amSynth(audioContext, fm, amOscGain);
+</code></pre>
+		    <br>
+
+
+		    </section>
+		    <section data-id="7fc4606b939bccf62534b77578d1c84d">
+		    <h2>Moar Code!</h2>
+		    <div>
+		        Envelopes
+		    </div>
+		    <div>
+<pre><code> // Create control envelopes
+ this.mainEnvelope = new paramEAD(audioContext, mainGain.gain);
+ this.fmFrequencyEnvelope = new paramEAD(audioContext, modOsc.frequency);
+ this.amFrequencyEnvelope = new paramEAD(audioContext, amOsc.frequency);
+ this.fmGainEnvelope = new paramEAD(audioContext,  modOscGain.gain);
+ this.amGainEnvelope = new paramEAD(audioContext, amOscGain.gain);</code></pre>
+</div>&nbsp;<div>
+<span>Connections<br>
+</span>
+<div>
+<pre><code> // Connect the AM output to destination
+ am.connect(mainGain);
+ mainGain.connect(panner);
+ panner.connect(audioContext.destination);</code></pre>
+		    </div>
+		    <div>
+		        <br>
+		    </div>
+		    Profit??
+		    </div>
+		    </section>
+		    <section style="text-align: center" data-state="demoslide" data-id="08220d9190bef8db532cf9b4be09833d">
+		        <h2>Lets make some NOISE!</h2>
+		        <div><a href="http://notthetup.github.io/birds/">Chirrp</a></div><br>
+		        <div style="display: inline-block;" id="audioui"></div>
+		    </section>
+		</section>
+		<section data-id="48e36c9833766e3053ffee9d7fa3997a">
+			<section>
+		    	<h2>Visuals</h2>
+		    </section>
+
+
+		    <section data-id="a0afb2da8481aca5db731d94ca093af0">
+				<div>Three.js, WebGL, Shaders, GPGPU</div>
+			</section>
+
+	    	<section data-id="a0afb2da8481aca5db731d94ca093af0">
+				<h2>
+			       <img src="../devart-template/project_images/motionblur_processing.png" />
+			    </h2>
+			</section>
+
+
+			<section data-id="a0afb2da8481aca5db731d94ca093af0">
+				<h2>
+			       <a href="https://vine.co/u/1033141957762977792">Visual Experiments</a>
+			    </h2>
+			</section>
+
+		</section>
+
+
+	
+
+
+		<section data-id="229fabc893fffe597dcbd1e3b7a9a660">
+		
+		<h1>
+		<span style="font-size: 64.566px;">Demo!!!</span>
+		<br>
+		</h1>
+		</section>
+<!-- 		<section data-id="4f53d84879552ed7d653a2940f5b6512">
+
+		<h2>
+		<br>
+		</h2>
+		<h2>
+		<span style="font-size: 64.566px;">Questions</span>
+		<br>
+		</h2>
+
+		<h2>
+		<span style="font-size: 64.566px;">Thank you</span>
+		<br>
+		</h2>
+		</section> -->
+		
+		 <section data-id="9b8ded9abaf67f2066bcc31baac4a4f2">
+	        <h2>Contact Us!</h2>
+	        <div>
+	            <br>
+	        </div>
+	        <div>Chinmay -  <a href="http://about.me/chinpen">http://about.me/chinpen</a></div>
+	        <div>Joshua Koo - <a href="http://joshuakoo.com">joshuakoo.com</a></div>
+	    </section>
+
+		<section data-id="3261aadde79ec093abf7a0d97f5dd72b">
+		    <section data-id="704d4a200e4f72adae51f5e64a2b8f9f">
+		    <h2>Links</h2>
+		    <div>
+		        <a href="https://devart.withgoogle.com/"><span style="font-size: 36px; font-style: normal; font-variant: normal;">Google Dev Art Page</span></a>
+		    </div>
+		    
+		    <div>
+		        <br>
+		    </div>
+		    <div>
+		        <a href="https://devart.withgoogle.com/#/project/17156753"><span>Our DevArt Project Entry</span></a>
+		    </div>
+
+		  
+		    <div>
+		        <br>
+		    </div>
+		    <div><a href="https://github.com/zz85/devart-template/">Project Code in Github</a></div>
+
+
+		     <div>
+		        <br>
+		    </div>
+		    <div>
+		        <div style="font-size: 36px; font-style: normal; font-variant: normal;"><a href="https://github.com/notthetup/birds/">Birds.js</a>
+		       	</div>
+		    </div>
+
+		    
+		    <div>
+		        <br>
+		    </div>
+		    <div>
+		        <div style="font-size: 36px; font-style: normal; font-variant: normal;"><a href="http://www.youtube.com/watch?v=Vs8poyoFYy0">Video Demo</a>
+		       	</div>
+		    </div>
+
+		    
+		</section>
+
+		</section>
+		</div>
+		</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.min.js"></script>
+
+	<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+			//Reveal.addEventListener( 'demoslide', function( event ) {
+				var audioUI = document.getElementById("audioui");
+				var ac;
+				window.AudioContext = window.AudioContext || window.webkitAudioContext;
+				if (window.AudioContext) ac = new AudioContext();
+
+				var count = 0;
+
+				var birds = [new bird(ac), new bird(ac), new bird(ac), new bird(ac)];
+
+				// var
+				gui = new xgui( {width: 640, height: 660, backgroundColor: "rgb(65, 104, 137)", frontColor: "rgb(153, 193, 226)", dimColor: "rgb(90, 137, 177)"} );
+
+				var pk = ['ifrq', 'atk', 'dcy', 'fmod1', 'atkf1', 'dcyf1', 'fmod2', 'atkf2', 'dcyf2', 'amod1', 'atka1', 'dcya1', 'amod2', 'atka2', 'dcya2'];
+
+				var presets = generatePresets();
+				var options = Object.keys(presets);
+				var params = presets['lesser-spotted-grinchwarbler'];
+				var initifrq = params.ifrq;
+
+				var frqKnob;
+				var knob, key;
+				var i = 0;
+
+				function makeCb(key) {
+					return function(a, up) {
+						console.log("called");
+						if (key) params[key] = a;
+						if (up) chirp(key);
+					};
+				}
+
+				var knobs = [];
+				for (var y = 0; y  < 5; y ++) {
+					for (var x = 0; x < 3; x ++ ) {
+						key = pk[i];
+
+						knob = new gui.Knob( {x: x * 100 + 80, y: y * 100 + 70, radius: 25, value: params[key], min: 0, max: 1, decimals: 7 } );
+
+						if (key == "ifrq"){
+							frqKnob = knob;
+						}
+
+						knob.value.bind(makeCb(key));
+
+						new gui.Label( {x: x * 100 + 80, y: y * 100 + 135, text: key} );
+
+						i++;
+						knobs.push(knob);
+					}
+				}
+
+				var dropdown = new gui.DropDown( {x: 80, y: 7, height:20, width:148, values:options , texts:options } );
+
+				dropdown.value.bind(function(key){
+					params = presets[key];
+					knobs.forEach(function (knob, i){
+						knob.value.v = params[pk[i]];
+						knob.draw();
+					});
+					initifrq = params.ifrq;
+				});
+
+				var button = new gui.Button({x: 90+180, y: 5, text: "Chirp", height: 25, font: "20px Arial"});
+
+				button.value.bind(makeCb(null));
+
+				var generate = new gui.CheckBox( {x: 90 +240, y: 10, text: "Repeat",width:15,  height: 15} );
+
+				generate.value.bind(function(a, up){
+					if(up){
+						//console.log("checked");
+						if (chirpGen){
+							window.clearInterval(chirpGen);
+							chirpGen = null;
+						}else{
+							chirpGen = window.setInterval(function(){
+								chirp(null,ac.currentTime+(Math.random()*0.4));
+							},(params.atk*1000*0.9));
+						}
+					}
+				});
+
+				var tp0 = new gui.TrackPad( {x: 90 + 100 + 100 + 100, y: 5 + 70, min: 0, max: 4, value1: 1.5, value2:3.8 } );
+
+				tp0.value1.bind(makeCb(null));
+
+				var rPos = new gui.CheckBox( {x: 90 + 410, y: 90, text: "Rand",width:15,  height: 15} );
+
+				var rIfqr = new gui.CheckBox( {x: 30, y: 85, text: "Rand",width:15,  height: 15} );
+
+				var chirpGen;
+
+				audioUI.appendChild( gui.getDomElement() );
+
+				//var trigButton=document.getElementById("triggerButton");
+				function chirp(caller, time){
+					var b = birds[count];
+					console.log(JSON.stringify(params, null, '\t' ));
+					//console.log(caller);
+					if(rIfqr.value.v && !caller){
+						params.ifrq = initifrq + (rnd_snd()*0.01);
+						frqKnob.value.v = params.ifrq;
+						frqKnob.draw();
+					}
+					if(rPos.value.v && !caller){
+						tp0.value1.v = Math.random()*tp0.max;
+						tp0.value2.v = Math.random()*tp0.max;
+						tp0.draw();
+					}
+
+					b.position = {x:tp0.value1.v-tp0.max/2, y: 0, z: (40-tp0.value2.v*10)};
+					b.velocity = {x:(Math.random()-0.5)*10, y: 0, z: 0};
+					//console.log(tp0);
+					b.applyParams(params);
+					b.chirp(time);
+					count = (count+1) % birds.length;
+				}
+
+
+				function rnd_snd() {
+					return (Math.random()*2-1)+(Math.random()*2-1)+(Math.random()*2-1);
+				}
+
+			//} );
+
+		</script>
+
+	</body>
+	</html>

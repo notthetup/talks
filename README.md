@@ -1,6 +1,3 @@
----
----
-
 Talks
 =====
 
@@ -8,17 +5,16 @@ Repository of slides from all the talks I have given.
 
 # 2015
 
-<!-- [Adventures in scheduling, buffers and parameters](http://notthetup.github.io/talks/wac-paper) @ [Web Audio Conference](wac.ircam.fr/index.html)-->
+- [Adventures in scheduling, buffers and parameters](http://notthetup.github.io/talks/wac-paper) @ [Web Audio Conference](http://wac.ircam.fr/index.html)
 
 # 2014
 
 - [NodeBoats](http://notthetup.github.io/talks/nodeboats) @ [JSConfAsia2014](http://2014.jsconf.asia/) - 21st November 2014
 
-- [Freebirds](http://notthetup.github.io/talks/freebirds) @ Singapore JS -
+- [Freebirds](http://notthetup.github.io/talks/freebirds) @ Singapore JS - 21st April 2014
 
 # 2013
 
-- [Web Audio](http://notthetup.github.io/talks/webaudio) @ Hackers and Painters -
-
+- [Web Audio](http://notthetup.github.io/talks/webaudio) @ Hackers and Painters - 6th September 2013
 
 # 2012

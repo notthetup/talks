@@ -1,7 +1,7 @@
 Talks
 =====
 
-Repository of slides from all the talks I have given.
+Repository of slides for talks I have given.
 
 ## 2015
 

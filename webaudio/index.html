@@ -441,80 +441,25 @@
 						</div>
 					</div>
 				</section>
-				<section>
-					<h2>Web Audio</h2>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<i>
-							<font style="font-size: 42px;">" JavaScript API for processing and synthesizing audio"<br>
-							</font>
-						</i>
-					</div>
-					<font style="font-size: 42px;">
-						<br>
-					</font>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div class="fragment">
-						<font style="font-size: 42px;">JavaScript API</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div class="fragment">
-						<font style="font-size: 42px;">Audio Processing is usually done at a lower level (C++/ASM)</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div class="fragment">
-						<font style="font-size: 42px;">Realtime => Callback Based</font>
-					</div>
+				<section data-markdown>
+					## Web Audio
+					#### " JavaScript API for processing and synthesizing audio"
+					- JavaScript API
+
+					- Audio Processing is usually done at a lower level (C++/ASM)
+
+					- Realtime => Callback Based
 				</section>
 				<section data-markdown>
 				![Web Audio Implementation](img/webaudio.jpg)
 				</section>
-				<section>
-					<h2 style="font-style: normal; font-variant: normal;">Web Audio</h2>
-					<div>
-						<br>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<i>"signal routing graph paradigm"</i>
-						</font>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div class="fragment" data-fragment-index="0">
-						<font style="font-size: 42px;">
-							<img class="fragment" src="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing1.png" style="width: 340.63622999191284px; height: 136.2211613809182px; max-height: none; max-width: none;" data-fragment-index="1">
-							<img class="fragment" src="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing2.png" style="width: 527.6362299919128px; height: 384.29653260630516px; max-height: none; max-width: none;" data-fragment-index="2">
-							<br>
-						</font>
-					</div>
+				<section data-markdown>
+					## Web Audio
+
+					_"signal routing graph paradigm"_
+
+					![modular-routing1](https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing1.png) ![modular-routing2](https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing2.png)
+
 				</section>
 				<section>
 					<h2>
@@ -951,35 +896,60 @@ webaudioloader.load(irURL, {onload: function (err, buffer){
 
 				</section>
 				<section data-markdown>
-					## Resources
+					## W3C Web Audio Spec
 
 					- WebAudio Spec :
 					[http://webaudio.github.io/web-audio-api/](http://webaudio.github.io/web-audio-api/)
 
+					- Web Audio Spec Repo :
+					[https://github.com/webaudio](https://github.com/webaudio)
+
+					- Web Audio Spec Discussions :
+					[https://github.com/WebAudio/web-audio-api/issues](https://github.com/WebAudio/web-audio-api/issues)
+				</section>
+				<section data-markdown>
+					## Resources
+
+					- Web Audio Book :
+					[http://chimera.labs.oreilly.com/books/1234000001552](http://chimera.labs.oreilly.com/books/1234000001552)
+
 					- HTML5 Audio :
 					[http://www.html5audio.org](http://www.html5audio.org)
-
-					- Dynamic Sounds :
-					[http://animatedsoundworks.com:8001/](http://animatedsoundworks.com:8001/)
-
-					- Web Audio Components
-					[https://github.com/web-audio-components](https://github.com/web-audio-components)
-
-				</section >
-				<section  data-markdown>
-					## More Resources
-
-					- Live Coding :
-					[http://gibber.mat.ucsb.edu/](http://gibber.mat.ucsb.edu/)
-
-					- Voice Input :
-					[https://github.com/mattdiamond/Recorderjs](https://github.com/mattdiamond/Recorderjs)
 
 					- Web Audio in Nodejs??
 					[https://github.com/sebpiq/node-web-audio-api](https://github.com/sebpiq/node-web-audio-api)
 
-					- Reverbs
+					- Web Audio Components
+					[https://github.com/web-audio-components](https://github.com/web-audio-components)
+
+					- Web Audio Weekly Mailing List
+					[http://blog.chrislowis.co.uk/waw.html](http://blog.chrislowis.co.uk/waw.html)
+
+				</section >
+				<section data-markdown>
+					## Tools
+
+					- Firefox Dev Tools Web Audio Pane
+					![Firefox Dev Tools](img/firefox.jpg)
+
+				</section >
+				<section  data-markdown>
+					## Some Cool Web Audio Projects
+
+					- Live Coding :
+					[http://gibber.mat.ucsb.edu/](http://gibber.mat.ucsb.edu/)
+
+					- Dynamic Sounds :
+					[http://animatedsoundworks.com:8001/](http://animatedsoundworks.com:8001/)
+
+					- Voice Input :
+					[https://github.com/mattdiamond/Recorderjs](https://github.com/mattdiamond/Recorderjs)
+
+					- Reverb :
 					[https://github.com/adelespinasse/reverbGen](https://github.com/adelespinasse/reverbGen)
+
+					- DAW :
+					[https://www.soundtrap.com/](https://www.soundtrap.com/)
 
 				</section>
 				<section data-markdown>
@@ -1006,78 +976,17 @@ webaudioloader.load(irURL, {onload: function (err, buffer){
 
 					- [Badumtish](http://chinpen.net/badumtish)
 				</section>
-				<section>
-					<h2>Final words</h2>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">Massive updates to Web Audio are upcoming.</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">Watch out for Browser/OS dependencies for functionality.</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">Watch</font>
-						<font style="font-size: 42px;"> out for codec issues </font>
-						<font style="font-size: 32px;">(mp3/wav/ogg).</font>
-					</div>
-					<div>
-						<font style="font-size: 32px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 32px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<b>Go Play</b>!</font>
-						</div>
-					</section>
-					<section>
-						<h2>
-							<br>
-						</h2>
-						<h2>Questions?</h2>
-						<div>
-							<br>
-						</div>
-						<div>
-							<br>
-						</div>
-						<div>
-							<br>
-							https://chinpen.net/talks
-						</div>
-						<div>
-							<br>
-							@ntt
-						</div>
+				<section data-markdown>
+					## Final words
+					- Massive updates to Web Audio are upcoming.</font>
+					- Watch out for Browser/OS dependencies for functionality.</font>
+					- Watch out for codec issues (mp3/wav/ogg)
+				</section>
+
+				<section data-markdown>
+					## Questions?
+
+					_http://chinpen.net/talks_
 					</section>
 			</div>
 		</div>

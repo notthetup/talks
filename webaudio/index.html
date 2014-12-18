@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>WebAudio API</title>
+		<title>Web Audio</title>
 
-		<meta name="description" content="Quick intro to WebAudio API">
+		<meta name="description" content="Quick intro to WebAudio">
 		<meta name="author" content="Chinmay Pendharkar">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -37,7 +37,7 @@
 					<h1>
 						<br>
 					</h1>
-					<h1>Web Audio API</h1>
+					<h1>Web Audio</h1>
 					<div>
 						<br>
 					</div>
@@ -113,28 +113,9 @@
 						<font style="font-size: 42px;">
 							<ul>
 							</ul>
-							<span style="text-align: left;">Podcaster (WeBuildSG Live)</span>
+							<span style="text-align: left;">Podcast Host (WeBuildSG Live)</span>
 						</font>
 						<br>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<span style="text-align: left;">
-								<br>
-							</span>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<span style="text-align: left;">
-								<br>
-							</span>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<span style="text-align: left;">Geek</span>
-						</font>
 					</div>
 				</section>
 				<section>
@@ -322,7 +303,7 @@
 							<div>
 								<font style="font-size: 32px;">HTML5 Audio,&nbsp;</font>
 								<span style="font-size: 32px;">WebAudio,&nbsp;</span>
-								<span style="font-size: 32px;">WebRTC*,&nbsp;</span>
+								<span style="font-size: 32px;">WebRTC,&nbsp;</span>
 								<span style="font-size: 32px;">WebMIDI*</span>
 							</div>
 							<div style="text-decoration: underline; font-size: 42px;">
@@ -382,7 +363,7 @@
 						</div>
 						<div class="fragment">
 							<pre><code>&lt;audio controls="controls"&gt;
-	Your browser does not support the &lt;code&gt;audio&lt;/code&gt; element.
+	&lt;p&gt;Your browser does not support the audio element.&lt;/p&gt;
 	&lt;source src="http://bit.ly/deepmp3" type="audio/wav"&gt;
 &lt;/audio&gt;</code></pre>
 						</div>
@@ -390,7 +371,7 @@
 					<div class="fragment">
 						<audio controls="controls">
 							Your browser does not support the <code>audio</code> element.
-							<source src="https://dl.dropboxusercontent.com/u/77191118/DeepIntoIt.mp3" type="audio/wav">
+							<source src="https://dl.dropboxusercontent.com/u/77191118/sounds/DeepIntoIt.mp3" type="audio/wav">
 						</audio>
 					</div>
 				</section>
@@ -415,7 +396,7 @@
 						<pre><code>audioTag.loop = true;</code></pre>
 						<audio controls="controls" loop="">
 							Your browser does not support the <code>audio</code> element.
-							<source src="https://dl.dropboxusercontent.com/u/77191118/deep_loop.wav" type="audio/wav">
+							<source src="https://dl.dropboxusercontent.com/u/77191118/sounds/deep_loop.wav" type="audio/wav">
 						</audio>
 					</div>
 					<div>
@@ -430,7 +411,7 @@
 						<pre><code>audioTag.playbackRate = 2;</code></pre>
 						<audio controls="controls" loop="" id="loopspeed">
 							Your browser does not support the <code>audio</code> element.
-							<source src="https://dl.dropboxusercontent.com/u/77191118/deep_loop.wav" type="audio/wav">
+							<source src="https://dl.dropboxusercontent.com/u/77191118/sounds/deep_loop.wav" type="audio/wav">
 							</audio>
 							<br>
 						<input type="range" min="50" max="200" value="100"  onchange="var a = document.getElementById('loopspeed'); console.log(a); a.playbackRate=this.value/100;">
@@ -461,7 +442,7 @@
 					</div>
 				</section>
 				<section>
-					<h2>Web Audio API</h2>
+					<h2>Web Audio</h2>
 					<div>
 						<font style="font-size: 42px;">
 							<br>
@@ -511,8 +492,11 @@
 						<font style="font-size: 42px;">Realtime => Callback Based</font>
 					</div>
 				</section>
+				<section data-markdown>
+				![Web Audio Implementation](img/webaudio.jpg)
+				</section>
 				<section>
-					<h2 style="font-style: normal; font-variant: normal;">Web Audio API</h2>
+					<h2 style="font-style: normal; font-variant: normal;">Web Audio</h2>
 					<div>
 						<br>
 					</div>
@@ -566,7 +550,7 @@
 					<div class="fragment" data-fragment-index="1">
 						<div style="text-align: left;">
 							<div>
-								<pre><code>myContext = new webkitAudioContext();</code></pre>
+								<pre><code>myContext = new AudioContext(); //yay no more vendor prefix!</code></pre>
 							</div>
 						</div>
 					</div>
@@ -639,12 +623,12 @@ source.connect(myContext.destination);</code></pre>
 						}
 					});
 
-					pitchslider.onchange = function() {
+					pitchslider.oninput = function() {
 						osc.frequency.value = pitchslider.value;
 						//console.log("changing pitch : " +  pitchslider.value);
 					}
 
-					volumeslider.onchange = function() {
+					volumeslider.oninput = function() {
 						gain.gain.value = volumeslider.value/100;
 						//console.log("changing volume " + volumeslider.value/100);
 					}
@@ -666,14 +650,14 @@ source.connect(myContext.destination);</code></pre>
 						</li>
 						<li>Analyser</li>
 						<li>
-							<u>BiquadFilter</u>
+							<b>BiquadFilter</b>
 						</li>
 						<li>Buffer</li>
 						<li>BufferSource</li>
 						<li>ChannelMerger</li>
 						<li>ChannelSplitter</li>
 						<li>
-							<u>Convolver</u>
+							<b>Convolver</b>
 						</li>
 						<li>Delay</li>
 						<li>DelayNode</li>
@@ -697,19 +681,65 @@ source.connect(myContext.destination);</code></pre>
 						<li>MediaStreamDestination</li>
 						<li>MediaStreamSource</li>
 						<li>
-							<u>Oscillator</u>
+							<b>Oscillator</b>
 						</li>
 						<li>Panner</li>
-						<li>ScriptProcessor</li>
+						<li>
+							<b>ScriptProcessor</b>
+						</li>
 						<li>WaveShaper</li>
 						<li>WaveTable</li>
 					</ul>
 				</section>
 				<section>
+				<h2>ScriptProcessor</h2>
+					<div>
+						<font style="font-size: 42px;">
+							<br>
+						</font>
+					</div>
+					<div class="fragment" data-fragment-index="0">
+					<font style="font-size: 32px;">Open Ended Callback</font>
+					</div>
+					<div class="fragment" data-fragment-index="1">
+						<pre><code>var sp = context.createScriptProcessor();
+sp.onprocess = function (processEvent){
+	// fill your own buffer
+	processEvent.outputBuffers = autoTune(processEvent.inputBuffers);
+}
+sp.connect(context.destination);
+						</code></pre>
+					</div>
+					<div>
+						<font style="font-size: 42px;">
+							<br>
+						</font>
+					</div>
+					<div class="fragment" data-fragment-index="2">
+					<font style="font-size: 32px;">called every ~23ms</font>
+					</div>
+					<div>
+						<font style="font-size: 42px;">
+							<br>
+						</font>
+					</div>
+					<div class="fragment" data-fragment-index="2">
+					<font style="font-size: 32px;">Audio Processing Happens in main Thread</font>
+					</div>
+					<div>
+						<font style="font-size: 42px;">
+							<br>
+						</font>
+					</div>
+					<div class="fragment" data-fragment-index="3">
+					<font style="font-size: 32px;">Risk of audio dropouts/glitches</font>
+					</div>
+				</section>
+				<section>
 					<h2>Filter</h2>
 					<div>
 						<pre><code>var audio = new Audio();
-audio.src = 'https://dl.dropboxusercontent.com/u/77191118/DeepIntoIt.mp3';
+audio.src = 'https://dl.dropboxusercontent.com/u/77191118/sounds/DeepIntoIt.mp3';
 source = context.createMediaElementSource(audio);
 var filter = context.createBiquadFilter();
 filter.type = filter.LOWPASS;
@@ -730,18 +760,18 @@ filter.connect(context.destination);
 						Filter Cutoff
 					</div>
 					<div>
-						<input type="range" min="100" max="5000" value="5000" id="filterSlider">
+						<input type="range" min="50" max="3000" value="3000" id="filterSlider">
 					</div>
 					<div>
 						<br>
 					</div>
 					<script>
 					var fAudio = new Audio();
-					fAudio.src = 'https://dl.dropboxusercontent.com/u/77191118/DeepIntoIt.mp3';
+					fAudio.src = 'https://dl.dropboxusercontent.com/u/77191118/sounds/DeepIntoIt.mp3';
 					var fSource = context.createMediaElementSource(fAudio);
 					var filter = context.createBiquadFilter();
 					filter.type = filter.LOWPASS;
-					filter.frequency.value = 5000;
+					filter.frequency.value = 3000;
 
 					fSource.connect(this.filter);
 					filter.connect(context.destination);
@@ -761,7 +791,7 @@ filter.connect(context.destination);
 						}
 					});
 
-					filterSlider.onchange = function() {
+					filterSlider.oninput = function() {
 						filter.frequency.value = filterSlider.value;
 					}
 
@@ -771,37 +801,28 @@ filter.connect(context.destination);
 				<section>
 					<h2>Convolver</h2>
 					<div>
-						<pre><code>var source = context.createBufferSource();
+						<pre><code>var webaudioloader = require('webaudioloader');
+
+var sourceURL = "https://dl.dropboxusercontent.com/u/77191118/sounds/deep10.mp3";
+var irURL = "https://dl.dropboxusercontent.com/u/77191118/sounds/church_ir.wav";
+
+var source = context.createBufferSource();
 var convolver = context.createConvolver();
 
 source.connect(convolver);
 convolver.connect(context.destination);
 
-/*Load source audio and impulse response*/
-var request = new XMLHttpRequest();
-var ir_request = new XMLHttpRequest();
-request.open("GET", "https://dl.dropboxusercontent.com/u/77191118/deep10.mp3", true);
-request.responseType = "arraybuffer";
-request.onload = function () {
-	context.decodeAudioData(request.response, function (decodedBuffer){
-		source.buffer = decodedBuffer
-		if (convolver.buffer){
-			source.start(0);
-		}
-	});
-}
-ir_request.open("GET", "https://dl.dropboxusercontent.com/u/77191118/church_ir.wav", true);
-ir_request.responseType = "arraybuffer";
-ir_request.onload = function () {
-	context.decodeAudioData(request.response, function (decodedBuffer){
-	convolver.buffer = decodedBuffer
-		if (source.buffer){
-			source.start(0);
-		}
-	});
-}
-ir_request.send();
-request.send();
+webaudioloader.load(sourceURL, {onload: function (err, buffer){
+	source.buffer = buffer;
+	if (convolver.buffer) source.start(0);
+}});
+
+webaudioloader.load(irURL, {onload: function (err, buffer){
+	convolver.buffer = buffer;
+	if (convolver.buffer) source.start(0);
+}});
+
+
 </code></pre>
 					</div>
 					<div>
@@ -835,7 +856,7 @@ request.send();
 
 					/*Load source audio and impulse response*/
 					var request = new XMLHttpRequest();
-					request.open("GET", "https://dl.dropboxusercontent.com/u/77191118/deep10.mp3", true);
+					request.open("GET", "https://dl.dropboxusercontent.com/u/77191118/sounds/deep10.mp3", true);
 					request.responseType = "arraybuffer";
 					request.onload = function () {
 						sourceBuffer = context.decodeAudioData(request.response, function (sourceBuffer){
@@ -852,7 +873,7 @@ request.send();
 					}
 
 					var ir_requestH = new XMLHttpRequest();
-					ir_requestH.open("GET", "https://dl.dropboxusercontent.com/u/77191118/church_ir.wav", true);
+					ir_requestH.open("GET", "https://dl.dropboxusercontent.com/u/77191118/sounds/church_ir.wav", true);
 					ir_requestH.responseType = "arraybuffer";
 					ir_requestH.onload = function () {
 						context.decodeAudioData(ir_requestH.response, function (buffer){
@@ -865,7 +886,7 @@ request.send();
 					}
 
 					var ir_requestC = new XMLHttpRequest();
-					ir_requestC.open("GET", "https://dl.dropboxusercontent.com/u/77191118/cup_ir.wav", true);
+					ir_requestC.open("GET", "https://dl.dropboxusercontent.com/u/77191118/sounds/cup_ir.wav", true);
 					ir_requestC.responseType = "arraybuffer";
 					ir_requestC.onload = function () {
 						context.decodeAudioData(ir_requestC.response, function(buffer){
@@ -910,145 +931,70 @@ request.send();
 					</script>
 
 				</section>
-				<section>
-					<h2>Demos</h2>
-					<div>
-						<br>
-					</div>
-					<div>
-						<font style="font-size: 32px;">Synth :</font>
-					</div>
-					<div>http://synth.soundkeep.com/<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>Sequencer :</div>
-					<div>http://labs.dinahmoe.com/ToneCraft/<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>WavePad :</div>
-					<div>http://alxgbsn.co.uk/wavepad/<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>Games :</div>
-					<div>http://chrome.angrybirds.com/<br>
-					</div>
+				<section data-markdown>
+					## Demos
+
+					- Synth :
+					[http://synth.soundkeep.com/](http://synth.soundkeep.com/)
+
+					- Sequencer :
+					[http://labs.dinahmoe.com/ToneCraft/](http://labs.dinahmoe.com/ToneCraft/)
+
+					- WavePad :
+					[http://alxgbsn.co.uk/wavepad/](http://alxgbsn.co.uk/wavepad/)
+
+					- Games :
+					[http://chrome.angrybirds.com/](http://chrome.angrybirds.com/)
+
+					- Moar Demos! :
+					[http://webaudio.github.io/demo-list/](http://webaudio.github.io/demo-list/)
+
+				</section>
+				<section data-markdown>
+					## Resources
+
+					- WebAudio Spec :
+					[http://webaudio.github.io/web-audio-api/](http://webaudio.github.io/web-audio-api/)
+
+					- HTML5 Audio :
+					[http://www.html5audio.org](http://www.html5audio.org)
+
+					- Dynamic Sounds :
+					[http://animatedsoundworks.com:8001/](http://animatedsoundworks.com:8001/)
+
+					- Web Audio Components
+					[https://github.com/web-audio-components](https://github.com/web-audio-components)
+
+				</section >
+				<section  data-markdown>
+					## More Resources
+
+					- Live Coding :
+					[http://gibber.mat.ucsb.edu/](http://gibber.mat.ucsb.edu/)
+
+					- Voice Input :
+					[https://github.com/mattdiamond/Recorderjs](https://github.com/mattdiamond/Recorderjs)
+
+					- Web Audio in Nodejs??
+					[https://github.com/sebpiq/node-web-audio-api](https://github.com/sebpiq/node-web-audio-api)
+
+					- Waveforms
+					[https://github.com/katspaugh/wavesurfer.js](https://github.com/katspaugh/wavesurfer.js)
+
+				</section>
+				<section data-markdown>
+					## What's coming up?
+
+					-  __AudioWorker__
+
+					- WebRTC (getUserMedia API)
+
+					- WebMIDI
+
+					- asm.js
 				</section>
 				<section>
-					<h2>Resources</h2>
-					<div>
-						<br>
-					</div>
-					<div>http://www.html5audio.org/<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>http://www.w3.org/wiki/HTML/Elements/audio<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>http://www.html5rocks.com/en/tutorials/webaudio/intro/<br>
-					</div>
-					<div>
-						<br>
-					</div>
-				</section>
-				<section>
-					<h2>More Resources</h2>
-					<div>
-						<br>
-					</div>
-					<div>http://animatedsoundworks.com:8001/<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>https://github.com/web-audio-components<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>https://github.com/cwilso/WebAudio<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>
-						<br>
-					</div>
-					<div>https://github.com/audiocogs<br>
-					</div>
-					<div>
-						<br>
-					</div>
-				</section>
-				<section>
-					<h2>What's coming?</h2>
-					<div>
-						<br>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">WebRTC </font>
-						<font style="font-size: 32px;">(getUserMedia API)</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">WebMIDI</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">
-							<br>
-						</font>
-					</div>
-					<div>
-						<font style="font-size: 42px;">asm.js</font>
-					</div>
+					<h2>Demo time!</h2>
 				</section>
 				<section>
 					<h2>Final words</h2>
@@ -1116,7 +1062,7 @@ request.send();
 						</div>
 						<div>
 							<br>
-							https://github.com/notthetup/webaudioslides
+							https://chinpen.net/talks
 						</div>
 						<div>
 							<br>

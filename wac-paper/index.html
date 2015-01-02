@@ -85,6 +85,7 @@
 					<ul>
 						<li>Interactive audio authoring platform</li>
 						<li>Web Based</li>
+						<!-- Screen Shot of Sonoport Studio -->
 						<li>Core : Dynamic Sound Engine
 						<ul style="margin-top:10px">
 								<li>
@@ -107,22 +108,14 @@
 					</ul>
 				</section>
 
+
+
 				<section>
 					<h2>History</h2>
 					<ul>
 						<li> Based on Lonce's work in Java/Flex </li>
-						<li> Moved to Flash (with Sound Object in Flash 10)</li>
-						<li> Flash was Flaky AND Single Threaded</li>
-						<li> ... but we managed to make it work</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>History - Web Audio</h2>
-					<ul>
-						<li> January 2014 - Web Audio was pretty mature</li>
-						<li> Only way to get onto Mobile Platforms</li>
-						<li> Started migration to Web Audio</li>
+						<li> Moved to Flash (starting with Flash 10)</li>
+						<li> January 2014 - Starting migration to WebAudio</li>
 					</ul>
 				</section>
 
@@ -131,10 +124,10 @@
 				<section>
 					<h2>Architecture</h2>
 					<ul>
-						<li> API Consistency with Flash version </li>
-						<li> Leverage on Web Audio's Platform </li>
+						<li> Keep API Consistency with Flash version </li>
+						<li> Leverage on Web Audio for 'plumbing' </li>
 						<li> Leverage the composibilty of Web Audio </li>
-						<li> Other libraries - <i>Not invented here!</i></li>
+						<li> Use existing frameworks? - <i>Not invented here!</i></li>
 					</ul>
 				</section>
 
@@ -175,14 +168,93 @@ loop.speed.exponentialRampToValueAtTime(0.4, 5);
 					</ul>
 				</section>
 
+				<!-- Diagram of SPAudioNodes-->
+
+					<section>
+					<h2>SPAudioNode</h2>
+						<pre> <code data-trim>
+/* Construct */
+var node = new SPAudioNode(context);
+
+/* Manipulate */
+node.fooparam.value = 42;
+node.barparam.setTargetAtTime(12,2);
+
+/* Connect with other AudioNodes */
+var filter = new context.createBiquadFilter();
+node.connect(filter);
+filter.connect(context.destination);
+						</code> </pre>
+				</section>
 
 				<!-- Parameters -->
 
+				<section>
+					<h2>Parameters</h2>
+					<p class="problem">Problem : Can't creeate custom Parameters in Web Audio</p>
+				</section>
+
 				<!-- Queue -->
+
+				<section>
+					<h2>Queues</h2>
+					<p class="problem">Problem : Can't schedule some operations in Web Audio</p>
+				</section>
 
 				<!-- Buffers -->
 
-				<!-- Audio Worker and the Future -->
+				<section>
+					<h2>Buffers</h2>
+					<p class="problem">Problem : Can't pause and then play an AudioSourceBufferNode</p>
+				</section>
+
+				<section>
+					<h2>Summary</h2>
+					<ul>
+						<li> Overcame most issues using current implementation of Web Audio </li>
+						<li> Most solutions were Hacks </li>
+						<li> Most solutions worked for our specific usecase </li>
+						<li> Youy millage may vary based on what you're doing </li>
+					</ul>
+				</section>
+
+					<!-- Audio Worker and the Future -->
+
+				<section>
+					<h2>Enter the Audio Worker!</h2>
+				</section>
+
+				<section>
+					<img src="img/icanhaz.jpg">
+				</section>
+
+				<section>
+					<h2>Parameters</h2>
+					<ul>
+						<li> AudioWorkers have <b>addParameter</b> method! </li>
+						<li> Create a-rate parameter values accessible inside AudioWorkers! </li>
+						<li> Should solve all issues with creating custom Parameters</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Scheduling</h2>
+					<ul>
+						<li> AudioWorkers enables glitch free sample accurate scheduling </li>
+						<li> Queue runs inside an AudioWorker </li>
+						<li> Load operations can be scheduled accurately </li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Buffers</h2>
+					<ul>
+						<li> Still no <b>playbackPosition</b> property on AudioSourceBufferNode </li>
+						<li> :( </li>
+						<li> .. but I an reimplement AudioSourceBufferNode inside AudioWorker!</li>
+						<li> No idea of performance till I have access to AudioWorker</li>
+					</ul>
+				</section>
 
 				<!-- Last Slide -->
 				<section>

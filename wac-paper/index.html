@@ -15,10 +15,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="css/theme/beige-sparse.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/beige.css">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -42,6 +42,7 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+				<!-- Title Slide -->
 				<section>
 					<h2>Adventures in scheduling, buffers and parameters</h2>
 					<br>
@@ -49,12 +50,144 @@
 					<p>
 						<br>
 						<br>
-						<small><a href="http://chinpen.net">Chinmay Pendharkar</a> / <a href="http://sonoport.com">Sonoport</a></small>
+						<small><a href="http://chinpen.net">Chinmay Pendharkar, Peter Bäck and Lonce Wyse</a> / <a href="http://sonoport.com">Sonoport</a></small>
 					</p>
 				</section>
 
+				<!-- Sonoport Intro -->
+
+				<section>
+					<img class="spare-image-no-border" src="img/sonoport.png">
+					<p>
+						<i class="spare-subtitle" >If visuals can be interactive, why can't audio?</i>
+					</p>
+					<br>
+					<br>
+					<br>
+					<br>
+					</style>
+					<div class="spare-twocolumn-wrap">
+					    <div class="spare-twocolumn-left_col">
+					        <img class="spare-image-no-border" style="margin:0px 30px" src="img/about-sg.png">
+					        <img class="spare-image-no-border" style="margin:0px" src="img/about-uk.png">
+					        <p>Singapore/London</p>
+					    </div>
+					    <div class="spare-twocolumn-right_col">
+					        <p>Interactive Dynamic Audio for Multimedia</p>
+					        <p class="spare-subtitle">(Ads, Games, Etc)</p>
+					    </div>
+					</div>
+
+				</section>
+
+				<section>
+					<h2>Sonoport Studio</h2>
+					<ul>
+						<li>Interactive audio authoring platform</li>
+						<li>Web Based</li>
+						<li>Core : Dynamic Sound Engine
+						<ul style="margin-top:10px">
+								<li>
+									Collection of Sonoport Dynamic Sound Models
+								</li>
+								<li>
+									Runtime + Utilities
+								</li>
+						</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Sonoport Dynamic Sound Models</h2>
+					<ul>
+						<li> Algorithms that make sound</li>
+						<li> Parameters to change the sounds in real-time</li>
+						<li> Texture based or purely Synthesized </li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>History</h2>
+					<ul>
+						<li> Based on Lonce's work in Java/Flex </li>
+						<li> Moved to Flash (with Sound Object in Flash 10)</li>
+						<li> Flash was Flaky AND Single Threaded</li>
+						<li> ... but we managed to make it work</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>History - Web Audio</h2>
+					<ul>
+						<li> January 2014 - Web Audio was pretty mature</li>
+						<li> Only way to get onto Mobile Platforms</li>
+						<li> Started migration to Web Audio</li>
+					</ul>
+				</section>
+
+				<!-- Porting Problem -->
+
+				<section>
+					<h2>Architecture</h2>
+					<ul>
+						<li> API Consistency with Flash version </li>
+						<li> Leverage on Web Audio's Platform </li>
+						<li> Leverage the composibilty of Web Audio </li>
+						<li> Other libraries - <i>Not invented here!</i></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Architecture - Threading</h2>
+					<ul>
+						<li> Avoid <b>ScriptProcessorNode</b> </li>
+						<li> Sound Models are usually embedded in other websites </li>
+						<li> No gurantee that nothing else will hog the event loop </li>
+						<li> Risk of missing <b>ScriptProcessorNode</b> callbacks</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Architecture - Trade-offs</h2>
+					<ul>
+						<li> Change API for Parameters </li>
+						<li> .. for Automation method support </li>
+						<pre> <code data-trim>
+/* Flash */
+loop.speed = 0.4;
+/* Web Audio */
+loop.speed.value = 0.4;
+/* Automation FTW */
+loop.speed.exponentialRampToValueAtTime(0.4, 5);
+						</code> </pre>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Architecture - Higher Level Nodes</h2>
+					<ul>
+						<li> Wanted to create <b>AudioNode</b>-like JS Objects </li>
+						<li> <b>SPAudioNode</b> - Similar interface to AudioNode </li>
+						<li> All Sound Models are <b>SPAudioNode</b>s </li>
+						<li> <b>SPAudioNode</b> internally composes multiple <b>AudioNodes</b> </li>
+						<li> OpenMusic (Sole's) approach might be more elegant </li>
+					</ul>
+				</section>
+
+
+				<!-- Parameters -->
+
+				<!-- Queue -->
+
+				<!-- Buffers -->
+
+				<!-- Audio Worker and the Future -->
+
+				<!-- Last Slide -->
 				<section>
 					<h2>Questions?</h2>
+					<p style="margin-top : 200px">Slides, Papers, Links at <a href="http://wac.sonoport.com">http://wac.sonoport.com</a><p>
 				</section>
 
 			</div>
@@ -73,12 +206,12 @@
 				progress: true,
 				history: true,
 				center: true,
-
+				slideNumber: true,
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				//parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
 				// parallaxBackgroundSize: '2100px 900px',
 
 				// Optional libraries used to extend on reveal.js
@@ -93,6 +226,8 @@
 			});
 
 		</script>
+
+
 
 	</body>
 </html>

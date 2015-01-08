@@ -59,7 +59,7 @@
 				<section>
 					<img class="spare-image-no-border" src="img/sonoport.png">
 					<p>
-						<i class="spare-subtitle" >If visuals can be interactive, why can't audio?</i>
+						<em class="spare-subtitle" >If visuals can be interactive, why can't audio?</em>
 					</p>
 					<br>
 					<br>
@@ -127,17 +127,17 @@
 						<li> Keep API Consistency with Flash version </li>
 						<li> Leverage on Web Audio for 'plumbing' </li>
 						<li> Leverage the composibilty of Web Audio </li>
-						<li> Use existing frameworks? - <i>Not invented here!</i></li>
+						<li> Use existing frameworks? - <em>Not invented here!</em></li>
 					</ul>
 				</section>
 
 				<section>
 					<h2>Architecture - Threading</h2>
 					<ul>
-						<li> Avoid <b>ScriptProcessorNode</b> </li>
+						<li> Avoid <strong>ScriptProcessorNode</strong> </li>
 						<li> Sound Models are usually embedded in other websites </li>
 						<li> No gurantee that nothing else will hog the event loop </li>
-						<li> Risk of missing <b>ScriptProcessorNode</b> callbacks</li>
+						<li> Risk of missing <strong>ScriptProcessorNode</strong> callbacks</li>
 					</ul>
 				</section>
 
@@ -160,18 +160,18 @@ loop.speed.exponentialRampToValueAtTime(0.4, 5);
 				<section>
 					<h2>Architecture - Higher Level Nodes</h2>
 					<ul>
-						<li> Wanted to create <b>AudioNode</b>-like JS Objects </li>
-						<li> <b>SPAudioNode</b> - Similar interface to AudioNode </li>
-						<li> All Sound Models are <b>SPAudioNode</b>s </li>
-						<li> <b>SPAudioNode</b> internally composes multiple <b>AudioNodes</b> </li>
+						<li> Wanted to create <strong>AudioNode</strong>-like JS Objects </li>
+						<li> <strong>SPAudioNode</strong> - Similar interface to AudioNode </li>
+						<li> All Sound Models are <strong>SPAudioNode</strong>s </li>
+						<li> <strong>SPAudioNode</strong> internally composes multiple <strong>AudioNodes</strong> </li>
 						<li> OpenMusic (Sole's) approach might be more elegant </li>
 					</ul>
 				</section>
 
 				<!-- Diagram of SPAudioNodes-->
 
-					<section>
-					<h2>SPAudioNode</h2>
+				<section>
+					<h2 class="spare-nonuppercase">SPAudioNode</h2>
 						<pre> <code data-trim>
 /* Construct */
 var node = new SPAudioNode(context);
@@ -188,30 +188,125 @@ filter.connect(context.destination);
 				</section>
 
 				<!-- Parameters -->
-
 				<section>
-					<h2>Parameters</h2>
-					<p class="problem">Problem : Can't create custom Parameters in Web Audio</p>
+					<h2> 3 Problems : 3 Hacks! </h2>
 				</section>
 
 				<section>
-					<h2>Parameters</h2>
-					<p class="solution">Solution : <i>SPAudioParam</i> - Wrap Around <i>AudioParams</i>, expose similar interface to AudioParams</p>
+					<p class="spare-problem">Problem #1 : Can't create custom Parameters in Web Audio</p>
+				</section>
+
+				<section>
+					<h2>Problem #1</h2>
+					<ul>
+						<li> Higher Level Nodes need Parameters </li>
+						<li> Parameters should have similar interface as AudioParam</li>
+						<li> Parameters may need to be mapped to internal AudioNodes</li>
+						<li> Bonus : Parameters support Automation</li>
+					</ul>
+				</section>
+
+				<section>
+					<p class="spare-problem">Solution #1: SPAudioParam </p>
+					<p class="spare-subtitle"> Wrap Around <em>AudioParams</em>, expose similar interface to AudioParams</p>
+				</section>
+
+				<section>
+					<h2 class="spare-nonuppercase">SPAudioParam - Two Approaches</h2>
+					<div class="spare-twocolumn-wrap">
+					    <div class="spare-twocolumn-left_col">
+							<p class="spare-column-header"> <strong> Wrapped SPAudioParam </strong> </p>
+							<ul>
+								<li> Map SPAudioParam to underlying AudioParam </li>
+								<li> Use getters/setters to pass along values </li>
+								<li> Mapping/normalization on the fly</li>
+								<li> Pass along Automation method calls </li>
+							</ul>
+					    </div>
+					    <div class="spare-twocolumn-right_col">
+					    <p class="spare-column-header"> <strong style=""> Mocked SPAudioParam </strong> </p>
+					    <ul>
+								<li> Plain old JS Object </li>
+								<li> Fakes Automation using setInterval (URGH!)</li>
+								<li> For edge case without underlying AudioParam</li>
+							</ul>
+					    </div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Solution #1: SPAudioParam </h2>
+					<ul>
+						<li> Mostly used Wrapped SPAudioParam approach </li>
+						<li> Slight change in API for Parameters but free automation!!</li>
+						<li> Mocked Param approach handy in edge case scenarios </li>
+					</ul>
 				</section>
 
 				<!-- Queue -->
 
 				<section>
-					<h2>Queues</h2>
-					<p class="problem">Problem : Can't schedule some operations in Web Audio</p>
+					<p class="spare-problem">Problem #2 : Can't schedule some operations in Web Audio</p>
+				</section>
+
+				<section>
+					<h2>Problem #2 - Queues</h2>
+					<ul>
+						<li> Scheduling is key, but can't un-schedule in WebAudio.</li>
+						<li> Keep a Queue, schedule/unschedule on the Queue. </li>
+						<li> Queue executes 'Events' as close (without overshooting) to the scheduled time.</li>
+						<li> Common Queue Events : Start, Stop, Change Param</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Problem #2 - Polyphony</h2>
+					<ul>
+						<li> Polyphonic Models with multiple voices </li>
+						<li> Typical archtecture, fixed number of BufferNodes </li>
+						<li> Queue assignes various buffers to those BufferNodes at the scheduled time</li>
+					</ul>
+				</section>
+
+				<section>
+					<!-- Queuing diagram -->
+				</section>
+
+				<section>
+					<li> New Queue Event : SetSource &lt;- not schedulable!</li>
+					<li> SetInterval for timing may cause SetSource to be executed AFTER Start </li>
+					<li> Executing SetSource at queueing time could override another voice.</li>
+				</section>
+
+				<section>
+					<p class="spare-problem">Solution #2: Fire and Forget Voices </p>
+					<p class="spare-subtitle"> Create new voices as and when needed; ensure GC when discarding used voices.</p>
+				</section>
+
+				<section>
+					<ul>
+						<li> Change Architecture : new BufferNode everytime a voice is needed </li>
+						<li> Ensure GC does capture all the BufferNodes </li>
+						<li> Test no leaks using memory profiling and heap dumps</li>
+						<li> Tested to upto ~60x3 Nodes created per second (no audible glitching)</li>
+					</ul>
+				</section>>
+
+				<section>
+					<!-- Demo Multitrigger -->
 				</section>
 
 				<!-- Buffers -->
 
 				<section>
-					<h2>Buffers</h2>
-					<p class="problem">Problem : Can't pause and then play an AudioSourceBufferNode</p>
+					<p class="spare-problem">Problem #3 : Can't pause then play an AudioSourceBufferNode</p>
 				</section>
+
+				<section>
+					<p class="spare-problem">Solution #3: SPAudioSourceBufferNode </p>
+					<p class="spare-subtitle"> Wrap Around <em>AudioSourceBufferNode</em>, and track it's playback using a 'Scope'.</p>
+				</section>
+
 
 				<section>
 					<h2>Summary</h2>
@@ -236,7 +331,7 @@ filter.connect(context.destination);
 				<section>
 					<h2>Parameters</h2>
 					<ul>
-						<li> AudioWorkers have <b>addParameter</b> method! </li>
+						<li> AudioWorkers have <strong>addParameter</strong> method! </li>
 						<li> Create a-rate parameter values accessible inside AudioWorkers! </li>
 						<li> Should solve all issues with creating custom Parameters</li>
 					</ul>
@@ -254,7 +349,7 @@ filter.connect(context.destination);
 				<section>
 					<h2>Buffers</h2>
 					<ul>
-						<li> Still no <b>playbackPosition</b> property on AudioSourceBufferNode </li>
+						<li> Still no <strong>playbackPosition</strong> property on AudioSourceBufferNode </li>
 						<li> :( </li>
 						<li> .. but I an reimplement AudioSourceBufferNode inside AudioWorker!</li>
 						<li> No idea of performance till I have access to AudioWorker</li>

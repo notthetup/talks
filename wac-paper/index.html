@@ -39,7 +39,6 @@
 	<body>
 
 		<div class="reveal">
-
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<!-- Title Slide -->
@@ -252,9 +251,9 @@ filter.connect(context.destination);
 				<section>
 					<h2>Problem #2 - Queues</h2>
 					<ul>
-						<li> Scheduling is key, but can't un-schedule in WebAudio.</li>
-						<li> Keep a Queue, schedule/unschedule on the Queue. </li>
-						<li> Queue executes 'Events' as close (without overshooting) to the scheduled time.</li>
+						<li> Scheduling is key, but can't un-schedule in WebAudio</li>
+						<li> Keep a Queue, schedule/unschedule on the Queue</li>
+						<li> Queue executes 'Events' close to the scheduled time</li>
 						<li> Common Queue Events : Start, Stop, Change Param</li>
 					</ul>
 				</section>
@@ -264,7 +263,7 @@ filter.connect(context.destination);
 					<ul>
 						<li> Polyphonic Models with multiple voices </li>
 						<li> Typical archtecture, fixed number of BufferNodes </li>
-						<li> Queue assignes various buffers to those BufferNodes at the scheduled time</li>
+						<li> Queue assigns buffers to BufferNodes at the scheduled time</li>
 					</ul>
 				</section>
 
@@ -273,24 +272,26 @@ filter.connect(context.destination);
 				</section>
 
 				<section>
+					<h2>Problem #2 - Polyphony</h2>
 					<li> New Queue Event : SetSource &lt;- not schedulable!</li>
-					<li> SetInterval for timing may cause SetSource to be executed AFTER Start </li>
-					<li> Executing SetSource at queueing time could override another voice.</li>
+					<li> Can't use SetInterval for scheduling SetSource </li>
+					<li> Executing SetSource at earlier could override another voice</li>
 				</section>
 
 				<section>
 					<p class="spare-problem">Solution #2: Fire and Forget Voices </p>
-					<p class="spare-subtitle"> Create new voices as and when needed; ensure GC when discarding used voices.</p>
+					<p class="spare-subtitle"> Create new voices as and when needed</p>
 				</section>
 
 				<section>
+				<h2>Solution #2 - Fire and Forget Voices</h2>
 					<ul>
-						<li> Change Architecture : new BufferNode everytime a voice is needed </li>
+						<li> Architecture : new BufferNode everytime a voice is needed </li>
 						<li> Ensure GC does capture all the BufferNodes </li>
-						<li> Test no leaks using memory profiling and heap dumps</li>
-						<li> Tested to upto ~60x3 Nodes created per second (no audible glitching)</li>
+						<li> Test no leaks using memory profiling and heap dumps </li>
+						<li> Tested to upto ~60x3 Nodes created per second </li>
 					</ul>
-				</section>>
+				</section>
 
 				<section>
 					<!-- Demo Multitrigger -->
@@ -299,22 +300,56 @@ filter.connect(context.destination);
 				<!-- Buffers -->
 
 				<section>
-					<p class="spare-problem">Problem #3 : Can't pause then play an AudioSourceBufferNode</p>
+					<p class="spare-problem">Problem #3 : Can't pause an AudioSourceBufferNode</p>
+				</section>
+
+				<section>
+					<h2>Problem #3 - Buffers</h2>
+					<ul>
+						<li> <strong>AudioSourceBufferNode</strong> can only be used once </li>
+						<li> No way to know current <em>playbackPosition</em></li>
+						<li> Time based tracking only works for static <em>playbackRate</em></li>
+						<li> Tracking while <em>playbackRate</em> is being automated is HARD</li>
+						<li> Reimplementing Automation methods is may be inaccurate</li>
+					</ul>
 				</section>
 
 				<section>
 					<p class="spare-problem">Solution #3: SPAudioSourceBufferNode </p>
-					<p class="spare-subtitle"> Wrap Around <em>AudioSourceBufferNode</em>, and track it's playback using a 'Scope'.</p>
+					<p class="spare-subtitle"> Wrap Around <strong>AudioSourceBufferNode</strong>, and track it's playback using a 'Scope'</p>
+					<!-- Add Hack Chop -->
 				</section>
 
+				<section>
+					<h2>Solution #3 - SPAudioSourceBufferNode</h2>
+					<ul>
+						<li> Create a mirror <strong>AudioBuffer</strong> with index as value</li>
+						<li> Create a <em>CounterBufferNode</em> from this <strong>AudioBuffer</strong> </li>
+						<li> Connect this <em>CounterBufferNode</em> to a <strong>ScriptProcessorNode</strong></li>
+						<li> <em>onprocessaudio</em> stores the last value in the <em>inputBuffer</em> </li>
+						<li> perform every method (start, stop, automation) on both the <strong>AudioSourceBufferNodes</strong> </li>
+					</ul>
+				</section>
 
 				<section>
-					<h2>Summary</h2>
+					<h2>Solution #3 - SPAudioSourceBufferNode</h2>
 					<ul>
-						<li> Overcame most issues using current implementation of Web Audio </li>
+						<li> stored value exposed as <em>playbackPosition</em> property </li>
+						<li> <em>playbackPosition</em> is read only</li>
+						<li> Accurate to nearest ScriptNode buffer size</li>
+						<li> Not perfect buy good enogh for pausing/playing</li>
+					</ul>
+				</section>
+
+				<!-- SPAudioSourceBufferNode Diagram -->
+
+				<section>
+					<h2>Porting to WebAudio - Summary</h2>
+					<ul>
+						<li> Overcame most issues we faced while porting</li>
 						<li> Most solutions were Hacks </li>
 						<li> Most solutions worked for our specific usecase </li>
-						<li> Youy millage may vary based on what you're doing </li>
+						<li> Your millage may vary based on what you're doing </li>
 					</ul>
 				</section>
 
@@ -332,7 +367,7 @@ filter.connect(context.destination);
 					<h2>Parameters</h2>
 					<ul>
 						<li> AudioWorkers have <strong>addParameter</strong> method! </li>
-						<li> Create a-rate parameter values accessible inside AudioWorkers! </li>
+						<li> Create a-rate parameters accessible inside AudioWorkers! </li>
 						<li> Should solve all issues with creating custom Parameters</li>
 					</ul>
 				</section>
@@ -340,8 +375,8 @@ filter.connect(context.destination);
 				<section>
 					<h2>Scheduling</h2>
 					<ul>
-						<li> AudioWorkers enables glitch free sample accurate scheduling </li>
-						<li> Queue runs inside an AudioWorker </li>
+						<li> AudioWorkers enables sample accurate scheduling </li>
+						<li> Queue can runs inside an AudioWorker </li>
 						<li> Load operations can be scheduled accurately </li>
 					</ul>
 				</section>
@@ -349,10 +384,21 @@ filter.connect(context.destination);
 				<section>
 					<h2>Buffers</h2>
 					<ul>
-						<li> Still no <strong>playbackPosition</strong> property on AudioSourceBufferNode </li>
+						<li> No <strong>playbackPosition</strong> property on AudioSourceBufferNode </li>
 						<li> :( </li>
-						<li> .. but I an reimplement AudioSourceBufferNode inside AudioWorker!</li>
-						<li> No idea of performance till I have access to AudioWorker</li>
+						<li> .. but AudioSourceBufferNode could be reimplmented inside AudioWorker!</li>
+						<li> No idea of performance till we have access to AudioWorker</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Summary</h2>
+					<ul>
+						<li> Hacking around WebAudio was fun </li>
+						<li> Tradeoff between performance, and functionality </li>
+						<li> Might not work perfectly in all scenarios</li>
+						<li> AudioWorker should make life easier </li>
+						<li> Would love to know other ways of solving these problems!</li>
 					</ul>
 				</section>
 

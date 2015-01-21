@@ -53,6 +53,19 @@
 					</p>
 				</section>
 
+				<section>
+					<h2> Overview </h2>
+					<ul class="spare-overview-list">
+						<li> 1. About us </li>
+						<li> 2. Sonoport Studio </li>
+						<li> 3. History </li>
+						<li> 4. Architecture </li>
+						<li> 5. Problems &amp; Solutions </li>
+						<li> 6. Audio Worker </li>
+						<li> 7. Summary </li>
+					</ul>
+				</section>
+
 				<!-- Sonoport Intro -->
 
 				<section>
@@ -80,7 +93,7 @@
 				</section>
 
 				<section>
-					<h2>Sonoport Studio</h2>
+					<h2>2. Sonoport Studio</h2>
 					<ul>
 						<li>Interactive audio authoring platform</li>
 						<li>Web Based</li>
@@ -110,7 +123,7 @@
 
 
 				<section>
-					<h2>History</h2>
+					<h2>3. History</h2>
 					<ul>
 						<li> Based on Lonce's work in Java/Flex </li>
 						<li> Moved to Flash (starting with Flash 10)</li>
@@ -121,7 +134,7 @@
 				<!-- Porting Problem -->
 
 				<section>
-					<h2>Architecture</h2>
+					<h2>4. Architecture</h2>
 					<ul>
 						<li> Keep API Consistency with Flash version </li>
 						<li> Leverage on Web Audio for 'plumbing' </li>
@@ -167,7 +180,9 @@ loop.speed.exponentialRampToValueAtTime(0.4, 5);
 					</ul>
 				</section>
 
-				<!-- Diagram of SPAudioNodes-->
+				<section>
+					<img class="spare-image-no-border" src="img/higherlevelaudionodes.png">
+				</section>
 
 				<section>
 					<h2 class="spare-nonuppercase">SPAudioNode</h2>
@@ -206,8 +221,10 @@ filter.connect(context.destination);
 				</section>
 
 				<section>
-					<p class="spare-problem">Solution #1: SPAudioParam </p>
-					<p class="spare-subtitle"> Wrap Around <em>AudioParams</em>, expose similar interface to AudioParams</p>
+					<div class="hackchop">
+						<p class="spare-problem">Solution #1: SPAudioParam </p>
+						<p class="spare-subtitle"> Wrap Around <em>AudioParams</em>, expose similar interface to AudioParams</p>
+					</div>
 				</section>
 
 				<section>
@@ -245,7 +262,7 @@ filter.connect(context.destination);
 				<!-- Queue -->
 
 				<section>
-					<p class="spare-problem">Problem #2 : Can't schedule some operations in Web Audio</p>
+						<p class="spare-problem">Problem #2 : Can't schedule some operations in Web Audio</p>
 				</section>
 
 				<section>
@@ -279,8 +296,10 @@ filter.connect(context.destination);
 				</section>
 
 				<section>
-					<p class="spare-problem">Solution #2: Fire and Forget Voices </p>
-					<p class="spare-subtitle"> Create new voices as and when needed</p>
+					<div class="hackchop">
+						<p class="spare-problem">Solution #2: Fire and Forget Voices </p>
+						<p class="spare-subtitle"> Create new voices as and when needed</p>
+					</div>
 				</section>
 
 				<section>
@@ -315,9 +334,10 @@ filter.connect(context.destination);
 				</section>
 
 				<section>
-					<p class="spare-problem">Solution #3: SPAudioSourceBufferNode </p>
-					<p class="spare-subtitle"> Wrap Around <strong>AudioSourceBufferNode</strong>, and track it's playback using a 'Scope'</p>
-					<!-- Add Hack Chop -->
+					<div class="hackchop">
+						<p class="spare-problem">Solution #3: SPAudioSourceBufferNode </p>
+						<p class="spare-subtitle"> Wrap Around <strong>AudioSourceBufferNode</strong>, and track it's playback using a 'Scope'</p>
+					</div>
 				</section>
 
 				<section>
@@ -392,7 +412,7 @@ filter.connect(context.destination);
 				</section>
 
 				<section>
-					<h2>Summary</h2>
+					<h2>7. Summary</h2>
 					<ul>
 						<li> Hacking around WebAudio was fun </li>
 						<li> Tradeoff between performance, and functionality </li>

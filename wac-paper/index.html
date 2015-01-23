@@ -1,35 +1,39 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>Adventures in scheduling, buffers and parameters</title>
+	<title>Adventures in scheduling, buffers and parameters</title>
 
-		<meta name="description" content="Adventures in scheduling, buffers and parameters : Porting a dynamic audio engine to Web Audio">
-		<meta name="author" content="Chinmay Pendharkar">
+	<meta name="description" content="Adventures in scheduling, buffers and parameters : Porting a dynamic audio engine to Web Audio">
+	<meta name="author" content="Chinmay Pendharkar">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/beige-sparse.css" id="theme">
+	<link rel="stylesheet" href="css/reveal.min.css">
+	<link rel="stylesheet" href="css/theme/beige-sparse.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+	<script src="js/require.js"></script>
+	<script src="js/Looper.js"></script>
+	<script src="js/MultiTrigger.js"></script>
+
+	<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+	<script>
+		if( window.location.search.match( /print-pdf/gi ) ) {
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = 'css/print/pdf.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		}
+	</script>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -70,123 +74,135 @@
 
 				<section>
 					<img class="spare-image-no-border" src="img/sonoport.png">
-					<p>
-						<em class="spare-subtitle" >If visuals can be interactive, why can't audio?</em>
-					</p>
+					<br>
+					<p class="spare-subtitle">"Endless Posibilities with Sound"</p>
 					<br>
 					<br>
 					<br>
 					<br>
-					</style>
-					<div class="spare-twocolumn-wrap">
-					    <div class="spare-twocolumn-left_col">
-					        <img class="spare-image-no-border" style="margin:0px 30px" src="img/about-sg.png">
-					        <img class="spare-image-no-border" style="margin:0px" src="img/about-uk.png">
-					        <p>Singapore/London</p>
-					    </div>
-					    <div class="spare-twocolumn-right_col">
-					        <p>Interactive Dynamic Audio for Multimedia</p>
-					        <p class="spare-subtitle">(Ads, Games, Etc)</p>
-					    </div>
+				</style>
+				<div class="spare-twocolumn-wrap">
+					<div class="spare-twocolumn-left_col">
+						<img class="spare-image-no-border" style="margin:0px 30px" src="img/about-sg.png">
+						<img class="spare-image-no-border" style="margin:0px" src="img/about-uk.png">
+						<p>Singapore &nbsp; &nbsp; &nbsp; London</p>
 					</div>
+					<div class="spare-twocolumn-right_col">
+						<p>Interactive Dynamic Audio for Multimedia</p>
+						<p class="spare-subtitle">(Ads, Games, etc)</p>
+					</div>
+				</div>
 
-				</section>
+			</section>
 
-				<section>
-					<h2>2. Sonoport Studio</h2>
-					<ul>
-						<li>Interactive audio authoring platform</li>
-						<li>Web Based</li>
-						<!-- Screen Shot of Sonoport Studio -->
-						<li>Core : Dynamic Sound Engine
-						<ul style="margin-top:10px">
-								<li>
-									Collection of Sonoport Dynamic Sound Models
-								</li>
-								<li>
-									Runtime + Utilities
-								</li>
+			<section>
+				<h2>2. Sonoport Studio</h2>
+				<ul>
+					<li>Interactive audio authoring platform</li>
+					<li>Web Based</li>
+					<!-- Screen Shot of Sonoport Studio -->
+					<li>Core : Dynamic Sound Engine
+						<ul style="margin-top:10px" >
+							<li style="margin-bottom:0px">
+								- Collection of Sonoport Dynamic Sound Models
+							</li>
+							<li>
+								- Runtime + Utilities
+							</li>
 						</ul>
-						</li>
-					</ul>
-				</section>
+					</li>
+				</ul>
+			</section>
 
-				<section>
-					<h2>Sonoport Dynamic Sound Models</h2>
-					<ul>
-						<li> Algorithms that make sound</li>
-						<li> Parameters to change the sounds in real-time</li>
-						<li> Texture based or purely Synthesized </li>
-					</ul>
-				</section>
+			<section>
+				<h2> Demo Booth </h2>
+				<p> Check out Sonoport Studio at Demo/Poster Session #2 </p>
+				<p> Tuesday afternoon at MOZILLA</p>
+				<p> 15.00 - 17.00</p>
+			</section>
+
+			<section>
+				<h2>Sonoport Dynamic Sound Models</h2>
+				<ul>
+					<li> Algorithms that make sound</li>
+					<li> Parameters to change the sounds in real-time</li>
+					<li> Texture based or purely Synthesized </li>
+				</ul>
+			</section>
 
 
 
-				<section>
-					<h2>3. History</h2>
-					<ul>
-						<li> Based on Lonce's work in Java/Flex </li>
-						<li> Moved to Flash (starting with Flash 10)</li>
-						<li> January 2014 - Starting migration to WebAudio</li>
-					</ul>
-				</section>
+			<section>
+				<h2>3. History</h2>
+				<ul>
+					<li> Based on Lonce Wyse's work in Java/Flex </li>
+					<li> Moved to Flash (starting with Flash 10)</li>
+					<li> January 2014 - Starting migration to Web Audio</li>
+				</ul>
+			</section>
 
-				<!-- Porting Problem -->
+			<section>
+				<img src="img/webaudio-all-the-things.jpg">
+			</section>
 
-				<section>
-					<h2>4. Architecture</h2>
-					<ul>
-						<li> Keep API Consistency with Flash version </li>
-						<li> Leverage on Web Audio for 'plumbing' </li>
-						<li> Leverage the composibilty of Web Audio </li>
-						<li> Use existing frameworks? - <em>Not invented here!</em></li>
-					</ul>
-				</section>
+			<!-- Porting Problem -->
 
-				<section>
-					<h2>Architecture - Threading</h2>
-					<ul>
-						<li> Avoid <strong>ScriptProcessorNode</strong> </li>
-						<li> Sound Models are usually embedded in other websites </li>
-						<li> No gurantee that nothing else will hog the event loop </li>
-						<li> Risk of missing <strong>ScriptProcessorNode</strong> callbacks</li>
-					</ul>
-				</section>
+			<section>
+				<h2>4. Architecture - Aim</h2>
+				<ul>
+					<li> Leverage on Web Audio for 'plumbing' </li>
+					<li> Leverage the composibilty of Web Audio </li>
+					<li> Use existing frameworks? - <em>Not invented here!</em></li>
+					<li> Keep API Consistency with Flash version </li>
+				</ul>
+			</section>
 
-				<section>
-					<h2>Architecture - Trade-offs</h2>
-					<ul>
-						<li> Change API for Parameters </li>
-						<li> .. for Automation method support </li>
-						<pre> <code data-trim>
+			<section>
+				<h2>Architecture - Trade-offs</h2>
+				<ul>
+					<li> Change API for Parameters </li>
+					<li> .. for Automation method support </li>
+					<pre> <code data-trim>
 /* Flash */
 loop.speed = 0.4;
 /* Web Audio */
 loop.speed.value = 0.4;
 /* Automation FTW */
 loop.speed.exponentialRampToValueAtTime(0.4, 5);
-						</code> </pre>
-					</ul>
-				</section>
+					</code> </pre>
+				</ul>
+			</section>
 
-				<section>
-					<h2>Architecture - Higher Level Nodes</h2>
-					<ul>
-						<li> Wanted to create <strong>AudioNode</strong>-like JS Objects </li>
-						<li> <strong>SPAudioNode</strong> - Similar interface to AudioNode </li>
-						<li> All Sound Models are <strong>SPAudioNode</strong>s </li>
-						<li> <strong>SPAudioNode</strong> internally composes multiple <strong>AudioNodes</strong> </li>
-						<li> OpenMusic (Sole's) approach might be more elegant </li>
-					</ul>
-				</section>
+			<section>
+				<h2>Architecture - Threading</h2>
+				<ul>
+					<li> Avoid <strong>ScriptProcessorNode</strong> </li>
+					<li> Sound Models are usually embedded in other websites </li>
+					<li> No gurantee that nothing else will hog the event loop </li>
+					<li> Risk of missing <strong>ScriptProcessorNode</strong> callbacks</li>
+				</ul>
+			</section>
 
-				<section>
-					<img class="spare-image-no-border" src="img/higherlevelaudionodes.png">
-				</section>
 
-				<section>
-					<h2 class="spare-nonuppercase">SPAudioNode</h2>
-						<pre> <code data-trim>
+
+			<section>
+				<h2>Architecture - Higher Level Nodes</h2>
+				<ul>
+					<li> Wanted <strong>AudioNode</strong>-like JS Objects </li>
+					<li> <em>SPAudioNode</em> - Similar interface to <strong>AudioNode</strong> </li>
+					<li> All Sound Models are <em>SPAudioNode</em>s </li>
+					<li> <em>SPAudioNode</em> internally composes multiple <strong>AudioNodes</strong> </li>
+					<li> <em>OpenMusic approach might be more elegant </em></li>
+				</ul>
+			</section>
+
+			<section>
+				<img class="spare-image-no-border" src="img/higherlevelaudionodes.png">
+			</section>
+
+			<section>
+				<h2><em>SPAudioNode</em></h2>
+				<pre> <code data-trim>
 /* Construct */
 var node = new SPAudioNode(context);
 
@@ -198,244 +214,349 @@ node.barparam.setTargetAtTime(12,2);
 var filter = new context.createBiquadFilter();
 node.connect(filter);
 filter.connect(context.destination);
-						</code> </pre>
-				</section>
+				</code> </pre>
+			</section>
 
-				<!-- Parameters -->
-				<section>
-					<h2> 3 Problems : 3 Hacks! </h2>
-				</section>
+			<section>
+				<img class="spare-image-no-border" src="img/whatcould.jpg" height="437" width="641">
+			</section>
 
-				<section>
-					<p class="spare-problem">Problem #1 : Can't create custom Parameters in Web Audio</p>
-				</section>
+			<!-- Parameters -->
+			<section>
+				<h2> 3 Problems : 3 <span style="text-decoration: line-through;">Solutions</span> Hacks! </h2>
+			</section>
 
-				<section>
-					<h2>Problem #1</h2>
-					<ul>
-						<li> Higher Level Nodes need Parameters </li>
-						<li> Parameters should have similar interface as AudioParam</li>
-						<li> Parameters may need to be mapped to internal AudioNodes</li>
-						<li> Bonus : Parameters support Automation</li>
-					</ul>
-				</section>
+			<section>
+				<p class="spare-problem">Problem #1 : Can't create custom Parameters in Web Audio</p>
+			</section>
 
-				<section>
-					<div class="hackchop">
-						<p class="spare-problem">Solution #1: SPAudioParam </p>
-						<p class="spare-subtitle"> Wrap Around <em>AudioParams</em>, expose similar interface to AudioParams</p>
+			<section>
+				<h2>Problem #1</h2>
+				<ul>
+					<li> Higher Level Nodes need Parameters </li>
+					<li> Custom params should have similar interface as <strong>AudioParam</strong></li>
+					<li> Custom params may be mapped to internal <strong>AudioNodes</strong></li>
+					<li> Bonus : Custom Params should support Automation</li>
+				</ul>
+			</section>
+
+			<section>
+				<p class="spare-problem">Solution #1: <em>SPAudioParam</em> </p>
+				<br>
+				<p class="spare-solution"> Wrap around <strong>AudioParams</strong>, expose similar interface to <strong>AudioParams</strong></p>
+			</section>
+
+			<section>
+				<h2><em>SPAudioParam</em> - Two Approaches</h2>
+				<div class="spare-twocolumn-wrap">
+					<div class="spare-twocolumn-left_col">
+						<p class="spare-column-header"> <strong> Wrapped <em>SPAudioParam</em> </strong> </p>
+						<ul>
+							<li> Map <em>SPAudioParam</em> to underlying <strong>AudioParam</strong> </li>
+							<li> Use getters/setters to pass along values </li>
+							<li> Mapping/normalization on the fly</li>
+							<li> Pass along Automation method calls </li>
+						</ul>
 					</div>
-				</section>
-
-				<section>
-					<h2 class="spare-nonuppercase">SPAudioParam - Two Approaches</h2>
-					<div class="spare-twocolumn-wrap">
-					    <div class="spare-twocolumn-left_col">
-							<p class="spare-column-header"> <strong> Wrapped SPAudioParam </strong> </p>
-							<ul>
-								<li> Map SPAudioParam to underlying AudioParam </li>
-								<li> Use getters/setters to pass along values </li>
-								<li> Mapping/normalization on the fly</li>
-								<li> Pass along Automation method calls </li>
-							</ul>
-					    </div>
-					    <div class="spare-twocolumn-right_col">
-					    <p class="spare-column-header"> <strong style=""> Mocked SPAudioParam </strong> </p>
-					    <ul>
-								<li> Plain old JS Object </li>
-								<li> Fakes Automation using setInterval (URGH!)</li>
-								<li> For edge case without underlying AudioParam</li>
-							</ul>
-					    </div>
+					<div class="spare-twocolumn-right_col">
+						<p class="spare-column-header"> <strong style=""> Mocked <em>SPAudioParam</em> </strong> </p>
+						<ul>
+							<li> Plain old JS Object </li>
+							<li> Fakes Automation using <em>setInterval</em> (URGH!)</li>
+							<li> For edge case without underlying <strong>AudioParam</strong></li>
+						</ul>
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<section>
-					<h2>Solution #1: SPAudioParam </h2>
-					<ul>
-						<li> Mostly used Wrapped SPAudioParam approach </li>
-						<li> Slight change in API for Parameters but free automation!!</li>
-						<li> Mocked Param approach handy in edge case scenarios </li>
-					</ul>
-				</section>
+			<section>
+				<h2>Solution #1: SPAudioParam </h2>
+				<ul>
+					<li> Mostly used Wrapped <em>SPAudioParam</em> approach </li>
+					<li> Slight change in API for Parameters but free automation!!</li>
+					<li> Mocked <em>SPAudioParam</em> approach handy in edge case scenarios </li>
+				</ul>
+			</section>
 
-				<!-- Queue -->
+			<section>
+				<h2> SPAudioParam </h2>
+						<pre>
+						<code data-trim>
+/*Create Model*/
+var looper = new Looper (context, "/audio.wav");
+/*Play*/
+looper.play();
+/*Set SPAudioParam*/
+looper.easeIn.value = 0.3;
+looper.easeOut.value = 0.7;
+/* Automate SPAudioParam*/
+looper.playSpeed.exponentialRampToValueAtTime(2,10);
+					</code>
+					</pre>
+			</section>
 
-				<section>
-						<p class="spare-problem">Problem #2 : Can't schedule some operations in Web Audio</p>
-				</section>
+			<!-- Queue -->
 
-				<section>
-					<h2>Problem #2 - Queues</h2>
-					<ul>
-						<li> Scheduling is key, but can't un-schedule in WebAudio</li>
-						<li> Keep a Queue, schedule/unschedule on the Queue</li>
-						<li> Queue executes 'Events' close to the scheduled time</li>
-						<li> Common Queue Events : Start, Stop, Change Param</li>
-					</ul>
-				</section>
+			<section>
+				<p class="spare-problem">Problem #2 : Can't schedule some operations in Web Audio</p>
+			</section>
 
-				<section>
-					<h2>Problem #2 - Polyphony</h2>
-					<ul>
-						<li> Polyphonic Models with multiple voices </li>
-						<li> Typical archtecture, fixed number of BufferNodes </li>
-						<li> Queue assigns buffers to BufferNodes at the scheduled time</li>
-					</ul>
-				</section>
+			<section>
+				<h2>Problem #2 - Queues</h2>
+				<ul>
+					<li> Scheduling is key, but can't un-schedule in Web Audio</li>
+					<li> Keep a Queue, schedule/unschedule on the Queue</li>
+					<li> Queue executes 'Events' close to the scheduled time</li>
+					<li> Common Queue Events : Start, Stop, Change Param</li>
+				</ul>
+			</section>
 
-				<section>
-					<!-- Queuing diagram -->
-				</section>
+			<section>
+				<img class="spare-image-no-border" src="img/queue-intro.jpg">
+			</section>
 
-				<section>
-					<h2>Problem #2 - Polyphony</h2>
-					<li> New Queue Event : SetSource &lt;- not schedulable!</li>
-					<li> Can't use SetInterval for scheduling SetSource </li>
+			<section>
+				<h2>Problem #2 - Polyphony</h2>
+				<ul>
+					<li> Polyphonic Models with multiple voices </li>
+					<li> Typical archtecture =&gt; fixed number of BufferNodes </li>
+					<li> Queue assigns buffers to BufferNodes at the scheduled time</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Problem #2 - Polyphony</h2>
+				<ul>
+					<li> New Queue Event : SetSource <em>&lt;- not schedulable!</em></li>
+					<li> Can't use <em>setInterval</em> for scheduling SetSource either</li>
 					<li> Executing SetSource at earlier could override another voice</li>
-				</section>
+					<ul>
+					</section>
 
-				<section>
-					<div class="hackchop">
+					<section>
+						<img class="spare-image-no-border" src="img/queue-events.jpg">
+					</section>
+
+					<section>
 						<p class="spare-problem">Solution #2: Fire and Forget Voices </p>
-						<p class="spare-subtitle"> Create new voices as and when needed</p>
-					</div>
-				</section>
+						<br>
+						<p class="spare-solution"> Create new voices as and when needed</p>
+					</section>
 
-				<section>
-				<h2>Solution #2 - Fire and Forget Voices</h2>
-					<ul>
-						<li> Architecture : new BufferNode everytime a voice is needed </li>
-						<li> Ensure GC does capture all the BufferNodes </li>
-						<li> Test no leaks using memory profiling and heap dumps </li>
-						<li> Tested to upto ~60x3 Nodes created per second </li>
-					</ul>
-				</section>
+					<section>
+						<h2>Solution #2 - Fire and Forget Voices</h2>
+						<ul>
+							<li> Architecture : new BufferNode everytime a voice is needed </li>
+							<li> Ensure GC does capture all the BufferNodes </li>
+							<li> Test no leaks using memory profiling and heap dumps </li>
+							<li> Tested to upto ~60x3 Nodes created per second </li>
+						</ul>
+					</section>
 
-				<section>
-					<!-- Demo Multitrigger -->
-				</section>
+					<section>
+						<h2> MultiTrigger Demo</h2>
+						<div>
+							<button id="multiTriggerButton" style="font-size:30px" disabled=true>Play</button>
+							<br>
+							<span style="font-size:20px">playbackRate</span>
+							<input id="multiTriggerSlider" type="range" min="10" max="30" value="10" step="1" disabled=true>
+						</div>
+						<script >
+							if(!window.audioContext){
+								window.audioContext = new AudioContext();
+							}
+							var multiTriggerButton = document.getElementById('multiTriggerButton');
+							var multiTriggerSlider = document.getElementById('multiTriggerSlider');
+							require(['models/MultiTrigger'], function(MultiTrigger){
+								var multiTrigger = new MultiTrigger(window.audioContext, ["audio/Hit5.mp3", "audio/Hit6.mp3", "audio/Hit7.mp3", "audio/Hit8.mp3"], null, function(){
+									multiTriggerButton.disabled = false;
+									multiTriggerSlider.disabled = false
+									multiTriggerButton.addEventListener('click', function (){
+										if (multiTriggerButton.innerText === "Play"){
+											multiTrigger.play();
+											multiTriggerButton.innerText = "Pause";
+										}else{
+											multiTrigger.pause();
+											multiTriggerButton.innerText = "Play";
+										}
+									});
+									multiTriggerSlider.addEventListener('input', function(){
+										multiTrigger.eventRate.value = parseFloat(multiTriggerSlider.value);
+									})
+								});
+							});
+						</script>
+					</section>
 
-				<!-- Buffers -->
+					<!-- Buffers -->
 
-				<section>
-					<p class="spare-problem">Problem #3 : Can't pause an AudioSourceBufferNode</p>
-				</section>
+					<section>
+						<p class="spare-problem">Problem #3 : Can't pause an AudioSourceBufferNode</p>
+					</section>
 
-				<section>
-					<h2>Problem #3 - Buffers</h2>
-					<ul>
-						<li> <strong>AudioSourceBufferNode</strong> can only be used once </li>
-						<li> No way to know current <em>playbackPosition</em></li>
-						<li> Time based tracking only works for static <em>playbackRate</em></li>
-						<li> Tracking while <em>playbackRate</em> is being automated is HARD</li>
-						<li> Reimplementing Automation methods is may be inaccurate</li>
-					</ul>
-				</section>
+					<section>
+						<h2>Problem #3 - Buffers</h2>
+						<ul>
+							<li> <strong>AudioSourceBufferNode</strong> can only be used once </li>
+							<li> No way to know current <em>playbackPosition</em></li>
+							<li> Time based tracking only works for static <em>playbackRate</em></li>
+							<li> Tracking while <em>playbackRate</em> is being automated is tedious</li>
+							<li> Reimplementing Automation methods may be inaccurate</li>
+						</ul>
+					</section>
 
-				<section>
-					<div class="hackchop">
+					<section>
 						<p class="spare-problem">Solution #3: SPAudioSourceBufferNode </p>
-						<p class="spare-subtitle"> Wrap Around <strong>AudioSourceBufferNode</strong>, and track it's playback using a 'Scope'</p>
-					</div>
-				</section>
+						<br>
+						<p class="spare-solution"> Wrap around <strong>AudioSourceBufferNode</strong>, and use a 'Scope' track playback</p>
+					</section>
 
-				<section>
-					<h2>Solution #3 - SPAudioSourceBufferNode</h2>
-					<ul>
-						<li> Create a mirror <strong>AudioBuffer</strong> with index as value</li>
-						<li> Create a <em>CounterBufferNode</em> from this <strong>AudioBuffer</strong> </li>
-						<li> Connect this <em>CounterBufferNode</em> to a <strong>ScriptProcessorNode</strong></li>
-						<li> <em>onprocessaudio</em> stores the last value in the <em>inputBuffer</em> </li>
-						<li> perform every method (start, stop, automation) on both the <strong>AudioSourceBufferNodes</strong> </li>
-					</ul>
-				</section>
+					<section>
+						<h2>Solution #3 - SPAudioSourceBufferNode</h2>
+						<ul>
+							<li> Create a mirror <strong>AudioBuffer</strong> with index as value</li>
+							<li> Create a <em>CounterBufferNode</em> from this <strong>AudioBuffer</strong> </li>
+							<li> Connect this <em>CounterBufferNode</em> to a <strong>ScriptProcessorNode</strong></li>
+							<li> <em>onprocessaudio</em> stores the last value in the <em>inputBuffer</em> </li>
+							<li> Perform every action (start, stop, automation..) on both <strong>AudioSourceBufferNodes</strong> </li>
+						</ul>
+					</section>
 
-				<section>
-					<h2>Solution #3 - SPAudioSourceBufferNode</h2>
-					<ul>
-						<li> stored value exposed as <em>playbackPosition</em> property </li>
-						<li> <em>playbackPosition</em> is read only</li>
-						<li> Accurate to nearest ScriptNode buffer size</li>
-						<li> Not perfect buy good enogh for pausing/playing</li>
-					</ul>
-				</section>
+					<section>
+						<img class="spare-image-no-border" src="img/spbuffersourcenode.png">
+					</section>
 
-				<!-- SPAudioSourceBufferNode Diagram -->
+					<section>
+						<h2>Solution #3 - SPAudioSourceBufferNode</h2>
+						<ul>
+							<li> Stored value exposed as <em>playbackPosition</em> property </li>
+							<li> <em>playbackPosition</em> is read only</li>
+							<li> Accurate to nearest ScriptNode buffer size</li>
+							<li> Not perfect buy good enogh for pausing/playing</li>
+						</ul>
+					</section>
 
-				<section>
-					<h2>Porting to WebAudio - Summary</h2>
-					<ul>
-						<li> Overcame most issues we faced while porting</li>
-						<li> Most solutions were Hacks </li>
-						<li> Most solutions worked for our specific usecase </li>
-						<li> Your millage may vary based on what you're doing </li>
-					</ul>
-				</section>
+					<section>
+						<h2> Play and Pause </h2>
+						<pre>
+						<code data-trim>
+/*Create Model*/
+var extender = new Extender (context, "/audio.wav");
+/*Play*/
+extender.play();
+/*Pause*/
+window.setTimeout(function (){ extender.pause()}, 1000);
+/*Play from where it was paused*/
+window.setTimeout(function (){ extender.play()}, 2000);
+						</code>
+						</pre>
+						<br>
+						<div>
+							<button id="playPauseButton" style="font-size:30px" disabled=true>Play</button>
+							<br>
+							<span style="font-size:20px">playbackRate</span>
+							<input id="playPauseSlider" type="range" min="0.5" max="2" value="1" step="0.01" disabled=true>
+						</div>
+						<script >
+							if(!window.audioContext){
+								window.audioContext = new AudioContext();
+							}
+							var playPauseButton = document.getElementById('playPauseButton');
+							var playPauseSlider = document.getElementById('playPauseSlider');
+							require(['models/Looper'], function(Looper){
+								var loop = new Looper(window.audioContext, "audio/loopy.mp3", null, function (){
+										playPauseButton.disabled = false;
+										playPauseSlider.disabled = false;
+										playPauseButton.addEventListener('click', function (){
+										if (playPauseButton.innerText === "Play"){
+											loop.play();
+											playPauseButton.innerText = "Pause";
+										}else{
+											loop.pause();
+											playPauseButton.innerText = "Play";
+										}
+									});
+									playPauseSlider.addEventListener('input', function(){
+										loop.playSpeed.value = parseFloat(playPauseSlider.value);
+									});
+								});
+							});
+						</script>
+					</section>
+
+					<section>
+						<h2>Porting to WebAudio - Summary</h2>
+						<ul>
+							<li> Overcame most issues we faced while porting</li>
+							<li> Most solutions were Hacks </li>
+							<li> Most solutions worked for our specific usecase </li>
+							<li> Your millage may vary based on what you're doing </li>
+						</ul>
+					</section>
 
 					<!-- Audio Worker and the Future -->
 
-				<section>
-					<h2>Enter the Audio Worker!</h2>
-				</section>
+					<section>
+						<h2>Enter the AudioWorker!</h2>
+					</section>
 
-				<section>
-					<img src="img/icanhaz.jpg">
-				</section>
+					<section>
+						<img src="img/icanhaz.jpg">
+					</section>
 
-				<section>
-					<h2>Parameters</h2>
-					<ul>
-						<li> AudioWorkers have <strong>addParameter</strong> method! </li>
-						<li> Create a-rate parameters accessible inside AudioWorkers! </li>
-						<li> Should solve all issues with creating custom Parameters</li>
-					</ul>
-				</section>
+					<section>
+						<h2>Parameters</h2>
+						<ul>
+							<li> AudioWorkers have <em>addParameter</em> method! </li>
+							<li> Create <em>a-rate</em> parameters accessible inside <strong>AudioWorker</strong>! </li>
+							<li> Should solve all issues with creating custom Parameters</li>
+						</ul>
+					</section>
 
-				<section>
-					<h2>Scheduling</h2>
-					<ul>
-						<li> AudioWorkers enables sample accurate scheduling </li>
-						<li> Queue can runs inside an AudioWorker </li>
-						<li> Load operations can be scheduled accurately </li>
-					</ul>
-				</section>
+					<section>
+						<h2>Scheduling</h2>
+						<ul>
+							<li> AudioWorkers enables sample accurate scheduling </li>
+							<li> Queue can runs inside an <strong>AudioWorker</strong> </li>
+							<li> Load operations can be scheduled accurately </li>
+						</ul>
+					</section>
 
-				<section>
-					<h2>Buffers</h2>
-					<ul>
-						<li> No <strong>playbackPosition</strong> property on AudioSourceBufferNode </li>
-						<li> :( </li>
-						<li> .. but AudioSourceBufferNode could be reimplmented inside AudioWorker!</li>
-						<li> No idea of performance till we have access to AudioWorker</li>
-					</ul>
-				</section>
+					<section>
+						<h2>Buffers</h2>
+						<ul>
+							<li> No <strong>playbackPosition</strong> property on AudioSourceBufferNode </li>
+							<li> :( </li>
+							<li> .. but <strong>AudioSourceBufferNode</strong> could be reimplmented inside <strong>AudioWorker</strong>!</li>
+							<li> No idea of performance till we get <strong>AudioWorker</strong></li>
+						</ul>
+					</section>
 
-				<section>
-					<h2>7. Summary</h2>
-					<ul>
-						<li> Hacking around WebAudio was fun </li>
-						<li> Tradeoff between performance, and functionality </li>
-						<li> Might not work perfectly in all scenarios</li>
-						<li> AudioWorker should make life easier </li>
-						<li> Would love to know other ways of solving these problems!</li>
-					</ul>
-				</section>
+					<section>
+						<h2>7. Summary</h2>
+						<ul>
+							<li> Hacking around Web Audio was fun </li>
+							<li> Performance vs Functionality tradeoff </li>
+							<li> Might not work perfectly in all scenarios</li>
+							<li> <strong>AudioWorker</strong> should make life easier </li>
+							<li> Would love to know other ways of solving such problems!</li>
+						</ul>
+					</section>
 
-				<!-- Last Slide -->
-				<section>
-					<h2>Questions?</h2>
-					<p style="margin-top : 200px">Slides, Papers, Links at <a href="http://wac.sonoport.com">http://wac.sonoport.com</a><p>
-				</section>
+					<!-- Last Slide -->
+					<section>
+						<h2>Questions?</h2>
+						<p style="margin-top : 200px">Slides, Papers, Links at <a href="http://wac.sonoport.com">http://wac.sonoport.com</a><p>
+						</section>
 
-			</div>
+					</div>
 
-		</div>
+				</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+				<script src="lib/js/head.min.js"></script>
+				<script src="js/reveal.min.js"></script>
 
-		<script>
+				<script>
 
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
@@ -454,18 +575,16 @@ filter.connect(context.destination);
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
 		</script>
 
-
-
 	</body>
-</html>
+	</html>

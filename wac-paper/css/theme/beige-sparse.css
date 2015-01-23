@@ -54,7 +54,6 @@
   font-family: "League Gothic", Impact, sans-serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
   text-shadow: none; }
 
   .reveal h1 {
@@ -188,10 +187,6 @@
  width: 50%;
 }
 
-.reveal .spare-nonuppercase {
-  text-transform: none;
-}
-
 .reveal li {
   list-style-type : none;
   margin: 0 0 25px 0;
@@ -204,6 +199,11 @@
 .reveal .spare-problem {
  font-family: "League Gothic", Impact, sans-serif;
  font-size: 60px;
+ width: 100%;
+}
+
+.reveal .spare-solution {
+ font-size: 90%;
  width: 100%;
 }
 
@@ -223,32 +223,4 @@
 
 .reveal .spare-overview-list li{
   margin-bottom: 5px;
-}
-
-
-.reveal div.hackchop:after
-{
-    content:"HACK";
-    position:absolute;
-    top:20%;
-    left:30%;
-    z-index:1;
-    font-family:Arial,sans-serif;
-    -webkit-transform: rotate(-45deg); /* Safari */
-    -moz-transform: rotate(-45deg); /* Firefox */
-    -ms-transform: rotate(-45deg); /* IE */
-    -o-transform: rotate(-45deg); /* Opera */
-    transform: rotate(-45deg);
-    font-size:100px;
-    color:#c00;
-    background:#fff;
-    border:solid 4px #c00;
-    padding:0.5em;
-    border-radius:5px;
-    zoom:1;
-    filter:alpha(opacity=20);
-    opacity:0.2;
-    -webkit-text-shadow: 0 0 2px #c00;
-    text-shadow: 0 0 2px #c00;
-    box-shadow: 0 0 2px #c00;
 }

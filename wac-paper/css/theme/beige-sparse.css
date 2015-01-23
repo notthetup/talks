@@ -193,7 +193,8 @@
 }
 
 .reveal pre{
-  width: 100%
+  width: 100%;
+  box-shadow : none;
 }
 
 .reveal .spare-problem {

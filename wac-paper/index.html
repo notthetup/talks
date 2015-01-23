@@ -355,10 +355,29 @@ looper.playSpeed.exponentialRampToValueAtTime(2,10);
 
 					<section>
 						<h2> MultiTrigger Demo</h2>
+						<pre> <code data-trim>
+/*Construct Sound Model*/
+var aFiles = ["audio/Hit5.mp3", "audio/Hit6.mp3", "audio/Hit7.mp3", "audio/Hit8.mp3"];
+var mt = new MultiTrigger(window.audioContext,aFiles);
+/*Hook Up Button*/
+multiTriggerButton.onclick = function (){
+  if (multiTriggerButton.innerText === "Play"){
+    multiTrigger.play();
+    multiTriggerButton.innerText="Pause";
+  }else{
+    multiTrigger.pause();
+    multiTriggerButton.innerText="Play";
+  }
+}
+/*Hook Up Slider*/
+multiTriggerSlider.oninput = function(){
+  multiTrigger.eventRate.value = parseFloat(multiTriggerSlider.value);
+}
+						</code></pre>
 						<div>
 							<button id="multiTriggerButton" style="font-size:30px" disabled=true>Play</button>
 							<br>
-							<span style="font-size:20px">playbackRate</span>
+							<span style="font-size:20px">eventRate</span>
 							<input id="multiTriggerSlider" type="range" min="10" max="30" value="10" step="1" disabled=true>
 						</div>
 						<script >
@@ -441,16 +460,23 @@ looper.playSpeed.exponentialRampToValueAtTime(2,10);
 						<pre>
 						<code data-trim>
 /*Create Model*/
-var extender = new Extender (context, "/audio.wav");
-/*Play*/
-extender.play();
-/*Pause*/
-window.setTimeout(function (){ extender.pause()}, 1000);
-/*Play from where it was paused*/
-window.setTimeout(function (){ extender.play()}, 2000);
+var loop = new Looper(window.audioContext, "audio/loopy.mp3");
+/*Hook Up Button*/
+playPauseButton.addEventListener('click', function (){
+  if (playPauseButton.innerText === "Play"){
+    loop.play();
+    playPauseButton.innerText = "Pause";
+  }else{
+    loop.pause();
+    playPauseButton.innerText = "Play";
+  }
+});
+/*Hook Up Slider*/
+playPauseSlider.addEventListener('input', function(){
+  loop.playSpeed.value = parseFloat(playPauseSlider.value);
+});
 						</code>
 						</pre>
-						<br>
 						<div>
 							<button id="playPauseButton" style="font-size:30px" disabled=true>Play</button>
 							<br>

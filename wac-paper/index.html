@@ -374,7 +374,7 @@ multiTriggerSlider.oninput = function(){
 					<section>
 						<h2>Problem #3 - Buffers</h2>
 						<ul>
-							<li> <em>playbackPosition</em> of <strong>AudioBufferSourceNode</strong> is exists internally</li>
+							<li> <em>playbackPosition</em> of <strong>AudioBufferSourceNode</strong> exists internally</li>
 							<li> But <em>playbackPosition</em> isn't exposed to JS</li>
 							<li> Open Github Issue on this : <a href="https://github.com/WebAudio/web-audio-api/issues/296">https://github.com/WebAudio/web-audio-api/issues/296</a></li>
 						</ul>
@@ -502,9 +502,9 @@ playPauseSlider.addEventListener('input', function(){
 						<h2>Porting to WebAudio - Summary</h2>
 						<ul>
 							<li> Overcame most issues we faced while porting</li>
-							<li> Most solutions worked for our specific usecase </li>
+							<li> Most solutions worked for our specific use case </li>
 							<li> Your millage may vary based on what you're doing </li>
-							<li> There are creative ways to implement most usecases </li>
+							<li> There are creative ways to implement most use cases </li>
 						</ul>
 					</section>
 
@@ -521,7 +521,7 @@ playPauseSlider.addEventListener('input', function(){
 					<section>
 						<h2>Problem #1 - Parameters</h2>
 						<ul>
-							<li> AudioWorkers have <em>addParameter</em> method! </li>
+							<li> AudioWorkers have an <em>addParameter</em> method! </li>
 							<li> Create <em>a-rate</em> parameters accessible inside <strong>AudioWorker</strong>! </li>
 							<li> Should solve all issues with creating custom Parameters</li>
 						</ul>
@@ -531,7 +531,7 @@ playPauseSlider.addEventListener('input', function(){
 						<h2>Problem #2 - Scheduling</h2>
 						<ul>
 							<li> AudioWorkers enables sample accurate scheduling </li>
-							<li> Queue can runs inside an <strong>AudioWorker</strong> </li>
+							<li> Queues can runs inside an <strong>AudioWorker</strong> </li>
 							<li> Load operations can be scheduled accurately </li>
 						</ul>
 					</section>
@@ -541,7 +541,7 @@ playPauseSlider.addEventListener('input', function(){
 						<ul>
 							<li> No <strong>playbackPosition</strong> property on AudioBufferSourceNode </li>
 							<li> .. but <strong>AudioBufferSourceNode</strong> could be reimplmented inside <strong>AudioWorker</strong>!</li>
-							<li> No idea of performance till we get <strong>AudioWorker</strong></li>
+							<li> No idea of performance untill we get <strong>AudioWorker</strong></li>
 						</ul>
 					</section>
 

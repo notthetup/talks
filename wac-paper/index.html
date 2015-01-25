@@ -293,7 +293,7 @@ looper.playSpeed.exponentialRampToValueAtTime(2,10);
 						<h2>Solution #2 - Fire and Forget Voices</h2>
 						<ul>
 							<li> Architecture : new BufferNode everytime a voice is needed </li>
-							<li> Ensure GC does capture all the used up BufferNodes </li>
+							<li> Ensure GC captures all the used up BufferNodes </li>
 							<li> Test no leaks using memory profiling and heap dumps </li>
 							<li> Tested to upto ~60x3 Nodes created per second </li>
 						</ul>

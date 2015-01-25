@@ -158,22 +158,6 @@
 			</section>
 
 			<section>
-				<h2>Architecture - Trade-offs</h2>
-				<ul>
-					<li> Change API for Parameters </li>
-					<li> .. for Automation method support </li>
-					<pre> <code data-trim>
-/* Flash */
-loop.speed = 0.4;
-/* Web Audio */
-loop.speed.value = 0.4;
-/* Automation FTW */
-loop.speed.exponentialRampToValueAtTime(0.4, 5);
-					</code> </pre>
-				</ul>
-			</section>
-
-			<section>
 				<h2>Architecture - Threading</h2>
 				<ul>
 					<li> Avoid <strong>ScriptProcessorNode</strong> </li>
@@ -183,8 +167,6 @@ loop.speed.exponentialRampToValueAtTime(0.4, 5);
 				</ul>
 			</section>
 
-
-
 			<section>
 				<h2>Architecture - Higher Level Nodes</h2>
 				<ul>
@@ -192,7 +174,7 @@ loop.speed.exponentialRampToValueAtTime(0.4, 5);
 					<li> <em>SPAudioNode</em> - Similar interface to <strong>AudioNode</strong> </li>
 					<li> All Sound Models are <em>SPAudioNode</em>s </li>
 					<li> <em>SPAudioNode</em> internally composes multiple <strong>AudioNodes</strong> </li>
-					<li> <em>OpenMusic approach might be more elegant </em></li>
+					<li> * <em>OpenMusic approach might be more elegant </em></li>
 				</ul>
 			</section>
 
@@ -312,16 +294,16 @@ looper.playSpeed.exponentialRampToValueAtTime(2,10);
 			</section>
 
 			<section>
-				<img class="spare-image-no-border" src="img/queue-intro.jpg">
-			</section>
-
-			<section>
 				<h2>Problem #2 - Polyphony</h2>
 				<ul>
 					<li> Polyphonic Models with multiple voices </li>
-					<li> Typical archtecture =&gt; fixed number of BufferNodes </li>
+					<li> Typical archtecture : fixed number of BufferNodes </li>
 					<li> Queue assigns buffers to BufferNodes at the scheduled time</li>
 				</ul>
+			</section>
+
+			<section>
+				<img class="spare-image-no-border" src="img/queue-intro.jpg">
 			</section>
 
 			<section>
@@ -347,7 +329,7 @@ looper.playSpeed.exponentialRampToValueAtTime(2,10);
 						<h2>Solution #2 - Fire and Forget Voices</h2>
 						<ul>
 							<li> Architecture : new BufferNode everytime a voice is needed </li>
-							<li> Ensure GC does capture all the BufferNodes </li>
+							<li> Ensure GC does capture all the used up BufferNodes </li>
 							<li> Test no leaks using memory profiling and heap dumps </li>
 							<li> Tested to upto ~60x3 Nodes created per second </li>
 						</ul>
@@ -416,7 +398,7 @@ multiTriggerSlider.oninput = function(){
 					<section>
 						<h2>Problem #3 - Buffers</h2>
 						<ul>
-							<li> <strong>AudioSourceBufferNode</strong> can only be used once </li>
+							<li> <strong>AudioSourceBufferNode</strong> can only be played once </li>
 							<li> No way to know current <em>playbackPosition</em></li>
 							<li> Time based tracking only works for static <em>playbackRate</em></li>
 							<li> Tracking while <em>playbackRate</em> is being automated is tedious</li>
@@ -439,6 +421,38 @@ multiTriggerSlider.oninput = function(){
 							<li> <em>onprocessaudio</em> stores the last value in the <em>inputBuffer</em> </li>
 							<li> Perform every action (start, stop, automation..) on both <strong>AudioSourceBufferNodes</strong> </li>
 						</ul>
+					</section>
+
+					<section>
+					<h2 style="margin-bottom: 0px"> <em>SPAudioSourceBufferNode</em> Implementation </h2>
+					<pre> <code data-trim style="max-height:none">
+/*Create Nodes*/
+var counterNode_ = audioContext.createBufferSource();
+var scopeNode_ = audioContext.createScriptProcessor( 256, 1, 1 );
+
+/*Connect Nodes*/
+counterNode_.connect(scopeNode_);
+
+/*Create Counter Buffer*/
+counterNode_.buffer = createCounterBuffer( buffer.buffer );
+
+function createCounterBuffer( audioBuf ) {
+	var array = new Float32Array( buffer.length );
+	var audioBuf = audioContext.createBuffer( 1, buffer.length, 44100 );
+
+	for ( var index = 0; index < buffer.length; index++ ) {
+	    array[ index ] = index;
+	}
+
+	audioBuf.getChannelData( 0 ).set( array );
+}
+
+/*Remember last element in inputBuffer*/
+scopeNode_.onaudioprocess = function savePosition( processEvent ) {
+  var inputBuffer = processEvent.inputBuffer.getChannelData( 0 );
+  lastPos = inputBuffer[ inputBuffer.length - 1 ] || 0;
+}
+					</code></pre>
 					</section>
 
 					<section>

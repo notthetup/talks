@@ -43,6 +43,7 @@
 	<body>
 
 		<div class="reveal">
+			<img class="spare-logo" src="img/sonoport.png">
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<!-- Title Slide -->
@@ -61,9 +62,9 @@
 					<h2> Overview </h2>
 					<ul class="spare-overview-list">
 						<li> 1. About us </li>
-						<li> 2. Sonoport Studio </li>
-						<li> 3. History </li>
-						<li> 4. Architecture </li>
+						<li> 2. Sonoport Studio</li>
+						<li> 3. Dynamic Sound Models</li>
+						<li> 4. Porting to Web Audio</li>
 						<li> 5. Problems &amp; Solutions </li>
 						<li> 6. Audio Worker </li>
 						<li> 7. Summary </li>
@@ -74,68 +75,69 @@
 
 				<section>
 					<img class="spare-image-no-border" src="img/sonoport.png">
-					<br>
-					<p class="spare-subtitle">"Endless Posibilities with Sound"</p>
-					<br>
-					<br>
-					<br>
-					<br>
-				</style>
-				<div class="spare-twocolumn-wrap">
-					<div class="spare-twocolumn-left_col">
-						<img class="spare-image-no-border" style="margin:0px 30px" src="img/about-sg.png">
-						<img class="spare-image-no-border" style="margin:0px" src="img/about-uk.png">
-						<p>Singapore &nbsp; &nbsp; &nbsp; London</p>
-					</div>
-					<div class="spare-twocolumn-right_col">
-						<p>Interactive Dynamic Audio for Multimedia</p>
-						<p class="spare-subtitle">(Ads, Games, etc)</p>
-					</div>
-				</div>
-
+					<ul>
+						<li><span style="font-size:75%">we work with</span> Interactive Dynamic Audio for Multimedia</li>
+						<li><span style="font-size:75%">we're building a</span> Smart Sound Exchange Platform</li>
+						<li><span style="font-size:75%">we're located in </span> Singapore &amp; UK</li>
+						<div style="width:50%; float:right">
+							<img class="spare-sguk" src="img/about-sg.png"> <img class="spare-sguk" src="img/about-uk.png">
+						</div>
+						</ul>
 			</section>
 
 			<section>
 				<h2>2. Sonoport Studio</h2>
 				<ul>
-					<li>Interactive audio authoring platform</li>
-					<li>Web Based</li>
-					<!-- Screen Shot of Sonoport Studio -->
+					<li>First application for the Smart Sound Exchange</li>
+					<li>Interactive Audio Authoring Platform</li>
 					<li>Core : Dynamic Sound Engine
-						<ul style="margin-top:10px" >
-							<li style="margin-bottom:0px">
-								- Collection of Sonoport Dynamic Sound Models
-							</li>
-							<li>
-								- Runtime + Utilities
-							</li>
-						</ul>
+							<ul style="margin-top:10px" >
+								<li style="margin-bottom:0px">
+									- Collection of Sonoport Dynamic Sound Models
+								</li>
+								<li>
+									- Runtime + Utilities
+								</li>
+							</ul>
 					</li>
 				</ul>
+
+			</section>
+
+			<section>
+				<h2>2. Sonoport Studio</h2>
+				<img class="spare-image-no-border" src="img/studio.jpg" >
 			</section>
 
 			<section>
 				<h2> Demo Booth </h2>
-				<p> Check out Sonoport Studio at Demo/Poster Session #2 </p>
-				<p> Tuesday afternoon at MOZILLA</p>
-				<p> 15.00 - 17.00</p>
+				<ul>
+					<li> Check out Sonoport Studio at Demo/Poster Session #2 </li>
+					<li> Tuesday afternoon at MOZILLA</li>
+					<li> 15.00 - 17.00</li>
+				</ul>
 			</section>
 
 			<section>
-				<h2>Sonoport Dynamic Sound Models</h2>
+				<h2>3. Sonoport Dynamic Sound Models</h2>
 				<ul>
 					<li> Algorithms that make sound</li>
+					<li> Method to start/stop sounds</li>
 					<li> Parameters to change the sounds in real-time</li>
 					<li> Texture based or purely Synthesized </li>
 				</ul>
 			</section>
 
-
+			<section>
+				<h2>Sonoport Dynamic Sound Models</h2>
+				<h3> Now Open Source!! </h3>
+				<p><a href="http://wac.sonoport.com/" >http://wac.sonoport.com </a> </p>
+			</section>
 
 			<section>
-				<h2>3. History</h2>
+				<h2>4. Porting to Web Audio</h2>
 				<ul>
-					<li> Based on Lonce Wyse's work in Java/Flex </li>
+					<li> Based on Lonce Wyse's work in Java </li>
 					<li> Moved to Flash (starting with Flash 10)</li>
 					<li> January 2014 - Starting migration to Web Audio</li>
 				</ul>
@@ -148,55 +150,13 @@
 			<!-- Porting Problem -->
 
 			<section>
-				<h2>4. Architecture - Aim</h2>
+				<h2>4. Porting to Web Audio - Aims</h2>
 				<ul>
 					<li> Leverage on Web Audio for 'plumbing' </li>
 					<li> Leverage the composibilty of Web Audio </li>
-					<li> Use existing frameworks? - <em>Not invented here!</em></li>
+					<li> Port all existing functionality of Flash version </li>
 					<li> Keep API Consistency with Flash version </li>
 				</ul>
-			</section>
-
-			<section>
-				<h2>Architecture - Threading</h2>
-				<ul>
-					<li> Avoid <strong>ScriptProcessorNode</strong> </li>
-					<li> Sound Models are usually embedded in other websites </li>
-					<li> No gurantee that nothing else will hog the event loop </li>
-					<li> Risk of missing <strong>ScriptProcessorNode</strong> callbacks</li>
-				</ul>
-			</section>
-
-			<section>
-				<h2>Architecture - Higher Level Nodes</h2>
-				<ul>
-					<li> Wanted <strong>AudioNode</strong>-like JS Objects </li>
-					<li> <em>SPAudioNode</em> - Similar interface to <strong>AudioNode</strong> </li>
-					<li> All Sound Models are <em>SPAudioNode</em>s </li>
-					<li> <em>SPAudioNode</em> internally composes multiple <strong>AudioNodes</strong> </li>
-					<li> * <em>OpenMusic approach might be more elegant </em></li>
-				</ul>
-			</section>
-
-			<section>
-				<img class="spare-image-no-border" src="img/higherlevelaudionodes.png">
-			</section>
-
-			<section>
-				<h2><em>SPAudioNode</em></h2>
-				<pre> <code data-trim>
-/* Construct */
-var node = new SPAudioNode(context);
-
-/* Manipulate */
-node.fooparam.value = 42;
-node.barparam.setTargetAtTime(12,2);
-
-/* Connect with other AudioNodes */
-var filter = new context.createBiquadFilter();
-node.connect(filter);
-filter.connect(context.destination);
-				</code> </pre>
 			</section>
 
 			<section>
@@ -403,10 +363,20 @@ multiTriggerSlider.oninput = function(){
 						<h2>Problem #3 - Buffers</h2>
 						<ul>
 							<li> <strong>AudioBufferSourceNode</strong> can only be played once </li>
+							<li> Pause/Play needs the position at which it was paused</li>
 							<li> No way to know current <em>playbackPosition</em></li>
 							<li> Time based tracking only works for static <em>playbackRate</em></li>
-							<li> Tracking while <em>playbackRate</em> is being automated is tedious</li>
-							<li> Reimplementing Automation methods may be inaccurate</li>
+							<li> Tracking through automated <em>playbackRate</em> is tedious and inaccurate</li>
+						</ul>
+					</section>
+
+
+					<section>
+						<h2>Problem #3 - Buffers</h2>
+						<ul>
+							<li> <em>playbackPosition</em> of <strong>AudioBufferSourceNode</strong> is exists internally</li>
+							<li> But <em>playbackPosition</em> isn't exposed to JS</li>
+							<li> Open Github Issue on this : <a href="https://github.com/WebAudio/web-audio-api/issues/296">https://github.com/WebAudio/web-audio-api/issues/296</a></li>
 						</ul>
 					</section>
 
@@ -425,6 +395,10 @@ multiTriggerSlider.oninput = function(){
 							<li> <em>onprocessaudio</em> stores the last value in the <em>inputBuffer</em> </li>
 							<li> Perform every action (start, stop, automation..) on both <strong>AudioBufferSourceNodes</strong> </li>
 						</ul>
+					</section>
+
+					<section>
+						<img class="spare-image-no-border" src="img/spbuffersourcenode.png">
 					</section>
 
 					<section>
@@ -457,10 +431,6 @@ scopeNode_.onaudioprocess = function savePosition( processEvent ) {
   lastPos = inputBuffer[ inputBuffer.length - 1 ] || 0;
 }
 					</code></pre>
-					</section>
-
-					<section>
-						<img class="spare-image-no-border" src="img/spbuffersourcenode.png">
 					</section>
 
 					<section>
@@ -532,9 +502,9 @@ playPauseSlider.addEventListener('input', function(){
 						<h2>Porting to WebAudio - Summary</h2>
 						<ul>
 							<li> Overcame most issues we faced while porting</li>
-							<li> Most solutions were Hacks </li>
 							<li> Most solutions worked for our specific usecase </li>
 							<li> Your millage may vary based on what you're doing </li>
+							<li> There are creative ways to implement most usecases </li>
 						</ul>
 					</section>
 
@@ -549,7 +519,7 @@ playPauseSlider.addEventListener('input', function(){
 					</section>
 
 					<section>
-						<h2>Parameters</h2>
+						<h2>Problem #1 - Parameters</h2>
 						<ul>
 							<li> AudioWorkers have <em>addParameter</em> method! </li>
 							<li> Create <em>a-rate</em> parameters accessible inside <strong>AudioWorker</strong>! </li>
@@ -558,7 +528,7 @@ playPauseSlider.addEventListener('input', function(){
 					</section>
 
 					<section>
-						<h2>Scheduling</h2>
+						<h2>Problem #2 - Scheduling</h2>
 						<ul>
 							<li> AudioWorkers enables sample accurate scheduling </li>
 							<li> Queue can runs inside an <strong>AudioWorker</strong> </li>
@@ -567,10 +537,9 @@ playPauseSlider.addEventListener('input', function(){
 					</section>
 
 					<section>
-						<h2>Buffers</h2>
+						<h2>Problem #3 - Buffers</h2>
 						<ul>
 							<li> No <strong>playbackPosition</strong> property on AudioBufferSourceNode </li>
-							<li> :( </li>
 							<li> .. but <strong>AudioBufferSourceNode</strong> could be reimplmented inside <strong>AudioWorker</strong>!</li>
 							<li> No idea of performance till we get <strong>AudioWorker</strong></li>
 						</ul>

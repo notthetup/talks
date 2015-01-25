@@ -163,9 +163,21 @@
  * SLIDE NUMBER
  *********************************************/
 
- .reveal img.spare-image-no-border {
+.reveal img.spare-image-no-border {
   border: none;
   box-shadow: none;
+}
+
+.reveal img.spare-sguk {
+  border: none;
+  box-shadow: none;
+  margin-bottom: -10px;
+}
+
+.reveal img.spare-logo {
+  border: none;
+  box-shadow: none;
+  width : 15%;
 }
 
 .reveal .spare-subtitle{

@@ -252,6 +252,10 @@ filter.connect(context.destination);
 			</section>
 
 			<section>
+				<img class="spare-image-no-border" style="height:700px" src="img/spaudioparams.png">
+			</section>
+
+			<section>
 				<h2>Solution #1: SPAudioParam </h2>
 				<ul>
 					<li> Mostly used Wrapped <em>SPAudioParam</em> approach </li>
@@ -392,13 +396,13 @@ multiTriggerSlider.oninput = function(){
 					<!-- Buffers -->
 
 					<section>
-						<p class="spare-problem">Problem #3 : Can't pause an AudioSourceBufferNode</p>
+						<p class="spare-problem">Problem #3 : Can't pause an AudioBufferSourceNode</p>
 					</section>
 
 					<section>
 						<h2>Problem #3 - Buffers</h2>
 						<ul>
-							<li> <strong>AudioSourceBufferNode</strong> can only be played once </li>
+							<li> <strong>AudioBufferSourceNode</strong> can only be played once </li>
 							<li> No way to know current <em>playbackPosition</em></li>
 							<li> Time based tracking only works for static <em>playbackRate</em></li>
 							<li> Tracking while <em>playbackRate</em> is being automated is tedious</li>
@@ -407,24 +411,24 @@ multiTriggerSlider.oninput = function(){
 					</section>
 
 					<section>
-						<p class="spare-problem">Solution #3: SPAudioSourceBufferNode </p>
+						<p class="spare-problem">Solution #3: SPAudioBufferSourceNode </p>
 						<br>
-						<p class="spare-solution"> Wrap around <strong>AudioSourceBufferNode</strong>, and use a 'Scope' track playback</p>
+						<p class="spare-solution"> Wrap around <strong>AudioBufferSourceNode</strong>, and use a 'Scope' track playback</p>
 					</section>
 
 					<section>
-						<h2>Solution #3 - SPAudioSourceBufferNode</h2>
+						<h2>Solution #3 - SPAudioBufferSourceNode</h2>
 						<ul>
 							<li> Create a mirror <strong>AudioBuffer</strong> with index as value</li>
 							<li> Create a <em>CounterBufferNode</em> from this <strong>AudioBuffer</strong> </li>
 							<li> Connect this <em>CounterBufferNode</em> to a <strong>ScriptProcessorNode</strong></li>
 							<li> <em>onprocessaudio</em> stores the last value in the <em>inputBuffer</em> </li>
-							<li> Perform every action (start, stop, automation..) on both <strong>AudioSourceBufferNodes</strong> </li>
+							<li> Perform every action (start, stop, automation..) on both <strong>AudioBufferSourceNodes</strong> </li>
 						</ul>
 					</section>
 
 					<section>
-					<h2 style="margin-bottom: 0px"> <em>SPAudioSourceBufferNode</em> Implementation </h2>
+					<h2 style="margin-bottom: 0px"> <em>SPAudioBufferSourceNode</em> Implementation </h2>
 					<pre> <code data-trim style="max-height:none">
 /*Create Nodes*/
 var counterNode_ = audioContext.createBufferSource();
@@ -460,7 +464,7 @@ scopeNode_.onaudioprocess = function savePosition( processEvent ) {
 					</section>
 
 					<section>
-						<h2>Solution #3 - SPAudioSourceBufferNode</h2>
+						<h2>Solution #3 - SPAudioBufferSourceNode</h2>
 						<ul>
 							<li> Stored value exposed as <em>playbackPosition</em> property </li>
 							<li> <em>playbackPosition</em> is read only</li>
@@ -565,9 +569,9 @@ playPauseSlider.addEventListener('input', function(){
 					<section>
 						<h2>Buffers</h2>
 						<ul>
-							<li> No <strong>playbackPosition</strong> property on AudioSourceBufferNode </li>
+							<li> No <strong>playbackPosition</strong> property on AudioBufferSourceNode </li>
 							<li> :( </li>
-							<li> .. but <strong>AudioSourceBufferNode</strong> could be reimplmented inside <strong>AudioWorker</strong>!</li>
+							<li> .. but <strong>AudioBufferSourceNode</strong> could be reimplmented inside <strong>AudioWorker</strong>!</li>
 							<li> No idea of performance till we get <strong>AudioWorker</strong></li>
 						</ul>
 					</section>

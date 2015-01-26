@@ -173,7 +173,20 @@
 			</section>
 
 			<section>
-				<h2>Problem #1</h2>
+				<h2>Problem #1 - Higher Level Nodes</h2>
+				<ul>
+					<li> All Dynamic Sound Models are Higher Level Nodes </li>
+					<li> Higher Level Nodes to leverage composibility of Web Audio </li>
+					<li> Internally composed of multiple <strong>AudioNodes</strong> </li>
+				</ul>
+			</section>
+
+			<section>
+				<img class="spare-image-no-border" src="img/higherlevelaudionodes.png">
+			</section>
+
+			<section>
+				<h2>Problem #1 - Parameters</h2>
 				<ul>
 					<li> Higher Level Nodes need Parameters </li>
 					<li> Custom params should have similar interface as <strong>AudioParam</strong></li>
@@ -261,8 +274,8 @@ looper.playSpeed.exponentialRampToValueAtTime(2,10);
 				<h2>Problem #2 - Polyphony</h2>
 				<ul>
 					<li> Polyphonic Models with multiple voices </li>
-					<li> Typical archtecture : fixed number of BufferNodes </li>
-					<li> Queue assigns buffers to BufferNodes at the scheduled time</li>
+					<li> Typical archtecture : fixed number / pool of voices </li>
+					<li> Queue assigns buffers to a voice at the scheduled time</li>
 				</ul>
 			</section>
 
@@ -392,7 +405,7 @@ multiTriggerSlider.oninput = function(){
 							<li> Create a mirror <strong>AudioBuffer</strong> with index as value</li>
 							<li> Create a <em>CounterBufferNode</em> from this <strong>AudioBuffer</strong> </li>
 							<li> Connect this <em>CounterBufferNode</em> to a <strong>ScriptProcessorNode</strong></li>
-							<li> <em>onprocessaudio</em> stores the last value in the <em>inputBuffer</em> </li>
+							<li> <em>onprocessaudio</em> stores the last value of the <em>inputBuffer</em> </li>
 							<li> Perform every action (start, stop, automation..) on both <strong>AudioBufferSourceNodes</strong> </li>
 						</ul>
 					</section>
@@ -503,7 +516,7 @@ playPauseSlider.addEventListener('input', function(){
 						<ul>
 							<li> Overcame most issues we faced while porting</li>
 							<li> Most solutions worked for our specific use case </li>
-							<li> Your millage may vary based on what you're doing </li>
+							<li> Your mileage may vary based on what you're doing </li>
 							<li> There are creative ways to implement most use cases </li>
 						</ul>
 					</section>

@@ -1,589 +1,123 @@
 <!doctype html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
+	<head>
+		<meta charset="utf-8">
 
-    <title>Web Audio</title>
+		<title>WebAudio</title>
 
-    <meta name="description" content="Quick intro to WebAudio">
-    <meta name="author" content="Chinmay Pendharkar">
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-    <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/theme/beige-sparse.css" id="theme">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-    <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
 
-    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
-    <script>
-      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-    </script>
-
-    <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section data-markdown>
-          # Web Audio
-
-          Chinmay Pendharkar
-
-          _December 2014_
-        </section>
-        <section data-markdown>
-          ## About Me..
-
-          - Acoustician / Audio Engineer
-
-          - Developer (Audio)
-
-          - Podcast Host (WeBuildSG Live)
-
-        </section>
-        <section data-markdown>
-          ## Audio + Web History
-
-          - Browsers in the 90s - #FAIL
-
-          - Plugins save the day?
-
-          - Flash, Java, .. (urgh!!)
-
-        </section>
-        <section data-markdown>
-          ## Plugin Free Web!
-
-          ### Why?
-
-          - Lean(er) Stack
-            - Website -> Browser -> OS
-            - Website -> Plugin -> Browser -> OS
-
-          - Fewer breakable parts (theoretically)
-
-          - ↓ Reliance on single party (Adobe)
-        </section>
-        <section >
-          <h2>Web + Audio</h2>
-
-          <h3> Before </h3>
-          <p> Flash (Urgh!!), Java</p>
-
-          <h3>After</h3>
-          <p> HTML5 Audio, WebAudio, WebRTC, WebMIDI*</p>
-
-          <font style="font-size : 18px;">* Ongoing W3C Standardization process</font>
-        </section>
-        <section >
-          <h2> HTML5 Audio </h2>
-
-          <ul>
-            <li> &lt;audio&gt; / HTMLAudioElement()</li>
-            <li> Part of the DOM Elements. </li>
-            <li> Allows basic playback of Audio files. </li>
-            <li> Basic functionality support in all major browsers. </li>
-          </ul>
-
-          <pre><code data-trim>
-<audio controls="controls">
-  <source src="https://dl.dropboxusercontent.com/u/77191118/sounds/DeepIntoIt.mp3" type="audio/wav">
-</audio>
-          </code></pre>
-
-          <audio controls="controls">
-            <source src="https://dl.dropboxusercontent.com/u/77191118/sounds/DeepIntoIt.mp3" type="audio/wav">
-          </audio>
-        </section>
-        <section>
-          <h2>HTML5 Audio Features</h2>
-
-          <ul>
-          <li>Autoplay
-            <font style="font-size: 22px;">(hello! 1990s called they want their website back) </font>
-          </li>
-          <li>Loop</li>
-          <pre><code data-trim> audioTag.loop = true;</code></pre>
-          <audio controls="controls" loop="true">
-            <source src="https://dl.dropboxusercontent.com/u/77191118/sounds/deep_loop.wav" type="audio/wav">
-          </audio>
-          <li>Speed</li>
-          <pre><code>audioTag.playbackRate = 2;</code></pre>
-          <audio controls="controls" loop="" id="loopspeed">
-            <source src="https://dl.dropboxusercontent.com/u/77191118/sounds/deep_loop.wav" type="audio/wav">
-          </audio>
-          <p style="margin: -30px 150px;"><font style="font-size: 22px;">Speed : </font> <input type="range" min="50" max="200" value="100"  onchange="var a = document.getElementById('loopspeed'); a.playbackRate=this.value/100.0;"></p>
-        </section>
-        <section data-markdown>
-         ## Stop horsing around..
-         ## Give us the good stuff!!
-        </section>
-        <section data-markdown>
-          ## Web Audio
-          #### " JavaScript API for processing and synthesizing audio"
-          - JavaScript API
-
-          - Audio Processing is usually done at a lower level (C++/ASM)
-
-          - Realtime => Callback Based
-        </section>
-        <section data-markdown>
-        ![Web Audio Implementation](img/webaudio.jpg)
-        </section>
-        <section>
-          <h2> Web Audio </h2>
-
-          <i> "signal routing graph paradigm"</i>
-          <br>
-
-          <img src="http://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing1.png">
-          <img src="http://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing2.png">
-        </section>
-        <section>
-          <h2>
-            WebAudio VIPs
-          </h2>
-          <ul>
-          <li> <u>AudioContext</u> - <font style="font-size: 30px;">God of WebAudio. Everything begins and ends here. </font> </li>
-          <pre><code data-trim>myContext = new AudioContext(); //yay no more vendor prefix!</code></pre>
-          <li> <u>AudioNode</u> -  <font style="font-size: 30px;"> Everything is an AudioNode </font> </li>
-
-          <li> <u>Destination</u> -  <font style="font-size: 30px;">Main Audio output. Plug everything into this.. </font></li>
-          <pre><code data-trim>source = context.createOscillator();
-source.connect(myContext.destination);</code></pre>
-          </ul>
-          <br>
-          <br>
-          <button id="playButton" style="padding : 15px;"> ▶❚❚</button>
-          <font style="font-size: 30px;">Pitch: <input type="range" id="pitchslider"min="100" max="10000" value="1000">
-          Volume: <input type="range" id="volumeslider"></font>
-          <script>
-          var playState = "stopped";
-          var button = document.getElementById("playButton");
-          var pitchslider = document.getElementById("pitchslider");
-          var volumeslider = document.getElementById("volumeslider");
-
-
-          var context = new webkitAudioContext();
-          var osc = context.createOscillator();
-          var gain  = context.createGain();
-          osc.connect(gain);
-          gain.connect(context.destination);
-
-          var playTone = function(){
-            osc.frequency.value = pitchslider.value;
-            gain.gain.value = volumeslider.value/100;
-            osc.start(0);
-            console.log("starting");
-          }
-
-          var stopTone = function(){
-            osc.stop(0);
-            osc = context.createOscillator();
-            osc.connect(gain);
-            console.log("stopping");
-          }
-
-          button.addEventListener('click', function() {
-            if (playState == "stopped"){
-              playTone();
-              playState = "playing";
-            }
-            else if (playState == "playing"){
-              stopTone();
-              playState = "stopped";
-            }
-          });
-
-          pitchslider.oninput = function() {
-            osc.frequency.value = pitchslider.value;
-            //console.log("changing pitch : " +  pitchslider.value);
-          }
-
-          volumeslider.oninput = function() {
-            gain.gain.value = volumeslider.value/100;
-            //console.log("changing volume " + volumeslider.value/100);
-          }
-        </script>
-        </section>
-        <section>
-          <h2>AudioNodes</h2>
-          <ul class="col" style="list-style: none; line-height: 1.4em;">
-            <li>Analyser</li>
-            <li>
-              <b>BiquadFilter</b>
-            </li>
-            <li>Buffer</li>
-            <li>BufferSource</li>
-            <li>ChannelMerger</li>
-            <li>ChannelSplitter</li>
-            <li>
-              <b>Convolver</b>
-            </li>
-            <li>Delay</li>
-            <li>DelayNode</li>
-            <li>DynamicsCompressor</li>
-          </ul>
-          <ul class="col" style="list-style: none; line-height: 1.4em;">
-            <li>GainNode</li>
-            <li>JavaScriptNode</li>
-            <li>MediaElementSource</li>
-            <li>MediaStreamDestination</li>
-            <li>MediaStreamSource</li>
-            <li>
-              <b>Oscillator</b>
-            </li>
-            <li>Panner</li>
-            <li>
-              <b>ScriptProcessor</b>
-            </li>
-            <li>WaveShaper</li>
-            <li>WaveTable</li>
-          </ul>
-        </section>
-        <section>
-        <h2>ScriptProcessor</h2>
-          <ul>
-          <li>Open-ended Callback</li>
-          <pre><code data-trim>
-var sp = context.createScriptProcessor();
-sp.onprocess = function (processEvent){
-  // fill your own buffer
-  processEvent.outputBuffers = autoTune(processEvent.inputBuffers);
-}
-sp.connect(context.destination);
-            </code></pre>
-
-          <li>called every ~23ms</li>
-          <li>onprocess callback is called in the main JS thread</li>
-          <li>risk of audio dropouts/glitches if thread is blocked</li></ul>
-        </section>
-        <section>
-          <h2>Filter</h2>
-          <div>
-            <pre><code data-trim>
-var audio = new Audio();
-audio.src = 'https://dl.dropboxusercontent.com/u/77191118/sounds/DeepIntoIt.mp3';
-source = context.createMediaElementSource(audio);
-var filter = context.createBiquadFilter();
-filter.type = filter.LOWPASS;
-filter.frequency.value = 5000;
-
-source.connect(this.filter);
-filter.connect(context.destination);
-            </code></pre>
-          </div>
-          <button id="filterPlayButton"  style="padding : 15px;"> ▶❚❚</button>
-          <br>
-          <font style="font-size: 30px;"> Filter Cutoff </font> <input type="range" min="50" max="3000" value="3000" id="filterSlider">
-
-          <script>
-          var fAudio = new Audio();
-          fAudio.src = 'https://dl.dropboxusercontent.com/u/77191118/sounds/DeepIntoIt.mp3';
-          var fSource = context.createMediaElementSource(fAudio);
-          var filter = context.createBiquadFilter();
-          filter.type = filter.LOWPASS;
-          filter.frequency.value = 3000;
-
-          fSource.connect(this.filter);
-          filter.connect(context.destination);
-
-          var fPlayState = "stopped";
-          var fPlaybutton = document.getElementById("filterPlayButton");
-          var filterSlider = document.getElementById("filterSlider");
-
-          fPlaybutton.addEventListener('click', function() {
-            if (fPlayState == "stopped"){
-              fAudio.play();
-              fPlayState = "playing";
-            }
-            else if (fPlayState == "playing"){
-              fAudio.pause();
-              fPlayState = "stopped";
-            }
-          });
-
-          filterSlider.oninput = function() {
-            filter.frequency.value = filterSlider.value;
-          }
-
-          </script>
-
-        </section>
-        <section>
-          <h2>Convolver</h2>
-          <div>
-            <pre><code data-trim>
-var webaudioloader = require('webaudioloader');
-
-var sourceURL = "https://dl.dropboxusercontent.com/u/77191118/sounds/deep10.mp3";
-var irURL = "https://dl.dropboxusercontent.com/u/77191118/sounds/church_ir.wav";
-
-var source = context.createBufferSource();
-var convolver = context.createConvolver();
-
-source.connect(convolver);
-convolver.connect(context.destination);
-
-webaudioloader.load(sourceURL, {onload: function (err, buffer){
-  source.buffer = buffer;
-  if (convolver.buffer) source.start(0);
-}});
-
-webaudioloader.load(irURL, {onload: function (err, buffer){
-  convolver.buffer = buffer;
-  if (convolver.buffer) source.start(0);
-}});
-</code></pre>
-          <font style="font-size: 30px;"> Hall : </font> <button id="hButton" disabled style="padding : 10px;"> ▶❚❚</button>
-          <font style="font-size: 30px;"> Can : </font><button id="cButton" disabled=""  style="padding : 10px;"> ▶❚❚</button>
-
-          <script>
-          var sourceBuffer;
-          var cState = "stopped";
-          var hState = "stopped";
-
-          var cSource = context.createBufferSource();
-          var hSource = context.createBufferSource();
-          var hConvolver = context.createConvolver();
-          var cConvolver = context.createConvolver();
-
-          cSource.connect(cConvolver);
-          cConvolver.connect(context.destination);
-
-          hSource.connect(hConvolver);
-          hConvolver.connect(context.destination);
-
-          var hButton = document.getElementById("hButton");
-          var cButton = document.getElementById("cButton");
-
-          /*Load source audio and impulse response*/
-          var request = new XMLHttpRequest();
-          request.open("GET", "https://dl.dropboxusercontent.com/u/77191118/sounds/deep10.mp3", true);
-          request.responseType = "arraybuffer";
-          request.onload = function () {
-            sourceBuffer = context.decodeAudioData(request.response, function (sourceBuffer){
-              cSource.buffer = sourceBuffer;
-              hSource.buffer = sourceBuffer;
-              if (hConvolver.buffer){
-                hButton.disabled = false;
-              }
-
-              if (cConvolver.buffer){
-                cButton.disabled = false;
-              }
-            });
-          }
-
-          var ir_requestH = new XMLHttpRequest();
-          ir_requestH.open("GET", "https://dl.dropboxusercontent.com/u/77191118/sounds/church_ir.wav", true);
-          ir_requestH.responseType = "arraybuffer";
-          ir_requestH.onload = function () {
-            context.decodeAudioData(ir_requestH.response, function (buffer){
-              hConvolver.buffer = buffer;
-              if (hSource.buffer){
-                hButton.disabled = false;
-              }
-            });
-
-          }
-
-          var ir_requestC = new XMLHttpRequest();
-          ir_requestC.open("GET", "https://dl.dropboxusercontent.com/u/77191118/sounds/cup_ir.wav", true);
-          ir_requestC.responseType = "arraybuffer";
-          ir_requestC.onload = function () {
-            context.decodeAudioData(ir_requestC.response, function(buffer){
-              cConvolver.buffer = buffer;
-              if (cSource.buffer){
-                cButton.disabled = false;
-              }
-
-            });
-          }
-
-          request.send();
-          ir_requestH.send();
-          ir_requestC.send();
-
-          hButton.addEventListener('click', function (){
-            if(hState == "stopped"){
-              hSource.start(0);
-              hState = "playing";
-            }else if (hState == "playing"){
-              hSource.stop(0);
-              hState = "stopped";
-              hSource = context.createBufferSource();
-              hSource.buffer = sourceBuffer;
-              hSource.connect(hConvolver);
-            }
-          });
-
-          cButton.addEventListener('click', function (){
-            if(cState == "stopped"){
-              cSource.start(0);
-              cState = "playing";
-            }else if (cState == "playing"){
-              cSource.stop(0);
-              cState = "stopped";
-              cSource = context.createBufferSource();
-              cSource.buffer = sourceBuffer;
-              cSource.connect(cConvolver);
-            }
-          })
-
-          </script>
-
-        </section>
-        <section data-markdown>
-          ## What can you do with it??
-
-          - Synth :
-          http://synth.soundkeep.com/
-
-          - Sequencer :
-          http://labs.dinahmoe.com/ToneCraft/
-
-          - WavePad :
-          http://alxgbsn.co.uk/wavepad/
-
-          - Games :
-          http://chrome.angrybirds.com/
-
-          - Moar Demos! :
-          http://webaudio.github.io/demo-list/
-
-        </section>
-        <section data-markdown>
-          ## W3C Web Audio Spec
-
-          - WebAudio Spec :
-          http://webaudio.github.io/web-audio-api/
-
-          - Web Audio Spec Repo :
-          https://github.com/webaudio
-
-          - Web Audio Spec Discussions :
-          https://github.com/WebAudio/web-audio-api/issues
-        </section>
-        <section data-markdown>
-          ## Resources
-
-          - Web Audio Book :
-          http://chimera.labs.oreilly.com/books/1234000001552
-
-          - HTML5 Audio :
-          http://www.html5audio.org
-
-          - Web Audio in Nodejs??
-          https://github.com/sebpiq/node-web-audio-api
-
-          - Web Audio Components
-          https://github.com/web-audio-components
-
-          - Web Audio Weekly Mailing List
-          http://blog.chrislowis.co.uk/waw.html
-
-        </section >
-        <section data-markdown>
-          ### Firefox Dev Tools Web Audio Pane
-          ![Firefox Dev Tools](img/firefox.jpg)
-
-        </section >
-        <section  data-markdown>
-          ## Some Cool Web Audio Projects
-
-          - Live Coding :
-          http://gibber.mat.ucsb.edu/
-
-          - Dynamic Sounds :
-          http://animatedsoundworks.com:8001/
-
-          - Voice Input :
-          https://github.com/mattdiamond/Recorderjs
-
-          - Reverb :
-          https://github.com/adelespinasse/reverbGen
-
-          - DAW :
-          https://www.soundtrap.com/
-
-        </section>
-        <section data-markdown>
-          ### Web Audio Conference
-          ![WAC](img/wac.jpg)
-        </section>
-        <section data-markdown>
-          ## Final words
-
-          - Massive updates to Web Audio spec are upcoming.
-
-          - Watch out for Browser/OS quirks.
-
-          - Watch out for codec issues (mp3/wav/ogg)
-
-          - Raise bugs against browsers if you find any issues!
-        </section>
-        <section data-markdown>
-          ## Live Demo time!
-
-          - [Bird Sound Synthesis](http://chinpen.net/birds/)
-
-          - [Room Acoustic Auralization](http://chinpen.net/auralizr/)
-
-          - [Wavepot](http://wavepot.com/explore/tracks)
-
-          - [PaulStretch](http://sebpiq.github.io/paulstretch.js/examples/stretched-and-droned)
-
-          - [Badumtish](http://chinpen.net/badumtish)
-        </section>
-        <section data-markdown>
-          ## Questions?
-
-          _http://chinpen.net/talks_
-          </section>
-      </div>
-    </div>
-
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.min.js"></script>
-
-    <script>
-
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
-
-        // Optional libraries used to extend on reveal.js
-        dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-        ]
-      });
-
-    </script>
-    <script>
-
-    </script>
-
-  </body>
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+					<section data-markdown>
+						# Web Audio
+
+						### An emerging platform for Audio applications.
+
+						------
+
+						_FOSSASIA 2015_
+					</section>
+					<section data-markdown>
+						## About Me..
+
+						![me](img/chinmay.jpg)
+
+						- Acoustician / Audio Engineer
+
+						- Developer (Audio)
+
+						- Podcast Host (WeBuildSG Live)
+
+					</section>
+					<section data-markdown>
+						## Agenda
+
+						- **What** is WebAudio??
+
+						- **Why** WebAudio matters??
+
+						- **How** to use WebAudio??
+					</section>
+
+					<section data-markdown>
+						## What??
+					</section>
+
+					<section data-markdown>
+						## Why??
+					</section>
+
+					<section data-markdown>
+						## How??
+					</section>
+
+					<section data-markdown>
+						## Questions?
+
+						_http://chinpen.net/talks_
+					</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'none', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
 </html>

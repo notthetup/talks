@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/myblack.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -29,6 +29,13 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
+		<script type="text/javascript" src="js/audio-player.js"></script>
+		<script type="text/javascript">
+			AudioPlayer.setup("http://localhost:8000/js/player.swf", {
+				width: 290
+			});
+		</script>
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -39,39 +46,111 @@
 		<div class="reveal">
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-					<section data-markdown>
-						# Web Audio
-
-						#### An emerging platform for Audio applications
-
-						------
-
-						_FOSSASIA 2015_
+					<section >
+						<h1>Web Audio</h1>
+						<img class="noborder" src="img/wa.png" width="20%">
+						<h4>An emerging platform for Audio applications</h4>
+						<hr>
+						<em>FOSSASIA 2015</em>
 					</section>
 					<section data-markdown>
 						## About Me..
 
 						![me](img/chinmay.jpg)
 
-						- Acoustician / Audio Engineer
-
 						- Developer (Audio)
+
+						- Acoustician / Audio Engineer
 
 						- Podcast Host (WeBuildSG Live)
 
 					</section>
-					<section data-markdown>
-						## Agenda
 
-						- **What** is WebAudio??
-
-						- **Why** WebAudio matters??
-
-						- **How** to use WebAudio??
+					<section>
+						<h2> Agenda </h2>
+						<ul>
+							<li><span class="underline">What</span> is WebAudio??</li>
+							<li><span class="underline">Why</span> WebAudio matters??</li>
+							<li><span class="underline">How</span> to use WebAudio??</li>
+						</ul>
 					</section>
 
-					<section data-markdown>
+					<section>
+						<section data-markdown>
 						## What??
+						</section>
+
+						<section>
+							<h2> What?? - History</h2>
+							<div class="twocolumn-wrap">
+								<div class="twocolumn-left_col">
+									<ul>
+										<li class="fragment" data-fragment-index="0">bgsound</li>
+										<li class="fragment" data-fragment-index="2">object, embed</li>
+										<li class="fragment" data-fragment-index="4">&lt; audio &gt;</li>
+										<li class="fragment" data-fragment-index="6">Audio Data API</li>
+										<li class="fragment" data-fragment-index="8">Web Audio API</li>
+									</ul>
+								</div>
+								<div class="twocolumn-right_col">
+									<ul class="nobullet">
+										<li class="fragment" data-fragment-index="1"><img class="noborder" style="width:8%; background:none; margin:0 0 0 0;" src="img/ie.png"></li>
+										<li id="objembed" class="fragment" data-fragment-index="3" ><p id="audioplayer"></p><span style="font-size:40%"> &larr; Flash</span></li>
+										<li class="fragment" data-fragment-index="5"><audio controls=controls src="audio/deep10.mp3"></audio><span style="font-size:40%"> &larr; HTML5</span></li>
+										<li class="fragment" data-fragment-index="7"><img class="noborder" style="width:25%; background:none; margin:0 0 0 0;" src="img/ff.png"></li>
+										<li class="fragment" data-fragment-index="9"><img class="noborder" style="width:10%; background:none; margin:0 0 0 0;" src="img/wa.png"></li>
+									</ul>
+
+								</div>
+							</div>
+						</section>
+
+						<section>
+							<h2>What?? - Philisophy</h2>
+							<blockquote>
+								include the capabilities found in modern game audio engines as well as some of the mixing, processing, and filtering tasks that are found in modern desktop audio production applications
+							</blockquote>
+							<span style="font-size:60%"> &mdash; W3C WebAudio Draft Spec </span>
+						</section>
+
+						<section>
+							<h2>What?? - Status</h1>
+							<img class="noborder" src="img/waa.jpg" width="100%">
+						</section>
+
+						<section>
+							<h2>What?? - Status</h1>
+							<table border="1" cellpadding="4" cellspacing="0" style="margin: 1em 1em 1em 0; background:#fff; border-collapse:collapse;">
+								<tbody>
+								<tr>
+									<th style="background:black; color:white;"> Specification</th>
+									<th style="background:black; color:white;"> FPWD</th>
+									<th style="background:black; color:white;"> LC</th>
+									<th style="background:black; color:white;"> CR</th>
+									<th style="background:black; color:white;"> PR</th>
+									<th style="background:black; color:white;"> Rec</th>
+								</tr>
+								<tr>
+									<th style="color:black;"> Web Audio API</th>
+									<td style="color:black;"> Dec 2011</a> </td>
+									<td style="color:black;"> Q1 2014 </td>
+									<td style="color:black;"> Q3 2014 </td>
+									<td style="color:black;"> Q1 2015 </td>
+									<td style="color:black;"> Q1 2015 </td>
+								</tr>
+								<tr>
+									<th style="color:black;"> Web MIDI API</th>
+									<td style="color:black;"> Oct 2012 </td>
+									<td style="color:black;"> Q1 2014 </td>
+									<td style="color:black;"> Q2 2014 </td>
+									<td style="color:black;"> Q3 2014 </td>
+									<td style="color:black;"> Q3 2014 </td>
+								</tr>
+								</tbody>
+							</table>
+							<p style="font-size:40%"><a href="http://www.w3.org/2011/audio/wiki/W3C_Audio_Publications_and_Milestones#Latest_Estimates">http://www.w3.org/2011/audio/wiki/W3C_Audio_Publications_and_Milestones#Latest_Estimates</a> </p>
+						</section>
+
 					</section>
 
 					<section data-markdown>
@@ -79,7 +158,31 @@
 					</section>
 
 					<section data-markdown>
+						## Why?? - Open Standards
+					</section>
+
+					<section data-markdown>
+						## Why?? - Distrubution
+					</section>
+
+					<section data-markdown>
+						## Why?? - Collaboration
+					</section>
+
+					<section data-markdown>
 						## How??
+					</section>
+
+					<section data-markdown>
+						## How?? - Basics
+					</section>
+
+					<section data-markdown>
+						## How?? - Libraries
+					</section>
+
+					<section data-markdown>
+						## How?? - Tools
 					</section>
 
 					<section data-markdown>
@@ -93,6 +196,13 @@
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+
+		<script type="text/javascript">
+			Reveal.addEventListener( 'fragmentshown', function( event ) {
+			   if (event.fragment.id == "objembed")
+			    AudioPlayer.embed("audioplayer", {soundFile: "http://localhost:8000/audio/deep10.mp3"});
+			} );
+		</script>
 
 		<script>
 

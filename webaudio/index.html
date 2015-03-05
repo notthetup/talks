@@ -46,6 +46,9 @@
 		<div class="reveal">
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+			<section>
+				<img class="noborder" src="img/wa.png">
+			</section>
 					<section >
 						<h1>Web Audio</h1>
 						<img class="noborder" src="img/wa.png" width="20%">
@@ -62,7 +65,7 @@
 
 						- Acoustician / Audio Engineer
 
-						- Podcast Host (WeBuildSG Live)
+						- Podcast Host (We Build Live)
 
 					</section>
 
@@ -75,114 +78,300 @@
 						</ul>
 					</section>
 
+					<section data-markdown>
+					# What??
+					</section>
+
 					<section>
-						<section data-markdown>
-						## What??
-						</section>
-
-						<section>
-							<h2> What?? - History</h2>
-							<div class="twocolumn-wrap">
-								<div class="twocolumn-left_col">
-									<ul>
-										<li class="fragment" data-fragment-index="0">bgsound</li>
-										<li class="fragment" data-fragment-index="2">object, embed</li>
-										<li class="fragment" data-fragment-index="4">&lt; audio &gt;</li>
-										<li class="fragment" data-fragment-index="6">Audio Data API</li>
-										<li class="fragment" data-fragment-index="8">Web Audio API</li>
-									</ul>
-								</div>
-								<div class="twocolumn-right_col">
-									<ul class="nobullet">
-										<li class="fragment" data-fragment-index="1"><img class="noborder" style="width:8%; background:none; margin:0 0 0 0;" src="img/ie.png"></li>
-										<li id="objembed" class="fragment" data-fragment-index="3" ><p id="audioplayer"></p><span style="font-size:40%"> &larr; Flash</span></li>
-										<li class="fragment" data-fragment-index="5"><audio controls=controls src="audio/deep10.mp3"></audio><span style="font-size:40%"> &larr; HTML5</span></li>
-										<li class="fragment" data-fragment-index="7"><img class="noborder" style="width:25%; background:none; margin:0 0 0 0;" src="img/ff.png"></li>
-										<li class="fragment" data-fragment-index="9"><img class="noborder" style="width:10%; background:none; margin:0 0 0 0;" src="img/wa.png"></li>
-									</ul>
-
-								</div>
+						<h2> What?? - History</h2>
+						<div class="twocolumn-wrap">
+							<div class="twocolumn-left_col">
+								<ul>
+									<li class="fragment" data-fragment-index="0">bgsound</li>
+									<li class="fragment" data-fragment-index="2">object, embed</li>
+									<li class="fragment" data-fragment-index="4">&lt; audio &gt;</li>
+									<li class="fragment" data-fragment-index="6">Audio Data API</li>
+									<li class="fragment" data-fragment-index="8">Web Audio API</li>
+								</ul>
 							</div>
-						</section>
+							<div class="twocolumn-right_col">
+								<ul class="nobullet">
+									<li class="fragment" data-fragment-index="1"><img class="noborder" style="width:8%; background:none; margin:0 0 0 0;" src="img/ie.png"></li>
+									<li id="objembed" class="fragment" data-fragment-index="3" ><p id="audioplayer"></p><span style="font-size:40%"> &larr; Flash</span></li>
+									<li class="fragment" data-fragment-index="5"><audio controls=controls src="audio/deep10.mp3"></audio><span style="font-size:40%"> &larr; HTML5</span></li>
+									<li class="fragment" data-fragment-index="7"><img class="noborder" style="width:25%; background:none; margin:0 0 0 0;" src="img/ff.png"></li>
+									<li class="fragment" data-fragment-index="9"><img class="noborder" style="width:10%; background:none; margin:0 0 0 0;" src="img/wa.png"></li>
+								</ul>
 
-						<section>
-							<h2>What?? - Philisophy</h2>
-							<blockquote>
-								include the capabilities found in modern game audio engines as well as some of the mixing, processing, and filtering tasks that are found in modern desktop audio production applications
-							</blockquote>
-							<span style="font-size:60%"> &mdash; W3C WebAudio Draft Spec </span>
-						</section>
+							</div>
+						</div>
+					</section>
 
-						<section>
-							<h2>What?? - Status</h1>
-							<img class="noborder" src="img/waa.jpg" width="100%">
-						</section>
+					<section>
+						<h2>What?? - Philisophy</h2>
+						<em>
+							... include the capabilities found in modern game audio engines as well as some of the <span style="color:yellow;">mixing</span>, <span style="color:yellow;">processing</span>, and <span style="color:yellow;">filtering</span> tasks that are found in modern desktop audio production applications.
+						</em>
+						<p><span style="font-size:60%"> &mdash; W3C WebAudio Draft Spec </span></p>
+					</section>
 
-						<section>
-							<h2>What?? - Status</h1>
-							<table border="1" cellpadding="4" cellspacing="0" style="margin: 1em 1em 1em 0; background:#fff; border-collapse:collapse;">
-								<tbody>
-								<tr>
-									<th style="background:black; color:white;"> Specification</th>
-									<th style="background:black; color:white;"> FPWD</th>
-									<th style="background:black; color:white;"> LC</th>
-									<th style="background:black; color:white;"> CR</th>
-									<th style="background:black; color:white;"> PR</th>
-									<th style="background:black; color:white;"> Rec</th>
-								</tr>
-								<tr>
-									<th style="color:black;"> Web Audio API</th>
-									<td style="color:black;"> Dec 2011</a> </td>
-									<td style="color:black;"> Q1 2014 </td>
-									<td style="color:black;"> Q3 2014 </td>
-									<td style="color:black;"> Q1 2015 </td>
-									<td style="color:black;"> Q1 2015 </td>
-								</tr>
-								<tr>
-									<th style="color:black;"> Web MIDI API</th>
-									<td style="color:black;"> Oct 2012 </td>
-									<td style="color:black;"> Q1 2014 </td>
-									<td style="color:black;"> Q2 2014 </td>
-									<td style="color:black;"> Q3 2014 </td>
-									<td style="color:black;"> Q3 2014 </td>
-								</tr>
-								</tbody>
-							</table>
-							<p style="font-size:40%"><a href="http://www.w3.org/2011/audio/wiki/W3C_Audio_Publications_and_Milestones#Latest_Estimates">http://www.w3.org/2011/audio/wiki/W3C_Audio_Publications_and_Milestones#Latest_Estimates</a> </p>
-						</section>
+					<section>
+						<h2>What?? - Status</h1>
+						<img class="noborder" src="img/waa.jpg" width="100%">
+					</section>
+
+					<section>
+						<h2>What?? - Status</h1>
+						<table style="margin: 1em 1em 1em 0; background:#fff; border-collapse:collapse; ">
+							<tbody style="border-style:solid; border-width: 3px;">
+							<tr style="border-style:solid; border-width: 3px;">
+								<th style="background:black; color:white;"> Specification</th>
+								<th style="background:black; color:green;"> FPWD</th>
+								<th style="background:black; color:green;"> LC</th>
+								<th style="background:black; color:green;"> CR</th>
+								<th style="background:black; color:white;"> PR</th>
+								<th style="background:black; color:white;"> Rec</th>
+							</tr>
+							<tr>
+								<th style="color:black;"> Web Audio API</th>
+								<td style="color:black;"> Dec 2011</a> </td>
+								<td style="color:black;"> Q1 2014 </td>
+								<td style="color:black;"> Q3 2014 </td>
+								<td style="color:lightgrey;"> Q1 2015 </td>
+								<td style="color:lightgrey;"> Q1 2015 </td>
+							</tr>
+							</tbody>
+						</table>
+						<p style="font-size:40%"><a href="http://www.w3.org/2011/audio/wiki/W3C_Audio_Publications_and_Milestones#Latest_Estimates"> &mdash; http://www.w3.org/2011/audio/wiki/W3C_Audio_Publications_and_Milestones#Latest_Estimates</a> </p>
+					</section>
+
+					<section>
+						<h2>What?? - Status</h1>
+							<img class="noborder" src="img/caniuse.jpg">
+							<p style="font-size:40%"><a href="http://caniuse.com/#search=audio-api">http://caniuse.com/#search=audio-api</a> </p>
 
 					</section>
 
 					<section data-markdown>
-						## Why??
+						# Why??
+					</section>
+
+					<section>
+						<h2>Why Audio on the Web?? </h2>
+						<br>
+						<h3>&rarr; Distribution</h3>
+						<br>
+						<ul>
+							<li>Cross Platform (Mobile, Desktop, etc)</li>
+							<li>Share via a URL</li>
+							<li>Eg.<a href="http://animatedsoundworks.com:8001/?modelname=jsaSound/jsaModels/SoD/Dragster&Revs=254.11&Badness=131.84&Gain=0.79"> Animated SoundWorks</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Why Audio on the Web?? </h2>
+						<br>
+						<h3>&rarr; Collaboration</h3>
+						<br>
+						<ul>
+							<li>Real-time control (WebSockets)</li>
+							<li>Real-time collaboration (WebRTC)</li>
+							<li>Eg. <a href="https://www.soundtrap.com/">SoundTrap</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Why Audio on the Web?? </h2>
+						<br>
+						<h3>&rarr; Expression</h3>
+						<br>
+						<ul>
+							<li>Integration with visual elements</li>
+							<li>Integration with interactive elements</li>
+							<li>Eg. <a href="http://sonoport.com/showcase/alien/"> Allen the Alien </a> </li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Why in the browser??</h2>
+						<br>
+						<h3>&rarr; Open Standards</h3>
+						<br>
+						<ul>
+							<li>Flash <span class="underline"><strong>sucked</strong></span> for doing real-time audio</li>
+							<li>Dependency on Adobe + Browser Vendor</li>
+							<li>No visbility/control over changes and features</li>
+						</ul>
 					</section>
 
 					<section data-markdown>
-						## Why?? - Open Standards
-					</section>
-
-					<section data-markdown>
-						## Why?? - Distrubution
-					</section>
-
-					<section data-markdown>
-						## Why?? - Collaboration
-					</section>
-
-					<section data-markdown>
-						## How??
+						# How??
 					</section>
 
 					<section data-markdown>
 						## How?? - Basics
 					</section>
 
+					<section>
+						<h2><em>"signal routing graph paradigm"</em></h2>
+						<div>
+							<img class="noborder" src="http://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing1.png">
+						</div>
+						<div>
+							<img class="noborder" src="http://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing2.png">
+						</div>
+					</section>
+
+					<section>
+						<h2>How?? - Implementation</h2>
+						<br>
+						<h4> &rarr; Javascript API</h3>
+						<pre>
+							<code>
+	// Create Context and Nodex
+	var audioCtx = new AudioContext();
+	var oscillator = audioCtx.createOscillator();
+	var filter = context.createBiquadFilter();
+
+	// Set parameter values
+	oscillator.detune.value = -400;
+	filter.type = filter.LOWPASS;
+	filter.frequency.value = 5000;
+
+	// Connect nodes
+	oscillator.connect(filter);
+	filter.connect(audioCtx.destination);
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>How?? - Implementation</h2>
+						<br>
+						<h4> &rarr; Audio Processing done at a lower level (C++/ASM)</h3>
+						<img class="noborder" style="width:85%; margin-bottom:0px;" src="img/webaudio.jpg">
+						<p style="font-size:40%"><a href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/platform/audio/FFTFrame.cpp&sq=package:chromium&q=FFTFrame.cpp&l=1"> &mdash; Chrome Source</a> </p>
+
+					</section>
+
+					<section >
+						<h2>How?? - Implementation</h2>
+						<br>
+						<h4> &rarr; Realtime (Callback Based)</h3>
+						<pre>
+							<code>
+	var sp = context.createScriptProcessor();
+	sp.onprocess = function (processEvent){
+		/* fill your own buffer */
+		var out = autoTune(processEvent.inputBuffers);
+		processEvent.outputBuffers = out;
+	}
+	sp.connect(context.destination);
+							</code>
+						</pre>
+					</section>
+
+					<section data-markdown>
+						## How?? - Nodes
+						- 3 Types of Nodes (Source, Effect, Destination).
+						- Each node exposes Parameters.
+						- Connect Nodes in all sort of configuration.
+					</section>
+
+					<section data-markdown>
+						## How?? - Sources
+
+						- Oscillator
+						- AudioBufferSource
+						- MediaElementAudioSource
+						- MediaStreamAudioSource
+					</section>
+
+					<section data-markdown>
+						## How?? - Effects
+
+						- Gain
+						- BiquadFilter
+						- Delay
+						- Analyser (FFT)
+						- StereoPanner
+						- Panner (3D-Panner)
+						- Convolver
+						- WaveShaper
+						- DynamicsCompressor
+					</section>
+
+						<section data-markdown>
+						## How?? - Destination
+
+						- Destination (loudspeaker)
+						- Offline Destination (pre-render)
+						- MediaStreamAudioDestination
+					</section>
+
+					<section>
+						<h2> How?? - Parameters</h2>
+						<br>
+						<h4 style="font-size: 90%"> &rarr; Automation (synchronous automated value change) </h4>
+						<pre>
+							<code>
+ playRate.setValueAtTime(2, 5);
+ frequency.linearRampToValueAtTime(400, 2);
+ delayTime.exponentialRampToValueAtTime(3.1, 10);
+ pan.setTargetAtTime(-1, 7.2);
+ gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2> How?? - Parameters</h2>
+
+						<h4> &rarr; Connect Nodes to Parameters </h4>
+
+						<pre>
+							<code>
+	var osc = context.createOscillator();
+	var gain = context.createGain();
+
+	// Connect oscillator to gain
+	osc.connect(gain.gain);
+
+	// Connect buffer to gain and gain to output
+	buffer.connect(gain);
+	gain.connect(context.destination);
+							</code>
+						</pre>
+					</section>
+
 					<section data-markdown>
 						## How?? - Libraries
 					</section>
 
+					<section>
+						<h2> Tone.js </h2>
+						<img class="noborder" style="width:75%; margin-bottom:0px;" src="img/tonejs.jpg">
+						<p style="font-size:40%"><a href="https://github.com/TONEnoTONE/Tone.js/"> &mdash; Tone.js</a> </p>
+					</section>
+
+					<section>
+						<h2> SoundModels </h2>
+						<img class="noborder" style="width:65%; margin-bottom:0px;" src="img/soundmodels.jpg">
+						<p style="font-size:40%"><a href="https://github.com/Sonoport/soundmodels"> &mdash; SoundModels</a> </p>
+					</section>
+
+					<section>
+						<h2> BabylonJS </h2>
+						<img class="noborder" src="img/babylonjs.jpg">
+						<p style="font-size:40%"><a href="http://www.babylonjs-playground.com/#PCY1J#4"> &mdash; BabylonJS</a> </p>
+					</section>
+
 					<section data-markdown>
 						## How?? - Tools
+					</section>
+
+					<section data-markdown>
+						## Demos
 					</section>
 
 					<section data-markdown>
@@ -209,7 +398,7 @@
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: true,

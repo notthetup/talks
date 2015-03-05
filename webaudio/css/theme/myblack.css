@@ -288,6 +288,7 @@ ul.nobullet li{
 }
 
 .reveal img.noborder {
+  background: none;
   border: none;
   box-shadow: none;
 }

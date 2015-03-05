@@ -322,6 +322,61 @@
  gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)
 							</code>
 						</pre>
+						<button id="playButton" style="padding : 15px;"> ▶❚❚</button>
+						<button id="upButton" style="padding : 15px;">Fast Ramp Up</button>
+						<button id="dwButton" style="padding : 15px;">Slow Ramp Down</button>
+						<script type="text/javascript">
+							window.AudioContext = AudioContext || webkitAudioContext;
+							var button = document.getElementById("playButton");
+							var upbutton = document.getElementById("upButton");
+							var dwbutton = document.getElementById("dwButton");
+							var playState = "stopped";
+							var context = new AudioContext();
+							var osc = context.createOscillator();
+							var gain = context.createGain();
+							osc.frequency.setValueAtTime(100, context.currentTime);
+							gain.gain.value = 0.2;
+							osc.connect(gain);
+							gain.connect(context.destination);
+
+							var playTone = function(){
+								osc.start(0);
+								console.log("starting");
+							}
+
+							var stopTone = function(){
+								osc.stop(0);
+								osc.disconnect();
+								osc = context.createOscillator();
+								osc.connect(gain);
+								console.log("stopping");
+							}
+
+							button.addEventListener('click', function() {
+								if (playState == "stopped"){
+									playTone();
+									playState = "playing";
+								}
+								else if (playState == "playing"){
+									stopTone();
+									playState = "stopped";
+								}
+							});
+
+							upbutton.addEventListener('click', function() {
+								var currentVal = osc.frequency.value;
+								osc.frequency.cancelScheduledValues(context.currentTime);
+								osc.frequency.value = currentVal;
+								osc.frequency.linearRampToValueAtTime(1000, context.currentTime+5);
+							});
+
+							dwbutton.addEventListener('click', function() {
+								var currentVal = osc.frequency.value;
+								osc.frequency.cancelScheduledValues(context.currentTime);
+								osc.frequency.value = currentVal;
+								osc.frequency.setTargetAtTime(100, context.currentTime, 5);
+							});
+						</script>
 					</section>
 
 					<section>
@@ -370,8 +425,30 @@
 						## How?? - Tools
 					</section>
 
+					<section>
+						<h2> Firefox WebAudio Inspector </h2>
+						<img class="noborder" src="img/firefox.jpg">
+					</section>
+
+					<section>
+						<h2> RecorderJS </h2>
+						<img class="noborder" src="img/recorderjs.jpg">
+						<p style="font-size:40%"><a href="http://www.babylonjs-playground.com/#PCY1J#4"> &mdash; Recorderjs</a> </p>
+					</section>
+
+					<section>
+						<h2> ?? </h2>
+						<img class="noborder" src="img/babylonjs.jpg">
+						<p style="font-size:40%"><a href=""> &mdash; ?? </a> </p>
+					</section>
+
 					<section data-markdown>
 						## Demos
+
+						- [Pentaphone](https://billgathen.github.io/pentaphone/dist/index.html)
+						- [PaulStretch](http://sebpiq.github.io/paulstretch.js/examples/stretched-and-droned)
+						- [BirdWalker](- http://birdwalker.com:9090/quartet.html)
+						- [Bird Sound Synthesis](http://chinpen.net/birds/)
 					</section>
 
 					<section data-markdown>
@@ -379,6 +456,25 @@
 
 						_http://chinpen.net/talks_
 					</section>
+
+					<section data-markdown>
+						## Bonus Resources
+
+						- Web Audio Book :
+						http://chimera.labs.oreilly.com/books/1234000001552
+
+						- HTML5 Audio :
+						http://www.html5audio.org
+
+						- Web Audio in Nodejs??
+						https://github.com/sebpiq/node-web-audio-api
+
+						- Open Music
+						https://github.com/openmusic
+
+						- Web Audio Weekly Mailing List
+						http://blog.chrislowis.co.uk/waw.html
+						</section>
 
 			</div>
 		</div>
@@ -388,8 +484,8 @@
 
 		<script type="text/javascript">
 			Reveal.addEventListener( 'fragmentshown', function( event ) {
-			   if (event.fragment.id == "objembed")
-			    AudioPlayer.embed("audioplayer", {soundFile: "http://localhost:8000/audio/deep10.mp3"});
+				 if (event.fragment.id == "objembed")
+					AudioPlayer.embed("audioplayer", {soundFile: "http://localhost:8000/audio/deep10.mp3"});
 			} );
 		</script>
 

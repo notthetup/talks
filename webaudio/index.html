@@ -421,7 +421,6 @@
 						<span style="font-size: 50%">Carrier :</span>
 						<input type="range" min="50" max="3000" value="300" id="fmCarrierSlider">
 						<script type="text/javascript">
-							window.AudioContext = AudioContext || webkitAudioContext;
 							var ambutton = document.getElementById("amPlayButton");
 							var fmbutton = document.getElementById("fmPlayButton");
 							var amMessageSlider = document.getElementById("amMessageSlider");
@@ -429,7 +428,6 @@
 							var fmMessageSlider = document.getElementById("fmMessageSlider");
 							var fmCarrierSlider = document.getElementById("fmCarrierSlider");
 							var playState = "stopped";
-							var context = new AudioContext();
 
 							//AM
 							var oscAMMsg = context.createOscillator();
@@ -457,7 +455,7 @@
 							var oscFMMsg = context.createOscillator();
 							var oscFMCar = context.createOscillator();
 							var gainFM = context.createGain();
-							gainFM.gain.value = 10;
+							gainFM.gain.value = 100;
 							oscFMCar.connect(context.destination);
 							oscFMMsg.connect(gainFM);
 							gainFM.connect(oscFMCar.frequency);
@@ -502,22 +500,22 @@
 
 							amMessageSlider.addEventListener('input', function() {
 								console.log("Changing AM Msg freq to ", amMessageSlider.value)
-								oscAMMsg.frequency = parseFloat(amMessageSlider.value);
+								oscAMMsg.frequency.value = parseFloat(amMessageSlider.value);
 							});
 
 							amCarrierSlider.addEventListener('input', function() {
 								console.log("Changing AM Car freq to ", amCarrierSlider.value)
-								oscAMCar.frequency = parseFloat(amCarrierSlider.value);
+								oscAMCar.frequency.value = parseFloat(amCarrierSlider.value);
 							});
 
 							fmMessageSlider.addEventListener('input', function() {
 								console.log("Changing FM Msg freq to ", fmMessageSlider.value)
-								oscFMMsg.frequency = parseFloat(fmMessageSlider.value);
+								oscFMMsg.frequency.value = parseFloat(fmMessageSlider.value);
 							});
 
 							fmCarrierSlider.addEventListener('input', function() {
 								console.log("Changing FM Car freq to ", fmCarrierSlider.value)
-								oscFMCar.frequency = parseFloat(fmCarrierSlider.value);
+								oscFMCar.frequency.value = parseFloat(fmCarrierSlider.value);
 							});
 
 

@@ -322,6 +322,7 @@
  gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)
 							</code>
 						</pre>
+						<hr>
 						<button id="playButton" style="padding : 15px;"> ▶❚❚</button>
 						<button id="upButton" style="padding : 15px;">Fast Ramp Up</button>
 						<button id="dwButton" style="padding : 15px;">Slow Ramp Down</button>
@@ -366,15 +367,15 @@
 							upbutton.addEventListener('click', function() {
 								var currentVal = osc.frequency.value;
 								osc.frequency.cancelScheduledValues(context.currentTime);
-								osc.frequency.value = currentVal;
-								osc.frequency.linearRampToValueAtTime(1000, context.currentTime+5);
+								osc.frequency.setValueAtTime(currentVal, context.currentTime);
+								osc.frequency.linearRampToValueAtTime(1000, context.currentTime+2);
 							});
 
 							dwbutton.addEventListener('click', function() {
 								var currentVal = osc.frequency.value;
 								osc.frequency.cancelScheduledValues(context.currentTime);
-								osc.frequency.value = currentVal;
-								osc.frequency.setTargetAtTime(100, context.currentTime, 5);
+								osc.frequency.setValueAtTime(currentVal, context.currentTime);
+								osc.frequency.setTargetAtTime(100, context.currentTime, 15);
 							});
 						</script>
 					</section>
@@ -397,6 +398,122 @@
 	gain.connect(context.destination);
 							</code>
 						</pre>
+						<hr>
+						AM :
+						<button id="amPlayButton" style="padding : 15px;"> ▶❚❚</button>
+						<span style="font-size: 50%">Message :</span>
+						<input type="range" min="0" max="30" value="10" id="amMessageSlider">
+						<span style="font-size: 50%">Carrier :</span>
+						<input type="range" min="50" max="3000" value="300" id="amCarrierSlider">
+						<hr>
+						FM :
+						<button id="fmPlayButton" style="padding : 15px;"> ▶❚❚</button>
+						<span style="font-size: 50%">Message :</span>
+						<input type="range" min="0" max="30" value="10" id="fmMessageSlider">
+						<span style="font-size: 50%">Carrier :</span>
+						<input type="range" min="50" max="3000" value="300" id="fmCarrierSlider">
+						<script type="text/javascript">
+							window.AudioContext = AudioContext || webkitAudioContext;
+							var ambutton = document.getElementById("amPlayButton");
+							var fmbutton = document.getElementById("fmPlayButton");
+							var amMessageSlider = document.getElementById("amMessageSlider");
+							var amCarrierSlider = document.getElementById("amCarrierSlider");
+							var fmMessageSlider = document.getElementById("fmMessageSlider");
+							var fmCarrierSlider = document.getElementById("fmCarrierSlider");
+							var playState = "stopped";
+							var context = new AudioContext();
+
+							//AM
+							var oscAMMsg = context.createOscillator();
+							var oscAMCar = context.createOscillator();
+							var gainAM = context.createGain();
+							oscAMCar.connect(gainAM);
+							gainAM.connect(context.destination);
+							oscAMMsg.connect(gainAM.gain);
+							oscAMMsg.start(0);
+
+							var playAM = function(){
+								oscAMCar.start(0);
+								console.log("starting AM");
+							}
+
+							var stopAM = function(){
+								oscAMCar.stop(0);
+								oscAMCar.disconnect();
+								oscAMCar = context.createOscillator();
+								oscAMCar.connect(gainAM);
+								console.log("stopping AM");
+							}
+
+							//FM
+							var oscFMMsg = context.createOscillator();
+							var oscFMCar = context.createOscillator();
+							var gainFM = context.createGain();
+							gainFM.gain.value = 10;
+							oscFMCar.connect(context.destination);
+							oscFMMsg.connect(gainFM);
+							gainFM.connect(oscFMCar.frequency);
+							oscFMMsg.start(0);
+
+							var playFM = function(){
+								oscFMCar.start(0);
+								console.log("starting FM");
+							}
+
+							var stopFM = function(){
+								oscFMCar.stop(0);
+								oscFMCar.disconnect();
+								oscFMCar = context.createOscillator();
+								oscFMCar.connect(context.destination);
+								gainAM.connect(oscFMCar.frequency);
+								console.log("stopping FM");
+							}
+
+
+							ambutton.addEventListener('click', function() {
+								if (playState == "stopped"){
+									playAM();
+									playState = "amplaying";
+								}
+								else if (playState == "amplaying"){
+									stopAM();
+									playState = "stopped";
+								}
+							});
+
+							fmbutton.addEventListener('click', function() {
+								if (playState == "stopped"){
+									playFM();
+									playState = "fmplaying";
+								}
+								else if (playState == "fmplaying"){
+									stopFM();
+									playState = "stopped";
+								}
+							});
+
+							amMessageSlider.addEventListener('input', function() {
+								console.log("Changing AM Msg freq to ", amMessageSlider.value)
+								oscAMMsg.frequency = parseFloat(amMessageSlider.value);
+							});
+
+							amCarrierSlider.addEventListener('input', function() {
+								console.log("Changing AM Car freq to ", amCarrierSlider.value)
+								oscAMCar.frequency = parseFloat(amCarrierSlider.value);
+							});
+
+							fmMessageSlider.addEventListener('input', function() {
+								console.log("Changing FM Msg freq to ", fmMessageSlider.value)
+								oscFMMsg.frequency = parseFloat(fmMessageSlider.value);
+							});
+
+							fmCarrierSlider.addEventListener('input', function() {
+								console.log("Changing FM Car freq to ", fmCarrierSlider.value)
+								oscFMCar.frequency = parseFloat(fmCarrierSlider.value);
+							});
+
+
+						</script>
 					</section>
 
 					<section data-markdown>
@@ -432,14 +549,14 @@
 
 					<section>
 						<h2> RecorderJS </h2>
-						<img class="noborder" src="img/recorderjs.jpg">
-						<p style="font-size:40%"><a href="http://www.babylonjs-playground.com/#PCY1J#4"> &mdash; Recorderjs</a> </p>
+						<img class="noborder" style="width:70%;" src="img/recorderjs.jpg">
+						<p style="font-size:40%"><a href="https://github.com/mattdiamond/Recorderjs"> &mdash; Recorderjs</a> </p>
 					</section>
 
 					<section>
-						<h2> ?? </h2>
-						<img class="noborder" src="img/babylonjs.jpg">
-						<p style="font-size:40%"><a href=""> &mdash; ?? </a> </p>
+						<h2> Braid </h2>
+						<img class="noborder" style="width:70%;" src="img/braid.jpg">
+						<p style="font-size:40%"><a href="www.nexusosc.com/drop/braid/"> &mdash; Braid </a> </p>
 					</section>
 
 					<section data-markdown>
@@ -447,7 +564,7 @@
 
 						- [Pentaphone](https://billgathen.github.io/pentaphone/dist/index.html)
 						- [PaulStretch](http://sebpiq.github.io/paulstretch.js/examples/stretched-and-droned)
-						- [BirdWalker](- http://birdwalker.com:9090/quartet.html)
+						- [BirdWalker](http://birdwalker.com:9090/quartet.html)
 						- [Bird Sound Synthesis](http://chinpen.net/birds/)
 					</section>
 
@@ -470,7 +587,7 @@
 						https://github.com/sebpiq/node-web-audio-api
 
 						- Open Music
-						https://github.com/openmusic
+						http://openmusic.github.io/
 
 						- Web Audio Weekly Mailing List
 						http://blog.chrislowis.co.uk/waw.html

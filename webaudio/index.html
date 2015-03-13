@@ -56,6 +56,30 @@
 						<hr>
 						<em>FOSSASIA 2015</em>
 					</section>
+					<section >
+						<h1>Web Audio</h1>
+						<img class="noborder" src="img/wa.png" width="20%">
+						<h4 class="strikeout">An emerging platform for Audio applications</h4></span>
+						<h4>How to make noise on the Web</h4>
+						<hr>
+						<em>FOSSASIA 2015</em>
+						<script src="js/cracked.min.js"></script>
+						<script type="text/javascript">
+							//set up some sounds
+
+							//lowpass filtered brown noise modulates the frequency of the sine
+							__().
+								brown().
+								lowpass({frequency:20,q:30}).
+								gain({gain:1000,modulates:"frequency"}).
+								sine(200).
+								dac(0);
+
+							//lfo modulates the frequency of the lowpass
+							__().lfo({frequency:0.15,gain:5}).connect("lowpass");
+							__("sine,brown,lfo").start();
+						</script>
+					</section>
 					<section>
 						<h2> About Me..</h2>
 
@@ -347,14 +371,14 @@
 							var context = new AudioContext();
 							var osc = context.createOscillator();
 							var gain = context.createGain();
-							osc.frequency.setValueAtTime(100, context.currentTime);
+							osc.frequency.setValueAtTime(500, context.currentTime);
 							gain.gain.value = 0.2;
 							osc.connect(gain);
 							gain.connect(context.destination);
 
 							var playTone = function(){
 								osc.start(0);
-								console.log("starting");
+								// console.log("starting");
 							}
 
 							var stopTone = function(){
@@ -362,7 +386,7 @@
 								osc.disconnect();
 								osc = context.createOscillator();
 								osc.connect(gain);
-								console.log("stopping");
+								// console.log("stopping");
 							}
 
 							button.addEventListener('click', function() {
@@ -380,14 +404,14 @@
 								var currentVal = osc.frequency.value;
 								osc.frequency.cancelScheduledValues(context.currentTime);
 								osc.frequency.setValueAtTime(currentVal, context.currentTime);
-								osc.frequency.linearRampToValueAtTime(1000, context.currentTime+2);
+								osc.frequency.linearRampToValueAtTime(2000, context.currentTime+2);
 							});
 
 							dwbutton.addEventListener('click', function() {
 								var currentVal = osc.frequency.value;
 								osc.frequency.cancelScheduledValues(context.currentTime);
 								osc.frequency.setValueAtTime(currentVal, context.currentTime);
-								osc.frequency.setTargetAtTime(100, context.currentTime, 15);
+								osc.frequency.setTargetAtTime(500, context.currentTime, 15);
 							});
 						</script>
 					</section>
@@ -444,7 +468,7 @@
 
 							var playAM = function(){
 								oscAMCar.start(0);
-								console.log("starting AM");
+								// console.log("starting AM");
 							}
 
 							var stopAM = function(){
@@ -452,7 +476,7 @@
 								oscAMCar.disconnect();
 								oscAMCar = context.createOscillator();
 								oscAMCar.connect(gainAM);
-								console.log("stopping AM");
+								// console.log("stopping AM");
 							}
 
 							//FM
@@ -467,7 +491,7 @@
 
 							var playFM = function(){
 								oscFMCar.start(0);
-								console.log("starting FM");
+								// console.log("starting FM");
 							}
 
 							var stopFM = function(){
@@ -476,7 +500,7 @@
 								oscFMCar = context.createOscillator();
 								oscFMCar.connect(context.destination);
 								gainAM.connect(oscFMCar.frequency);
-								console.log("stopping FM");
+								// console.log("stopping FM");
 							}
 
 
@@ -503,22 +527,22 @@
 							});
 
 							amMessageSlider.addEventListener('input', function() {
-								console.log("Changing AM Msg freq to ", amMessageSlider.value)
+								// console.log("Changing AM Msg freq to ", amMessageSlider.value)
 								oscAMMsg.frequency.value = parseFloat(amMessageSlider.value);
 							});
 
 							amCarrierSlider.addEventListener('input', function() {
-								console.log("Changing AM Car freq to ", amCarrierSlider.value)
+								// console.log("Changing AM Car freq to ", amCarrierSlider.value)
 								oscAMCar.frequency.value = parseFloat(amCarrierSlider.value);
 							});
 
 							fmMessageSlider.addEventListener('input', function() {
-								console.log("Changing FM Msg freq to ", fmMessageSlider.value)
+								// console.log("Changing FM Msg freq to ", fmMessageSlider.value)
 								oscFMMsg.frequency.value = parseFloat(fmMessageSlider.value);
 							});
 
 							fmCarrierSlider.addEventListener('input', function() {
-								console.log("Changing FM Car freq to ", fmCarrierSlider.value)
+								// console.log("Changing FM Car freq to ", fmCarrierSlider.value)
 								oscFMCar.frequency.value = parseFloat(fmCarrierSlider.value);
 							});
 
@@ -575,6 +599,7 @@
 						- [Pentaphone](https://billgathen.github.io/pentaphone/dist/index.html)
 						- [PaulStretch](http://sebpiq.github.io/paulstretch.js/examples/stretched-and-droned/dist/index.html)
 						- [BirdWalker](http://birdwalker.com:9090/quartet.html)
+						- [motionEmotion](http://motionemotion.herokuapp.com/)
 						- [Bird Sound Synthesis](http://chinpen.net/birds/)
 					</section>
 
@@ -614,6 +639,14 @@
 				 if (event.fragment.id == "objembed")
 					AudioPlayer.embed("audioplayer", {soundFile: "http://chinpen.net/talks/webaudio/audio/deep10.mp3"});
 			} );
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				if (event.indexh === 2){
+
+					__("dac").ramp(0.7, 0.05,"gain");
+				}else{
+					__("dac").ramp(0, 0.2,"gain");
+				}
+			});
 		</script>
 
 		<script>

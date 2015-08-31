@@ -5,6 +5,8 @@ Repository of slides for talks I have given.
 
 ## 2015
 
+- [WebAudio](http://notthetup.github.io/talks/webaudio-fossasia-2015) @ [FOSSASIA](http://fossasia.org/)
+
 - [Adventures in scheduling, buffers and parameters](http://notthetup.github.io/talks/wac-paper) @ [Web Audio Conference](http://wac.ircam.fr/index.html)
 
 ## 2014

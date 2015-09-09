@@ -39,7 +39,60 @@
 		<div class="reveal">
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+				</section>
+						<section >
+							<h1>Web Audio</h1>
+							<img class="noborder" src="img/wa.png" width="20%">
+							<h4>An emerging platform for Audio applications</h4>
+							<hr>
+							<em>FOSSASIA 2015</em>
+						</section>
+						<section >
+							<h1>Web Audio</h1>
+							<img class="noborder" src="img/wa.png" width="20%">
+							<h4 class="strikeout">An emerging platform for Audio applications</h4></span>
+							<h4>How to make noise on the Web</h4>
+							<hr>
+							<em>FOSSASIA 2015</em>
+							<script src="js/cracked.min.js"></script>
+							<script type="text/javascript">
+								//set up some sounds
 
+								//lowpass filtered brown noise modulates the frequency of the sine
+								__().
+									brown().
+									lowpass({frequency:20,q:30}).
+									gain({gain:1000,modulates:"frequency"}).
+									sine(200).
+									dac(0);
+
+								//lfo modulates the frequency of the lowpass
+								__().lfo({frequency:0.15,gain:5}).connect("lowpass");
+								__("sine,brown,lfo").start();
+							</script>
+						</section>
+						<section>
+							<h2> About Me..</h2>
+
+							<img class="noborder" src="img/chinmay.jpg">
+							<br>
+							<ul>
+								<li><a target="_blank" href="https://github.com/notthetup">Developer (Audio Technologies)</a></li>
+								<li>Podcast Host (<a target="_blank" href="http://live.webuild.sg">We Build Live</a> )</li>
+								<li><a target="_blank" href="https://www.facebook.com/groups/hackware">Hack hardware at night</a></li>
+								<li><a target="_blank" href="https://www.facebook.com/groups/paperswelovesg">Make trouble at local meetups</a></li>
+							</ul>
+
+						</section>
+
+						<section>
+							<h2> Agenda </h2>
+							<ul>
+								<li><span class="underline">What</span> is WebAudio??</li>
+								<li><span class="underline">Why</span> WebAudio matters??</li>
+								<li><span class="underline">How</span> to use WebAudio??</li>
+							</ul>
+						</section>
 
 			</div>
 

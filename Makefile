@@ -5,4 +5,4 @@ index.html: README.md
 	mv README.html index.html
 
 clean:
-	rm -rf README.html index.html
+	rm -rf index.html

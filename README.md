@@ -5,6 +5,8 @@ Repository of slides for talks I have given.
 
 ## 2015
 
+- [WebAudio](http://notthetup.github.io/talks/webaudio-geekcamp-2015) @ [GeekCamp](http://www.geekcamp.sg/) - 26th September 2015
+
 - [WebAudio](http://notthetup.github.io/talks/webaudio-fossasia-2015) @ [FOSSASIA](http://fossasia.org/) - 14th March 2015
 
 - [Adventures in scheduling, buffers and parameters](http://notthetup.github.io/talks/wac-paper) @ [Web Audio Conference](http://wac.ircam.fr/index.html) - 27th January 2015

@@ -1,228 +1,236 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>WebAudio</title>
+    <title>WebAudio</title>
 
-		<meta name="description" content="An emerging platform for Audio applications">
-		<meta name="author" content="Chinmay Pendharkar">
+    <meta name="description" content="An emerging platform for Audio applications">
+    <meta name="author" content="Chinmay Pendharkar">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
-		<link rel="stylesheet" href="css/theme/chinmay.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/theme/chinmay.css">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-		<script type="text/javascript" src="js/audio-player.js"></script>
-		<script type="text/javascript">
-			AudioPlayer.setup("http://chinpen.net/talks/webaudio/js/player.swf", {
-				width: 290
-			});
-		</script>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <script type="text/javascript" src="js/audio-player.js"></script>
+    <script type="text/javascript">
+      AudioPlayer.setup("http://chinpen.net/talks/webaudio/js/player.swf", {
+        width: 290
+      });
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-	<body>
+  <body>
 
-		<div class="reveal">
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<img class="noborder" src="img/wa.png">
-				</section>
-				<section >
-					<h1>Web Audio</h1>
-					<img class="noborder" src="img/wa.png" width="20%">
-					<h4>An emerging platform for Audio applications</h4>
-					<hr>
-					<em>Geekcamp 2015</em>
-				</section>
-				<section >
-					<h1>Web Audio</h1>
-					<img class="noborder" src="img/wa.png" width="20%">
-					<h4 class="strikeout">An emerging platform for Audio applications</h4></span>
-					<h4>How to make noise on the Web</h4>
-					<hr>
-					<em>Geekcamp 2015</em>
-					<script src="js/cracked.min.js"></script>
-					<script type="text/javascript">
-						//set up some sounds
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <img class="noborder" src="img/wa.png">
+        </section>
+        <section >
+          <h1>Web Audio</h1>
+          <img class="noborder" src="img/wa.png" width="20%">
+          <h4>An emerging platform for Audio applications</h4>
+          <hr>
+          <em>Geekcamp 2015</em>
+        </section>
+        <section >
+          <h1>Web Audio</h1>
+          <img class="noborder" src="img/wa.png" width="20%">
+          <h4 class="strikeout">An emerging platform for Audio applications</h4></span>
+          <h4>How to make noise on the Web</h4>
+          <hr>
+          <em>Geekcamp 2015</em>
+          <script src="js/cracked.min.js"></script>
+          <script type="text/javascript">
+            //set up some sounds
 
-						//lowpass filtered brown noise modulates the frequency of the sine
-						__().
-							brown().
-							lowpass({frequency:20,q:30}).
-							gain({gain:1000,modulates:"frequency"}).
-							sine(200).
-							dac(0);
+            //lowpass filtered brown noise modulates the frequency of the sine
+            __().
+              brown().
+              lowpass({frequency:20,q:30}).
+              gain({gain:1000,modulates:"frequency"}).
+              sine(200).
+              dac(0);
 
-						//lfo modulates the frequency of the lowpass
-						__().lfo({frequency:0.15,gain:5}).connect("lowpass");
-						__("sine,brown,lfo").start();
-					</script>
-				</section>
-				<section>
-					<h2> About Me..</h2>
+            //lfo modulates the frequency of the lowpass
+            __().lfo({frequency:0.15,gain:5}).connect("lowpass");
+            __("sine,brown,lfo").start();
+          </script>
+        </section>
+        <section>
+          <h2> About Me..</h2>
 
-					<img class="noborder" src="img/chinmay.jpg">
-					<br>
-					<ul>
-						<li><a target="_blank" href="https://github.com/notthetup">Developer (Audio Technologies)</a></li>
-						<li>Podcast Host (<a target="_blank" href="http://live.webuild.sg">We Build Live</a> )</li>
-						<li><a target="_blank" href="https://www.facebook.com/groups/hackware">Hack on hardware at night</a></li>
-						<li><a target="_blank" href="https://www.facebook.com/groups/paperswelovesg">Make trouble at local meetups</a></li>
-					</ul>
+          <img class="noborder" src="img/chinmay.jpg">
+          <br>
+          <ul>
+            <li><a target="_blank" href="https://github.com/notthetup">Developer (Audio Technologies)</a></li>
+            <li>Podcast Host (<a target="_blank" href="http://live.webuild.sg">We Build Live</a> )</li>
+            <li><a target="_blank" href="https://www.facebook.com/groups/hackware">Hack on hardware at night</a></li>
+            <li><a target="_blank" href="https://www.facebook.com/groups/paperswelovesg">Make trouble at local meetups</a></li>
+          </ul>
 
-				</section>
+        </section>
 
-				<section>
-					<h2> Agenda </h2>
-					<ul>
-						<li><span class="underline">What</span> is WebAudio??</li>
-						<li><span class="underline">Why</span> WebAudio matters??</li>
-						<li><span class="underline">How</span> to use WebAudio??</li>
-					</ul>
-				</section>
+        <section>
+          <h2> Agenda </h2>
+          <ul>
+            <li><span class="underline">What</span> is WebAudio??</li>
+            <li><span class="underline">Why</span> WebAudio matters??</li>
+            <li><span class="underline">How</span> to use WebAudio??</li>
+          </ul>
+        </section>
 
-				<section data-markdown>
-				# What??
-				</section>
+        <section data-markdown>
+        # What??
+        </section>
 
-				<section>
-					<h2> What?? - History</h2>
-					<div class="twocolumn-wrap">
-						<div class="twocolumn-left_col">
-							<ul>
-								<li class="fragment" data-fragment-index="0">bgsound</li>
-								<li class="fragment" data-fragment-index="2">&lt;object&gt; , &lt;embed&gt;</li>
-								<li class="fragment" data-fragment-index="4">&lt;audio&gt;</li>
-								<li class="fragment" data-fragment-index="6">Audio Data API</li>
-								<li class="fragment" data-fragment-index="8">Web Audio API</li>
-							</ul>
-						</div>
-						<div class="twocolumn-right_col">
-							<ul class="nobullet">
-								<li class="fragment" data-fragment-index="1"><img class="noborder" style="width:8%; background:none; margin:0 0 0 0;" src="img/ie.png"></li>
-								<li id="objembed" class="fragment" data-fragment-index="3" ><p id="audioplayer"></p><span style="font-size:40%"> &larr; Flash</span></li>
-								<li class="fragment" data-fragment-index="5"><audio controls=controls src="audio/deep10.mp3"></audio><span style="font-size:40%"> &larr; HTML5</span></li>
-								<li class="fragment" data-fragment-index="7"><img class="noborder" style="width:25%; background:none; margin:0 0 0 0;" src="img/ff.png"></li>
-								<li class="fragment" data-fragment-index="9"><img class="noborder" style="width:10%; background:none; margin:0 0 0 0;" src="img/wa.png"></li>
-							</ul>
+        <section data-markdown>
+        ## What is WebAudio??
 
-						</div>
-					</div>
-				</section>
+        - Brower API
+        - One of the "HTML5" family of APIs
+        - Create, Manipulate and output Audio in the Browser
+        </section>
 
-				<section>
-					<h2>What?? - Philosophy</h2>
-					<em>
-						... include the capabilities found in modern game audio engines as well as some of the <span style="color:yellow;">mixing</span>, <span style="color:yellow;">processing</span>, and <span style="color:yellow;">filtering</span> tasks that are found in modern desktop audio production applications.
-					</em>
-					<p><span style="font-size:60%"> &mdash; W3C WebAudio Draft Spec </span></p>
-				</section>
+        <section>
+          <h2> What?? - History</h2>
+          <div class="twocolumn-wrap">
+            <div class="twocolumn-left_col">
+              <ul>
+                <li class="fragment" data-fragment-index="0"><code>bgsound</code></li>
+                <li class="fragment" data-fragment-index="2"><code>&lt;object&gt; , &lt;embed&gt;</code></li>
+                <li class="fragment" data-fragment-index="4"><code>&lt;audio&gt;</code></li>
+                <li class="fragment" data-fragment-index="6">Audio Data API</li>
+                <li class="fragment" data-fragment-index="8">Web Audio API</li>
+              </ul>
+            </div>
+            <div class="twocolumn-right_col">
+              <ul class="nobullet">
+                <li class="fragment" data-fragment-index="1"><img class="noborder" style="width:8%; background:none; margin:0 0 0 0;" src="img/ie.png"></li>
+                <li id="objembed" class="fragment" data-fragment-index="3" ><p id="audioplayer"></p><span style="font-size:40%"> &larr; Flash</span></li>
+                <li class="fragment" data-fragment-index="5"><audio controls=controls src="audio/deep10.mp3"></audio><span style="font-size:40%"> &larr; HTML5</span></li>
+                <li class="fragment" data-fragment-index="7"><img class="noborder" style="width:25%; background:none; margin:0 0 0 0;" src="img/ff.png"></li>
+                <li class="fragment" data-fragment-index="9"><img class="noborder" style="width:10%; background:none; margin:0 0 0 0;" src="img/wa.png"></li>
+              </ul>
 
-				<section>
-					<h2>What?? - Status</h1>
-					<img class="noborder" src="img/waa.jpg" width="100%">
-				</section>
+            </div>
+          </div>
+        </section>
 
-				<section>
-					<h2>What?? - Status</h1>
-						<img class="noborder" src="img/caniuse.jpg">
-						<p style="font-size:40%"><a target="_blank" href="http://caniuse.com/#search=audio-api">http://caniuse.com/#search=audio-api</a> </p>
-				</section>
+        <section>
+          <h2>What?? - Philosophy</h2>
+          <em>
+            ... include the capabilities found in modern game audio engines as well as some of the <span style="color:yellow;">mixing</span>, <span style="color:yellow;">processing</span>, and <span style="color:yellow;">filtering</span> tasks that are found in modern desktop audio production applications.
+          </em>
+          <p><span style="font-size:60%"> &mdash; W3C WebAudio Draft Spec </span></p>
+        </section>
 
-				<section data-markdown>
-					# Why??
-				</section>
+        <section>
+          <h2>What?? - Status</h1>
+          <img class="noborder" src="img/waa.jpg" width="100%">
+        </section>
 
-				<section>
-					<h2>Why Audio on the Web?? </h2>
-					<br>
-					<h3>&rarr; Distribution</h3>
-					<br>
-					<ul>
-						<li>Cross Platform (Mobile, Desktop, etc)</li>
-						<li>Share via a URL</li>
-						<li>Eg.<a target="_blank" href="http://animatedsoundworks.com:8001/?modelname=jsaSound/jsaModels/SoD/Dragster&Revs=254.11&Badness=131.84&Gain=0.79"> Animated SoundWorks</a></li>
-					</ul>
-				</section>
+        <section>
+          <h2>What?? - Status</h1>
+            <img class="noborder" src="img/caniuse.jpg">
+            <p style="font-size:40%"><a target="_blank" href="http://caniuse.com/#search=audio-api">http://caniuse.com/#search=audio-api</a> </p>
+        </section>
 
-				<section>
-					<h2>Why Audio on the Web?? </h2>
-					<br>
-					<h3>&rarr; Collaboration</h3>
-					<br>
-					<ul>
-						<li>Real-time control (WebSockets)</li>
-						<li>Peer-to-Peer collaboration (WebRTC)</li>
-						<li>Eg. <a target="_blank" href="https://www.soundtrap.com/">SoundTrap</a></li>
-					</ul>
-				</section>
+        <section data-markdown>
+          # Why??
+        </section>
 
-				<section>
-					<h2>Why Audio on the Web?? </h2>
-					<br>
-					<h3>&rarr; Expression</h3>
-					<br>
-					<ul>
-						<li>Integration with visual elements</li>
-						<li>Integration with interactive elements</li>
-						<li>Eg. <a target="_blank" href="http://sonoport.com/showcase/alien/"> Allen the Alien </a> </li>
-					</ul>
-				</section>
+        <section>
+          <h2>Why Audio on the Web?? </h2>
+          <br>
+          <h3>&rarr; Distribution</h3>
+          <br>
+          <ul>
+            <li>Cross Platform (Mobile, Desktop, etc)</li>
+            <li>Share via a URL</li>
+            <li>Eg.<a target="_blank" href="http://animatedsoundworks.com:8001/?modelname=jsaSound/jsaModels/SoD/Dragster&Revs=254.11&Badness=131.84&Gain=0.79"> Animated SoundWorks</a></li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>Why in the browser??</h2>
-					<br>
-					<h3>&rarr; Open Standards</h3>
-					<br>
-					<ul>
-						<li>Flash <span class="underline"><strong>sucked</strong></span> at doing real-time audio</li>
-						<li>Dependency on Adobe + Browser Vendor</li>
-						<li>No visbility/control over changes and features</li>
-					</ul>
-				</section>
+        <section>
+          <h2>Why Audio on the Web?? </h2>
+          <br>
+          <h3>&rarr; Collaboration</h3>
+          <br>
+          <ul>
+            <li>Real-time control (WebSockets)</li>
+            <li>Peer-to-Peer collaboration (WebRTC)</li>
+            <li>Eg. <a target="_blank" href="https://www.soundtrap.com/">SoundTrap</a></li>
+          </ul>
+        </section>
 
-				<section data-markdown>
-					## How?? - Basics
-				</section>
+        <section>
+          <h2>Why Audio on the Web?? </h2>
+          <br>
+          <h3>&rarr; Expression</h3>
+          <br>
+          <ul>
+            <li>Integration with visual elements</li>
+            <li>Integration with interactive elements</li>
+            <li>Eg. <a target="_blank" href="http://sonoport.com/showcase/aliendemojs/"> Allen the Alien </a> </li>
+          </ul>
+        </section>
 
-				<section>
-					<h2><em>"signal routing graph paradigm"</em></h2>
-					<div>
-						<img class="noborder" src="http://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing1.png">
-					</div>
-					<div>
-						<img class="noborder" src="http://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing2.png">
-					</div>
-				</section>
+        <section>
+          <h2>Why in the browser??</h2>
+          <br>
+          <h3>&rarr; Open Standards</h3>
+          <br>
+          <ul>
+            <li>Flash <span class="underline"><strong>sucked</strong></span> at doing real-time audio</li>
+            <li>Dependency on Adobe + Browser Vendor</li>
+            <li>No visbility/control over changes and features</li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>How?? - Implementation</h2>
-					<br>
-					<h4> &rarr; Javascript API</h3>
-					<pre>
-						<code>
+        <section data-markdown>
+          ## How?? - Basics
+        </section>
+
+        <section>
+          <h2><em>"signal routing graph paradigm"</em></h2>
+          <div>
+            <img class="noborder" src="http://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing1.png">
+          </div>
+          <div>
+            <img class="noborder" src="http://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/images/modular-routing2.png">
+          </div>
+        </section>
+
+        <section>
+          <h2>How?? - Implementation</h2>
+          <br>
+          <h4> &rarr; Javascript API</h3>
+          <pre>
+            <code>
 // Create Context and Nodex
 var audioCtx = new AudioContext();
 var oscillator = audioCtx.createOscillator();
@@ -236,170 +244,192 @@ filter.frequency.value = 5000;
 // Connect nodes
 oscillator.connect(filter);
 filter.connect(audioCtx.destination);
-						</code>
-					</pre>
-				</section>
+            </code>
+          </pre>
+        </section>
 
-				<section>
-					<h2>How?? - Implementation</h2>
-					<br>
-					<h4> &rarr; Audio Processing done at a lower level (C++/ASM)</h3>
-					<img class="noborder" style="width:85%; margin-bottom:0px;" src="img/webaudio.jpg">
-					<p style="font-size:40%"><a target="_blank" href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/platform/audio/FFTFrame.cpp&sq=package:chromium&q=FFTFrame.cpp&l=1"> &mdash; Chrome Source</a> </p>
+        <section>
+          <h2>How?? - Implementation</h2>
+          <br>
+          <h4> &rarr; Audio Processing done at a lower level (C++/ASM)</h3>
+          <img class="noborder" style="width:85%; margin-bottom:0px;" src="img/webaudio.jpg">
+          <p style="font-size:40%"><a target="_blank" href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/platform/audio/FFTFrame.cpp&sq=package:chromium&q=FFTFrame.cpp&l=1"> &mdash; Chrome Source</a> </p>
 
-				</section>
+        </section>
 
-				<section >
-					<h2>How?? - Implementation</h2>
-					<br>
-					<h4> &rarr; Realtime (Callback Based)</h3>
-					<pre>
-						<code>
+        <section >
+          <h2>How?? - Implementation</h2>
+          <br>
+          <h4> &rarr; Realtime (Callback Based)</h3>
+          <pre>
+            <code>
 var sp = context.createScriptProcessor();
 sp.onprocess = function (processEvent){
-	/* fill your own buffer */
-	var out = autoTune(processEvent.inputBuffers);
-	processEvent.outputBuffers = out;
+  /* fill your own buffer */
+  var out = autoTune(processEvent.inputBuffers);
+  processEvent.outputBuffers = out;
 }
 sp.connect(context.destination);
-						</code>
-					</pre>
-				</section>
+            </code>
+          </pre>
+        </section>
 
-				<section data-markdown>
-					## How?? - Nodes
-					- 3 Types of Nodes (Source, Effect, Destination).
-					- Each node exposes Parameters.
-					- Connect Nodes in all sort of configuration.
-				</section>
+        <section data-markdown>
+          ## How?? - Nodes
+          - 2 Categories of Nodes (Native, Javascript)
+          - 3 Types of Nodes (Source, Effect, Destination).
+          - Each node exposes Parameters.
+          - Connect Nodes in all sort of configuration.
+        </section>
 
-				<section>
-					<h2>How?? - Nodes : Connections</h2>
-					<img class="noborder" src="img/connections-basic.jpg">
-				</section>
+        <section >
+          <h2> How?? - Node : Categories </h2>
+          <div class="twocolumn-wrap">
+            <div class="twocolumn-left_col">
+              <h4> <em>Native Nodes</em></h4>
+              <ul>
+                <li>Oscillator</li>
+                <li>Filter</li>
+                <li>Delay</li>
+                <li>... (many more)</li>
+              </ul>
+            </div>
+            <div class="twocolumn-right_col">
+              <h4> <em>Javascript Node</em></h4>
+              <ul>
+                <li>ScriptProcessor</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-				<section>
-					<h2>How?? - Nodes : Connections</h2>
-					<img class="noborder" src="img/connections.jpg">
-				</section>
+        <section data-markdown>
+          ## How?? - Sources
 
-				<section data-markdown>
-					## How?? - Sources
+          - Oscillator
+          - AudioBufferSource
+          - MediaElementAudioSource
+          - MediaStreamAudioSource
+        </section>
 
-					- Oscillator
-					- AudioBufferSource
-					- MediaElementAudioSource
-					- MediaStreamAudioSource
-				</section>
+        <section data-markdown>
+          ## How?? - Effects
 
-				<section data-markdown>
-					## How?? - Effects
+          - Gain
+          - BiquadFilter
+          - Delay
+          - Analyser (FFT)
+          - StereoPanner
+          - Panner (3D-Panner)
+          - Convolver
+          - WaveShaper
+          - DynamicsCompressor
+        </section>
 
-					- Gain
-					- BiquadFilter
-					- Delay
-					- Analyser (FFT)
-					- StereoPanner
-					- Panner (3D-Panner)
-					- Convolver
-					- WaveShaper
-					- DynamicsCompressor
-				</section>
+        <section data-markdown>
+          ## How?? - Destination
 
-				<section data-markdown>
-					## How?? - Destination
+          - Destination (loudspeaker)
+          - Offline Destination (pre-render)
+          - MediaStreamAudioDestination
+        </section>
 
-					- Destination (loudspeaker)
-					- Offline Destination (pre-render)
-					- MediaStreamAudioDestination
-				</section>
+        <section>
+          <h2>How?? - Nodes : Connections</h2>
+          <img class="noborder" src="img/connections-basic.jpg">
+        </section>
 
-				<section>
-					<h2>Upcoming Changes</h2>
-					<br>
-					<p>ScriptProcessor &rarr; AudioWorker</p>
-					<br>
-					<p style="font-size:80%"> <em> ScriptProcessor inside a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/basic_usage">WebWorker</a> </em></p>
-				</section>
+        <section>
+          <h2>How?? - Nodes : Connections</h2>
+          <img class="noborder" src="img/connections.jpg">
+        </section>
 
-				<section>
-					<h2> How?? - Parameters</h2>
-					<br>
-					<h4 style="font-size: 90%"> &rarr; Automation (synchronous automated value change) </h4>
-					<pre>
-						<code>
+        <section>
+          <h2>Upcoming Changes</h2>
+          <br>
+          <p>ScriptProcessor &rarr; AudioWorker</p>
+          <br>
+          <p style="font-size:80%"> <em> ScriptProcessor inside a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/basic_usage">WebWorker</a> </em></p>
+        </section>
+
+        <section>
+          <h2> How?? - Parameters</h2>
+          <br>
+          <h4 style="font-size: 90%"> &rarr; Automation (synchronous automated value change) </h4>
+          <pre>
+            <code>
 playRate.setValueAtTime(2, 5);
 frequency.linearRampToValueAtTime(400, 2);
 delayTime.exponentialRampToValueAtTime(3.1, 10);
 pan.setTargetAtTime(-1, 7.2);
 gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)
-						</code>
-					</pre>
-					<hr>
-					<button id="playButton" style="padding : 15px;"> ▶❚❚</button>
-					<button id="upButton" style="padding : 15px;">Fast Ramp Up</button>
-					<button id="dwButton" style="padding : 15px;">Slow Ramp Down</button>
-					<script type="text/javascript">
-						window.AudioContext = AudioContext || webkitAudioContext;
-						var button = document.getElementById("playButton");
-						var upbutton = document.getElementById("upButton");
-						var dwbutton = document.getElementById("dwButton");
-						var playState = "stopped";
-						var context = new AudioContext();
-						var osc = context.createOscillator();
-						var gain = context.createGain();
-						osc.frequency.setValueAtTime(500, context.currentTime);
-						gain.gain.value = 0.2;
-						osc.connect(gain);
-						gain.connect(context.destination);
+            </code>
+          </pre>
+          <hr>
+          <button id="playButton" style="padding : 15px;"> ▶❚❚</button>
+          <button id="upButton" style="padding : 15px;">Fast Ramp Up</button>
+          <button id="dwButton" style="padding : 15px;">Slow Ramp Down</button>
+          <script type="text/javascript">
+            window.AudioContext = AudioContext || webkitAudioContext;
+            var button = document.getElementById("playButton");
+            var upbutton = document.getElementById("upButton");
+            var dwbutton = document.getElementById("dwButton");
+            var playState = "stopped";
+            var context = new AudioContext();
+            var osc = context.createOscillator();
+            var gain = context.createGain();
+            osc.frequency.setValueAtTime(500, context.currentTime);
+            gain.gain.value = 0.2;
+            osc.connect(gain);
+            gain.connect(context.destination);
 
-						var playTone = function(){
-							osc.start(0);
-							// console.log("starting");
-						}
+            var playTone = function(){
+              osc.start(0);
+              // console.log("starting");
+            }
 
-						var stopTone = function(){
-							osc.stop(0);
-							osc.disconnect();
-							osc = context.createOscillator();
-							osc.connect(gain);
-							// console.log("stopping");
-						}
+            var stopTone = function(){
+              osc.stop(0);
+              osc.disconnect();
+              osc = context.createOscillator();
+              osc.connect(gain);
+              // console.log("stopping");
+            }
 
-						button.addEventListener('click', function() {
-							if (playState == "stopped"){
-								playTone();
-								playState = "playing";
-							}
-							else if (playState == "playing"){
-								stopTone();
-								playState = "stopped";
-							}
-						});
+            button.addEventListener('click', function() {
+              if (playState == "stopped"){
+                playTone();
+                playState = "playing";
+              }
+              else if (playState == "playing"){
+                stopTone();
+                playState = "stopped";
+              }
+            });
 
-						upbutton.addEventListener('click', function() {
-							var currentVal = osc.frequency.value;
-							osc.frequency.cancelScheduledValues(context.currentTime);
-							osc.frequency.setValueAtTime(currentVal, context.currentTime);
-							osc.frequency.linearRampToValueAtTime(2000, context.currentTime+2);
-						});
+            upbutton.addEventListener('click', function() {
+              var currentVal = osc.frequency.value;
+              osc.frequency.cancelScheduledValues(context.currentTime);
+              osc.frequency.setValueAtTime(currentVal, context.currentTime);
+              osc.frequency.linearRampToValueAtTime(2000, context.currentTime+2);
+            });
 
-						dwbutton.addEventListener('click', function() {
-							var currentVal = osc.frequency.value;
-							osc.frequency.cancelScheduledValues(context.currentTime);
-							osc.frequency.setValueAtTime(currentVal, context.currentTime);
-							osc.frequency.setTargetAtTime(500, context.currentTime, 15);
-						});
-					</script>
-				</section>
+            dwbutton.addEventListener('click', function() {
+              var currentVal = osc.frequency.value;
+              osc.frequency.cancelScheduledValues(context.currentTime);
+              osc.frequency.setValueAtTime(currentVal, context.currentTime);
+              osc.frequency.setTargetAtTime(500, context.currentTime, 15);
+            });
+          </script>
+        </section>
 
-				<section>
-					<h2> How?? - Parameters</h2>
+        <section>
+          <h2> How?? - Parameters</h2>
 
-					<h4> &rarr; Connect Nodes to Parameters </h4>
+          <h4> &rarr; Connect Nodes to Parameters </h4>
 
-					<pre>
-						<code>
+          <pre>
+            <code>
 var osc = context.createOscillator();
 var gain = context.createGain();
 
@@ -409,257 +439,311 @@ osc.connect(gain.gain);
 // Connect buffer to gain and gain to output
 buffer.connect(gain);
 gain.connect(context.destination);
-						</code>
-					</pre>
-					<hr>
-					AM :
-					<button id="amPlayButton" style="padding : 15px;"> ▶❚❚</button>
-					<span style="font-size: 50%">Message :</span>
-					<input type="range" min="0" max="30" value="10" id="amMessageSlider">
-					<span style="font-size: 50%">Carrier :</span>
-					<input type="range" min="50" max="3000" value="300" id="amCarrierSlider">
-					<hr>
-					FM :
-					<button id="fmPlayButton" style="padding : 15px;"> ▶❚❚</button>
-					<span style="font-size: 50%">Message :</span>
-					<input type="range" min="0" max="30" value="10" id="fmMessageSlider">
-					<span style="font-size: 50%">Carrier :</span>
-					<input type="range" min="50" max="3000" value="300" id="fmCarrierSlider">
-					<script type="text/javascript">
-						var ambutton = document.getElementById("amPlayButton");
-						var fmbutton = document.getElementById("fmPlayButton");
-						var amMessageSlider = document.getElementById("amMessageSlider");
-						var amCarrierSlider = document.getElementById("amCarrierSlider");
-						var fmMessageSlider = document.getElementById("fmMessageSlider");
-						var fmCarrierSlider = document.getElementById("fmCarrierSlider");
-						var playState = "stopped";
+            </code>
+          </pre>
+          <hr>
+          AM :
+          <button id="amPlayButton" style="padding : 15px;"> ▶❚❚</button>
+          <span style="font-size: 50%">Message :</span>
+          <input type="range" min="0" max="30" value="10" id="amMessageSlider">
+          <span style="font-size: 50%">Carrier :</span>
+          <input type="range" min="50" max="3000" value="300" id="amCarrierSlider">
+          <hr>
+          FM :
+          <button id="fmPlayButton" style="padding : 15px;"> ▶❚❚</button>
+          <span style="font-size: 50%">Message :</span>
+          <input type="range" min="0" max="30" value="10" id="fmMessageSlider">
+          <span style="font-size: 50%">Carrier :</span>
+          <input type="range" min="50" max="3000" value="300" id="fmCarrierSlider">
+          <script type="text/javascript">
+            var ambutton = document.getElementById("amPlayButton");
+            var fmbutton = document.getElementById("fmPlayButton");
+            var amMessageSlider = document.getElementById("amMessageSlider");
+            var amCarrierSlider = document.getElementById("amCarrierSlider");
+            var fmMessageSlider = document.getElementById("fmMessageSlider");
+            var fmCarrierSlider = document.getElementById("fmCarrierSlider");
+            var playState = "stopped";
 
-						//AM
-						var oscAMMsg = context.createOscillator();
-						var oscAMCar = context.createOscillator();
-						var gainAM = context.createGain();
-						oscAMCar.connect(gainAM);
-						gainAM.connect(context.destination);
-						oscAMMsg.connect(gainAM.gain);
-						oscAMMsg.start(0);
+            //AM
+            var oscAMMsg = context.createOscillator();
+            var oscAMCar = context.createOscillator();
+            var gainAM = context.createGain();
+            oscAMCar.connect(gainAM);
+            gainAM.connect(context.destination);
+            oscAMMsg.connect(gainAM.gain);
+            oscAMMsg.start(0);
 
-						var playAM = function(){
-							oscAMCar.start(0);
-							// console.log("starting AM");
-						}
+            var playAM = function(){
+              oscAMCar.start(0);
+              // console.log("starting AM");
+            }
 
-						var stopAM = function(){
-							oscAMCar.stop(0);
-							oscAMCar.disconnect();
-							oscAMCar = context.createOscillator();
-							oscAMCar.connect(gainAM);
-							// console.log("stopping AM");
-						}
+            var stopAM = function(){
+              oscAMCar.stop(0);
+              oscAMCar.disconnect();
+              oscAMCar = context.createOscillator();
+              oscAMCar.connect(gainAM);
+              // console.log("stopping AM");
+            }
 
-						//FM
-						var oscFMMsg = context.createOscillator();
-						var oscFMCar = context.createOscillator();
-						var gainFM = context.createGain();
-						gainFM.gain.value = 100;
-						oscFMCar.connect(context.destination);
-						oscFMMsg.connect(gainFM);
-						gainFM.connect(oscFMCar.frequency);
-						oscFMMsg.start(0);
+            //FM
+            var oscFMMsg = context.createOscillator();
+            var oscFMCar = context.createOscillator();
+            var gainFM = context.createGain();
+            gainFM.gain.value = 100;
+            oscFMCar.connect(context.destination);
+            oscFMMsg.connect(gainFM);
+            gainFM.connect(oscFMCar.frequency);
+            oscFMMsg.start(0);
 
-						var playFM = function(){
-							oscFMCar.start(0);
-							// console.log("starting FM");
-						}
+            var playFM = function(){
+              oscFMCar.start(0);
+              // console.log("starting FM");
+            }
 
-						var stopFM = function(){
-							oscFMCar.stop(0);
-							oscFMCar.disconnect();
-							oscFMCar = context.createOscillator();
-							oscFMCar.connect(context.destination);
-							gainAM.connect(oscFMCar.frequency);
-							// console.log("stopping FM");
-						}
-
-
-						ambutton.addEventListener('click', function() {
-							if (playState == "stopped"){
-								playAM();
-								playState = "amplaying";
-							}
-							else if (playState == "amplaying"){
-								stopAM();
-								playState = "stopped";
-							}
-						});
-
-						fmbutton.addEventListener('click', function() {
-							if (playState == "stopped"){
-								playFM();
-								playState = "fmplaying";
-							}
-							else if (playState == "fmplaying"){
-								stopFM();
-								playState = "stopped";
-							}
-						});
-
-						amMessageSlider.addEventListener('input', function() {
-							// console.log("Changing AM Msg freq to ", amMessageSlider.value)
-							oscAMMsg.frequency.value = parseFloat(amMessageSlider.value);
-						});
-
-						amCarrierSlider.addEventListener('input', function() {
-							// console.log("Changing AM Car freq to ", amCarrierSlider.value)
-							oscAMCar.frequency.value = parseFloat(amCarrierSlider.value);
-						});
-
-						fmMessageSlider.addEventListener('input', function() {
-							// console.log("Changing FM Msg freq to ", fmMessageSlider.value)
-							oscFMMsg.frequency.value = parseFloat(fmMessageSlider.value);
-						});
-
-						fmCarrierSlider.addEventListener('input', function() {
-							// console.log("Changing FM Car freq to ", fmCarrierSlider.value)
-							oscFMCar.frequency.value = parseFloat(fmCarrierSlider.value);
-						});
+            var stopFM = function(){
+              oscFMCar.stop(0);
+              oscFMCar.disconnect();
+              oscFMCar = context.createOscillator();
+              oscFMCar.connect(context.destination);
+              gainAM.connect(oscFMCar.frequency);
+              // console.log("stopping FM");
+            }
 
 
-					</script>
-				</section>
+            ambutton.addEventListener('click', function() {
+              if (playState == "stopped"){
+                playAM();
+                playState = "amplaying";
+              }
+              else if (playState == "amplaying"){
+                stopAM();
+                playState = "stopped";
+              }
+            });
 
-				<section data-markdown>
-					## How?? - Libraries
-				</section>
+            fmbutton.addEventListener('click', function() {
+              if (playState == "stopped"){
+                playFM();
+                playState = "fmplaying";
+              }
+              else if (playState == "fmplaying"){
+                stopFM();
+                playState = "stopped";
+              }
+            });
 
-				<section>
-					<h2> Tone.js </h2>
-					<img class="noborder" style="width:75%; margin-bottom:0px;" src="img/tonejs.jpg">
-					<p style="font-size:40%"><a target="_blank" href="https://github.com/TONEnoTONE/Tone.js/"> &mdash; Tone.js</a> </p>
-				</section>
+            amMessageSlider.addEventListener('input', function() {
+              // console.log("Changing AM Msg freq to ", amMessageSlider.value)
+              oscAMMsg.frequency.value = parseFloat(amMessageSlider.value);
+            });
 
-				<section>
-					<h2> SoundModels </h2>
-					<img class="noborder" style="width:65%; margin-bottom:0px;" src="img/soundmodels.jpg">
-					<p style="font-size:40%"><a target="_blank" href="https://github.com/Sonoport/soundmodels"> &mdash; SoundModels</a> </p>
-				</section>
+            amCarrierSlider.addEventListener('input', function() {
+              // console.log("Changing AM Car freq to ", amCarrierSlider.value)
+              oscAMCar.frequency.value = parseFloat(amCarrierSlider.value);
+            });
 
-				<section>
-					<h2> BabylonJS </h2>
-					<img class="noborder" src="img/babylonjs.jpg">
-					<p style="font-size:40%"><a target="_blank" href="http://www.babylonjs-playground.com/#PCY1J#4"> &mdash; BabylonJS</a> </p>
-				</section>
+            fmMessageSlider.addEventListener('input', function() {
+              // console.log("Changing FM Msg freq to ", fmMessageSlider.value)
+              oscFMMsg.frequency.value = parseFloat(fmMessageSlider.value);
+            });
 
-				<section data-markdown>
-					## How?? - Tools
-				</section>
+            fmCarrierSlider.addEventListener('input', function() {
+              // console.log("Changing FM Car freq to ", fmCarrierSlider.value)
+              oscFMCar.frequency.value = parseFloat(fmCarrierSlider.value);
+            });
 
-				<section>
-					<h2> Firefox WebAudio Inspector </h2>
-					<img class="noborder" src="img/firefox.jpg">
-				</section>
 
-				<section>
-					<h2> RecorderJS </h2>
-					<img class="noborder" style="width:70%;" src="img/recorderjs.jpg">
-					<p style="font-size:40%"><a target="_blank" href="https://github.com/mattdiamond/Recorderjs"> &mdash; Recorderjs</a> </p>
-				</section>
+          </script>
+        </section>
 
-				<section>
-					<h2> Braid </h2>
-					<img class="noborder" style="width:70%;" src="img/braid.jpg">
-					<p style="font-size:40%"><a target="_blank" href="www.nexusosc.com/drop/braid/"> &mdash; Braid </a> </p>
-				</section>
+        <section data-markdown>
+          ## How?? - Libraries
+        </section>
 
-				<section>
-					<h2>Demos</h2>
+        <section>
+          <h2> Tone.js </h2>
+          <img class="noborder" style="width:75%; margin-bottom:0px;" src="img/tonejs.jpg">
+          <p style="font-size:40%"><a target="_blank" href="https://github.com/TONEnoTONE/Tone.js/"> &mdash; Tone.js</a> </p>
+        </section>
 
-					<ul>
-						<li><a target="_blank" href="https://chinpen.net/castro">Castro</a></li>
-						<li><a target="_blank" href="http://sebpiq.github.io/paulstretch.js/examples/stretched-and-droned/dist/index.html">PaulStretch</a></li>
-						<li><a target="_blank" href="http://birdwalker.com:9090/quartet.html">BirdWalker</a></li>
-						<li><a target="_blank" href="http://motionemotion.herokuapp.com/">motionEmotion</a></li>
-						<li><a target="_blank" href="http://chinpen.net/birds/">Bird Sound Synthesis</a></li>
-					</ul>
+        <section>
+          <h2> SoundModels </h2>
+          <img class="noborder" style="width:65%; margin-bottom:0px;" src="img/soundmodels.jpg">
+          <p style="font-size:40%"><a target="_blank" href="https://github.com/Sonoport/soundmodels"> &mdash; SoundModels</a> </p>
+        </section>
 
-				</section>
+        <section>
+          <h2> BabylonJS </h2>
+          <img class="noborder" src="img/babylonjs.jpg">
+          <p style="font-size:40%"><a target="_blank" href="http://www.babylonjs-playground.com/#PCY1J#4"> &mdash; BabylonJS</a> </p>
+        </section>
 
-				<section data-markdown>
-					## Questions?
+        <section data-markdown>
+          ## How?? - Tools
+        </section>
 
-					_http://chinpen.net/talks_
+        <section>
+          <h2> Firefox WebAudio Inspector </h2>
+          <img class="noborder" src="img/firefox.jpg">
+        </section>
 
-					![](img/qrcode.png)
+        <section>
+          <h2> RecorderJS </h2>
+          <img class="noborder" style="width:70%;" src="img/recorderjs.jpg">
+          <p style="font-size:40%"><a target="_blank" href="https://github.com/mattdiamond/Recorderjs"> &mdash; Recorderjs</a> </p>
+        </section>
 
-					@ntt
-				</section>
+        <section>
+          <h2> Braid </h2>
+          <img class="noborder" style="width:70%;" src="img/braid.jpg">
+          <p style="font-size:40%"><a target="_blank" href="www.nexusosc.com/drop/braid/"> &mdash; Braid </a> </p>
+        </section>
 
-				<section data-markdown>
-					## Bonus Resources
+        <section>
+          <img class="noborder" src="img/challenger.jpg">
+        </section>
 
-					- Web Audio Book :
-					http://chimera.labs.oreilly.com/books/1234000001552
+        <section>
+          <h1>WebMIDI</h1>
+        </section>
 
-					- HTML5 Audio :
-					http://www.html5audio.org
+        <section data-markdown>
+          ## What is MIDI
+          - Musical Instrument Digital Interface
+          - Connecting and controling Musical Instruments
+          - From 1983
+          - Very widely used
+        </section>
 
-					- Web Audio in Nodejs??
-					https://github.com/sebpiq/node-web-audio-api
+        <section data-markdown>
+          ## WebMIDI
+          - Exposes MIDI Hardware to the Browser
+          - If your OS sees it WebMIDI sees it too.
+          - Receive/Send MIDI Messages
+        </section>
 
-					- Web Audio Slack :
-					https://web-audio-slackin.herokuapp.com/
+        <section>
+          <h2>WebMIDI - Status</h1>
+          <img class="noborder" src="img/webmidi.jpg" width="100%">
+        </section>
 
-					- Web Audio Weekly Mailing List :
-					http://blog.chrislowis.co.uk/waw.html
-					</section>
+        <section>
+          <h2>WebMIDI - Status</h1>
+            <img class="noborder" src="img/caniuse-webmidi.jpg">
+            <p style="font-size:40%"><a target="_blank" href="http://caniuse.com/#search=midi">http://caniuse.com/#search=midi</a> </p>
+        </section>
 
-					<section >
-						<h2> WebAudio Conference </h2>
-							<img class="noborder" src="img/webaudioconf.jpg">
-						</section>
-			</div>
-		</div>
+        <section>
+          <h2>WebMIDI - API</h1>
+            <pre>
+            <code>
+// MIDI Input
+navigator.requestMIDIAccess(function(midi){
+  for (let input of midi.inputs.values()) {
+      input.onmidimessage = function(event){
+        console.log("New MIDI Data:", event.data); // UInt8Array
+      }
+    }
+});
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
-		<script type="text/javascript">
-			Reveal.addEventListener( 'fragmentshown', function( event ) {
-				 if (event.fragment.id == "objembed")
-					AudioPlayer.embed("audioplayer", {soundFile: "http://chinpen.net/talks/webaudio/audio/deep10.mp3"});
-			} );
-			Reveal.addEventListener( 'slidechanged', function( event ) {
-				if (event.indexh === 2){
+// MIDI Output
+midi.output[0].send( [ 0x90, 0x45, 0x7f ] );
 
-					__("dac").ramp(0.7, 0.05,"gain");
-				}else{
-					__("dac").ramp(0, 0.2,"gain");
-				}
-			});
-		</script>
+            </code>
+            </pre>
+        </section>
 
-		<script>
+        <section>
+          <h2>Demos</h2>
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+          <ul>
+            <li><a target="_blank" href="https://chinpen.net/castro">Castro</a></li>
+            <li><a target="_blank" href="http://sebpiq.github.io/paulstretch.js/examples/stretched-and-droned/dist/index.html">PaulStretch</a></li>
+            <li><a target="_blank" href="http://birdwalker.com:9090/quartet.html">BirdWalker</a></li>
+            <li><a target="_blank" href="http://motionemotion.herokuapp.com/">motionEmotion</a></li>
+            <li><a target="_blank" href="http://chinpen.net/birds/">Bird Sound Synthesis</a></li>
+          </ul>
 
-				transition: 'none', // none/fade/slide/convex/concave/zoom
+        </section>
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+        <section data-markdown>
+          ## Questions?
 
-		</script>
+          _http://chinpen.net/talks_
 
-	</body>
+          ![](img/qrcode.png)
+
+          @ntt
+        </section>
+
+        <section data-markdown>
+          ## Bonus Resources
+
+          - Web Audio Book :
+          http://chimera.labs.oreilly.com/books/1234000001552
+
+          - HTML5 Audio :
+          http://www.html5audio.org
+
+          - Web Audio in Nodejs??
+          https://github.com/sebpiq/node-web-audio-api
+
+          - Web Audio Slack :
+          https://web-audio-slackin.herokuapp.com/
+
+          - Web Audio Weekly Mailing List :
+          http://blog.chrislowis.co.uk/waw.html
+          </section>
+
+          <section >
+            <h2> WebAudio Conference </h2>
+              <img class="noborder" src="img/webaudioconf.jpg">
+            </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script type="text/javascript">
+      Reveal.addEventListener( 'fragmentshown', function( event ) {
+         if (event.fragment.id == "objembed")
+          AudioPlayer.embed("audioplayer", {soundFile: "http://chinpen.net/talks/webaudio/audio/deep10.mp3"});
+      } );
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+        if (event.indexh === 2){
+
+          __("dac").ramp(0.7, 0.05,"gain");
+        }else{
+          __("dac").ramp(0, 0.2,"gain");
+        }
+      });
+    </script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
 </html>

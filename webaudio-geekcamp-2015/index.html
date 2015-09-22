@@ -116,7 +116,7 @@
         </section>
 
         <section>
-          <h2> What?? - History</h2>
+          <h2> History</h2>
           <div class="twocolumn-wrap">
             <div class="twocolumn-left_col">
               <ul>
@@ -141,7 +141,7 @@
         </section>
 
         <section>
-          <h2>What?? - Philosophy</h2>
+          <h2>Philosophy</h2>
           <em>
             ... include the capabilities found in modern game audio engines as well as some of the <span style="color:yellow;">mixing</span>, <span style="color:yellow;">processing</span>, and <span style="color:yellow;">filtering</span> tasks that are found in modern desktop audio production applications.
           </em>
@@ -149,12 +149,27 @@
         </section>
 
         <section>
-          <h2>What?? - Status</h1>
+          <img class="noborder" src="img/mixer.jpg" width="100%">
+        </section>
+
+        <section>
+          <img class="noborder" src="img/synth.jpg" width="100%">
+        </section>
+
+        <section>
+          <iframe data-src="//giphy.com/embed/x2woMnCz4W0Vy" width="480" height="328" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        </section>
+
+        <section>
+          <img class="noborder" src="img/browsers.png" width="100%">
+        </section>
+
+        <section>
           <img class="noborder" src="img/waa.jpg" width="100%">
         </section>
 
         <section>
-          <h2>What?? - Status</h1>
+          <h2>Status</h1>
             <img class="noborder" src="img/caniuse.jpg">
             <p style="font-size:40%"><a target="_blank" href="http://caniuse.com/#search=audio-api">http://caniuse.com/#search=audio-api</a> </p>
         </section>
@@ -212,7 +227,7 @@
         </section>
 
         <section data-markdown>
-          ## How?? - Basics
+          ## Basics
         </section>
 
         <section>
@@ -226,7 +241,7 @@
         </section>
 
         <section>
-          <h2>How?? - Implementation</h2>
+          <h2>Implementation</h2>
           <br>
           <h4> &rarr; Javascript API</h3>
           <pre>
@@ -249,7 +264,7 @@ filter.connect(audioCtx.destination);
         </section>
 
         <section>
-          <h2>How?? - Implementation</h2>
+          <h2>Implementation</h2>
           <br>
           <h4> &rarr; Audio Processing done at a lower level (C++/ASM)</h3>
           <img class="noborder" style="width:85%; margin-bottom:0px;" src="img/webaudio.jpg">
@@ -258,7 +273,7 @@ filter.connect(audioCtx.destination);
         </section>
 
         <section >
-          <h2>How?? - Implementation</h2>
+          <h2>Implementation</h2>
           <br>
           <h4> &rarr; Realtime (Callback Based)</h3>
           <pre>
@@ -275,7 +290,7 @@ sp.connect(context.destination);
         </section>
 
         <section data-markdown>
-          ## How?? - Nodes
+          ## Nodes
           - 2 Categories of Nodes (Native, Javascript)
           - 3 Types of Nodes (Source, Effect, Destination).
           - Each node exposes Parameters.
@@ -283,7 +298,7 @@ sp.connect(context.destination);
         </section>
 
         <section >
-          <h2> How?? - Node : Categories </h2>
+          <h2> Node : Categories </h2>
           <div class="twocolumn-wrap">
             <div class="twocolumn-left_col">
               <h4> <em>Native Nodes</em></h4>
@@ -304,7 +319,7 @@ sp.connect(context.destination);
         </section>
 
         <section data-markdown>
-          ## How?? - Sources
+          ## Sources
 
           - Oscillator
           - AudioBufferSource
@@ -313,7 +328,7 @@ sp.connect(context.destination);
         </section>
 
         <section data-markdown>
-          ## How?? - Effects
+          ## Effects
 
           - Gain
           - BiquadFilter
@@ -327,7 +342,7 @@ sp.connect(context.destination);
         </section>
 
         <section data-markdown>
-          ## How?? - Destination
+          ## Destination
 
           - Destination (loudspeaker)
           - Offline Destination (pre-render)
@@ -335,12 +350,12 @@ sp.connect(context.destination);
         </section>
 
         <section>
-          <h2>How?? - Nodes : Connections</h2>
+          <h2>Nodes : Connections</h2>
           <img class="noborder" src="img/connections-basic.jpg">
         </section>
 
         <section>
-          <h2>How?? - Nodes : Connections</h2>
+          <h2>Nodes : Connections</h2>
           <img class="noborder" src="img/connections.jpg">
         </section>
 
@@ -353,7 +368,7 @@ sp.connect(context.destination);
         </section>
 
         <section>
-          <h2> How?? - Parameters</h2>
+          <h2> Parameters</h2>
           <h4 style="font-size: 90%"> &rarr; Real-time Control of Nodes </h4>
            <pre>
             <code>
@@ -372,7 +387,7 @@ filter.gain                       // Filter gain
         </section>
 
         <section>
-          <h2> How?? - Parameters</h2>
+          <h2> Parameters</h2>
           <br>
           <h4 style="font-size: 90%"> &rarr; Automation (synchronous automated value change) </h4>
           <pre>
@@ -388,6 +403,7 @@ gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)
           <button id="playButton" style="padding : 15px;"> ▶❚❚</button>
           <button id="upButton" style="padding : 15px;">Fast Ramp Up</button>
           <button id="dwButton" style="padding : 15px;">Slow Ramp Down</button>
+          <img class="noborder" src="img/FM.jpg">
           <script type="text/javascript">
             window.AudioContext = AudioContext || webkitAudioContext;
             var button = document.getElementById("playButton");
@@ -443,7 +459,7 @@ gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)
         </section>
 
         <section>
-          <h2> How?? - Parameters</h2>
+          <h2> Parameters</h2>
 
           <h4> &rarr; Connect Nodes to Parameters </h4>
 
@@ -577,7 +593,7 @@ gain.connect(context.destination);
         </section>
 
         <section data-markdown>
-          ## How?? - Libraries
+          ## Libraries
         </section>
 
         <section>
@@ -599,7 +615,7 @@ gain.connect(context.destination);
         </section>
 
         <section data-markdown>
-          ## How?? - Tools
+          ## Tools
         </section>
 
         <section>
@@ -609,13 +625,13 @@ gain.connect(context.destination);
 
         <section>
           <h2> RecorderJS </h2>
-          <img class="noborder" style="width:70%;" src="img/recorderjs.jpg">
+          <img class="noborder" "width:70%;" src="img/recorderjs.jpg">
           <p style="font-size:40%"><a target="_blank" href="https://github.com/mattdiamond/Recorderjs"> &mdash; Recorderjs</a> </p>
         </section>
 
         <section>
           <h2> Braid </h2>
-          <img class="noborder" style="width:70%;" src="img/braid.jpg">
+          <iframe style="width:100%; height:500px" data-src="http://braid.nexusosc.com/"></iframe>
           <p style="font-size:40%"><a target="_blank" href="www.nexusosc.com/drop/braid/"> &mdash; Braid </a> </p>
         </section>
 

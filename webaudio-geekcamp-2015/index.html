@@ -691,9 +691,45 @@ navigator.requestMIDIAccess(function(midi){
 
 // MIDI Output
 midi.output[0].send( [ 0x90, 0x45, 0x7f ] );
-
             </code>
-            </pre>
+          </pre>
+          <div id="midiview" style="display: none"> Incoming MIDI Message : <div class="midimsg rcornerbg"> 0 </div> <div class="midimsg rcornerbg"> 0 </div> <div class="midimsg rcornerbg"> 0 </div> </div>
+          <script type="text/javascript">
+          var midimsg = document.querySelectorAll('.midimsg');
+          var midiview = document.querySelector('#midiview');
+
+          if (navigator.requestMIDIAccess){
+              navigator.requestMIDIAccess().then( onMIDIInit, null );
+          }
+          else{
+              console.error("DOH! No MIDI support present in your browser.");
+          }
+
+          function onMIDIInit (midi){
+              onMIDIConect(midi);
+
+              midi.onstatechange = function(event){
+                  console.log("MIDIConnectionEvent on port", event.port);
+                  if (event.port.type === "input" && event.port.connection === "open"){
+                      onMIDIConect(midi);
+                  }
+              }
+          }
+
+          function onMIDIConect(midi){
+            console.log("Midi connected");
+            midi.inputs.forEach(function(input){
+              if (input.connection === 'open' && midiview.style.display === 'none'){
+                midiview.style.display = "flex";
+              }
+              input.onmidimessage = function(event){
+                midimsg[0].innerHTML = event.data[0];
+                midimsg[1].innerHTML = event.data[1];
+                midimsg[2].innerHTML = event.data[2];
+              }
+            });
+          }
+          </script>
         </section>
 
         <section>

@@ -174,14 +174,16 @@
             <p style="font-size:40%"><a target="_blank" href="http://caniuse.com/#search=audio-api">http://caniuse.com/#search=audio-api</a> </p>
         </section>
 
-        <section data-markdown>
-          # Why??
+        <section>
+          <h1> Why </h1>
+          <br>
+          <h4> Why Audio on the Web?? </h4>
         </section>
 
         <section>
-          <h2>Why Audio on the Web?? </h2>
+          <h4>Why Audio on the Web?? </h4>
           <br>
-          <h3>&rarr; Distribution</h3>
+          <h2>&rarr; Distribution</h2>
           <br>
           <ul>
             <li>Cross Platform (Mobile, Desktop, etc)</li>
@@ -191,9 +193,9 @@
         </section>
 
         <section>
-          <h2>Why Audio on the Web?? </h2>
+          <h4>Why Audio on the Web?? </h4>
           <br>
-          <h3>&rarr; Collaboration</h3>
+          <h2>&rarr; Collaboration</h2>
           <br>
           <ul>
             <li>Real-time control (WebSockets)</li>
@@ -203,9 +205,9 @@
         </section>
 
         <section>
-          <h2>Why Audio on the Web?? </h2>
+          <h4>Why Audio on the Web?? </h4>
           <br>
-          <h3>&rarr; Expression</h3>
+          <h2>&rarr; Expression</h2>
           <br>
           <ul>
             <li>Integration with visual elements</li>
@@ -215,15 +217,19 @@
         </section>
 
         <section>
-          <h2>Why in the browser??</h2>
+          <h4>Why in the browser??</h4>
           <br>
-          <h3>&rarr; Open Standards</h3>
+          <h2>&rarr; Open Standards</h2>
           <br>
           <ul>
             <li>Flash <span class="underline"><strong>sucked</strong></span> at doing real-time audio</li>
             <li>Dependency on Adobe + Browser Vendor</li>
             <li>No visbility/control over changes and features</li>
           </ul>
+        </section>
+
+        <section data-markdown>
+          # How??
         </section>
 
         <section data-markdown>
@@ -241,9 +247,7 @@
         </section>
 
         <section>
-          <h2>Implementation</h2>
-          <br>
-          <h4> &rarr; Javascript API</h3>
+          <h2>JavaScript API</h2>
           <pre>
             <code>
 // Create Context and Nodex
@@ -272,29 +276,11 @@ filter.connect(audioCtx.destination);
 
         </section>
 
-        <section >
-          <h2>Implementation</h2>
-          <br>
-          <h4> &rarr; Realtime (Callback Based)</h3>
-          <pre>
-            <code>
-var sp = context.createScriptProcessor();
-sp.onprocess = function (processEvent){
-  /* fill your own buffer */
-  var out = autoTune(processEvent.inputBuffers);
-  processEvent.outputBuffers = out;
-}
-sp.connect(context.destination);
-            </code>
-          </pre>
-        </section>
-
         <section data-markdown>
           ## Nodes
-          - 2 Categories of Nodes (Native, Javascript)
           - 3 Types of Nodes (Source, Effect, Destination).
           - Each node exposes Parameters.
-          - Connect Nodes in all sort of configuration.
+          - Connect Nodes to form Audio Graphs.
         </section>
 
         <section >
@@ -318,6 +304,7 @@ sp.connect(context.destination);
           </div>
         </section>
 
+
         <section data-markdown>
           ## Sources
 
@@ -327,18 +314,27 @@ sp.connect(context.destination);
           - MediaStreamAudioSource
         </section>
 
-        <section data-markdown>
-          ## Effects
-
-          - Gain
-          - BiquadFilter
-          - Delay
-          - Analyser (FFT)
-          - StereoPanner
-          - Panner (3D-Panner)
-          - Convolver
-          - WaveShaper
-          - DynamicsCompressor
+        <section >
+          <h2> Effects </h2>
+          <div class="twocolumn-wrap">
+            <div class="twocolumn-left_col">
+            <ul>
+              <li>Gain</li>
+              <li>BiquadFilter</li>
+              <li>Delay</li>
+              <li>Analyser (FFT)</li>
+              <li>StereoPanner</li>
+            </ul>
+            </div>
+            <div class="twocolumn-right_col">
+            <ul>
+              <li>Panner (3D-Panner)</li>
+              <li>Convolver</li>
+              <li>WaveShaper</li>
+              <li>DynamicsCompressor</li>
+            </ul>
+            </div>
+          </div>
         </section>
 
         <section data-markdown>
@@ -350,7 +346,31 @@ sp.connect(context.destination);
         </section>
 
         <section>
+          <h2> ScriptProcessor </h2>
+          <pre>
+            <code>
+  var sp = context.createScriptProcessor();
+  sp.onprocess = function (processEvent){
+    /* fill your own buffer */
+    var out = autoTune(processEvent.inputBuffers);
+    processEvent.outputBuffers = out;
+  }
+  sp.connect(context.destination);
+            </code>
+          </pre>
+        </section>
+
+        <section>
           <h2>Nodes : Connections</h2>
+          <pre>
+            <code>
+var context = new window.AudioContext();
+
+var buffer = context.createBufferSource();
+
+buffer.connect(context.destination);
+            </code>
+          </pre>
           <img class="noborder" src="img/connections-basic.jpg">
         </section>
 
@@ -360,36 +380,29 @@ sp.connect(context.destination);
         </section>
 
         <section>
-          <h2>Upcoming Changes</h2>
-          <br>
-          <p>ScriptProcessor &rarr; AudioWorker</p>
-          <br>
-          <p style="font-size:80%"> <em> ScriptProcessor inside a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/basic_usage">WebWorker</a> </em></p>
-        </section>
-
-        <section>
-          <h2> Parameters</h2>
+          <h2> Parameters (AudioParams)</h2>
           <h4 style="font-size: 90%"> &rarr; Real-time Control of Nodes </h4>
            <pre>
             <code>
-oscillator.frequency.value = 400; // Set Frequency to 400Hz.
+filter.frequency.value = 400;     // Set Frequency to 400Hz.
+filter.Q                          // Filter Q-value
+filter.gain                       // Filter gain
+
+oscillator.frequency              // Oscillator frequency.
 oscillator.detune                 // Detune an oscillator
+
 gain.gain                         // Set gain value (loudness)
 delay.delayTime                   // Set the delay
 buffer.playbackRate               // Speed of playbackRate
 panner.pan                        // Left/Right Panning
-filter.frequency                  // Filter cutoff frequency
-filter.Q                          // Filter Q-value
-filter.gain                       // Filter gain
+
 ....
             </code>
           </pre>
         </section>
 
         <section>
-          <h2> Parameters</h2>
-          <br>
-          <h4 style="font-size: 90%"> &rarr; Automation (synchronous automated value change) </h4>
+          <h2> Parameter Automation</h2>
           <pre>
             <code>
 playRate.setValueAtTime(2, 5);
@@ -459,10 +472,7 @@ gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)
         </section>
 
         <section>
-          <h2> Parameters</h2>
-
-          <h4> &rarr; Connect Nodes to Parameters </h4>
-
+          <h2> Connect Nodes to Parameters </h2>
           <pre>
             <code>
 var osc = context.createOscillator();
@@ -651,27 +661,24 @@ gain.connect(context.destination);
           - Very widely used
         </section>
 
-        <section data-markdown>
-          ## WebMIDI
-          - Exposes MIDI Hardware to the Browser
-          - If your OS sees it WebMIDI sees it too.
-          - Receive/Send MIDI Messages
+        <section>
+          <h2> WebMIDI </h2>
+          <br>
+          <h4> Exposes MIDI Hardware to the Browser </h4>
+          <img class="noborder" src="img/midihardware.jpg" >
         </section>
 
         <section>
-          <h2>WebMIDI - Status</h1>
-          <img class="noborder" src="img/webmidi.jpg" width="100%">
+          <h2> WebMIDI </h2>
+          <br>
+          <h4> If your OS sees it WebMIDI sees it too </h4>
+          <img class="noborder" src="img/audiomidi.jpg">
         </section>
 
-        <section>
-          <h2>WebMIDI - Status</h1>
-            <img class="noborder" src="img/caniuse-webmidi.jpg">
-            <p style="font-size:40%"><a target="_blank" href="http://caniuse.com/#search=midi">http://caniuse.com/#search=midi</a> </p>
-        </section>
 
         <section>
-          <h2>WebMIDI - API</h1>
-            <pre>
+          <h2>WebMIDI</h1>
+          <pre>
             <code>
 // MIDI Input
 navigator.requestMIDIAccess(function(midi){
@@ -688,6 +695,19 @@ midi.output[0].send( [ 0x90, 0x45, 0x7f ] );
             </code>
             </pre>
         </section>
+
+        <section>
+          <h2>WebMIDI - Status</h1>
+          <img class="noborder" src="img/webmidi.jpg" width="100%">
+        </section>
+
+        <section>
+          <h2>WebMIDI - Status</h1>
+            <img class="noborder" src="img/caniuse-webmidi.jpg">
+            <p style="font-size:40%"><a target="_blank" href="http://caniuse.com/#search=midi">http://caniuse.com/#search=midi</a> </p>
+        </section>
+
+
 
         <section>
           <h2>Demos</h2>

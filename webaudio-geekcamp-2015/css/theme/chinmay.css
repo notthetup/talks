@@ -49,3 +49,9 @@ ul.nobullet li{
   background: #AAD067;
   padding: 0 20px 0 20px;
 }
+
+
+.reveal .citation{
+  display: flex;
+  font-size: x-small;
+}

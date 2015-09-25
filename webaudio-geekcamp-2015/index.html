@@ -704,6 +704,7 @@ midi.output[0].send( [ 0x90, 0x45, 0x7f ] );</code>
             console.log("Midi connected");
             midi.inputs.forEach(function(input){
               if (input.connection === 'open' && midiview.style.display === 'none'){
+                console.log("Midi UI init");
                 midiview.style.display = "flex";
               }
               input.onmidimessage = function(event){

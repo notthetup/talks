@@ -236,8 +236,7 @@
         <section>
           <h2>JavaScript API</h2>
           <pre>
-            <code>
-// Create Context and Nodex
+            <code>// Create Context and Nodex
 var audioCtx = new AudioContext();
 var oscillator = audioCtx.createOscillator();
 var filter = context.createBiquadFilter();
@@ -249,8 +248,7 @@ filter.frequency.value = 5000;
 
 // Connect nodes
 oscillator.connect(filter);
-filter.connect(audioCtx.destination);
-            </code>
+filter.connect(audioCtx.destination);</code>
           </pre>
         </section>
 
@@ -335,28 +333,24 @@ filter.connect(audioCtx.destination);
         <section>
           <h2> ScriptProcessor </h2>
           <pre>
-            <code>
-  var sp = context.createScriptProcessor();
-  sp.onprocess = function (processEvent){
-    /* fill your own buffer */
-    var out = autoTune(processEvent.inputBuffers);
-    processEvent.outputBuffers = out;
-  }
-  sp.connect(context.destination);
-            </code>
+            <code>var sp = context.createScriptProcessor();
+sp.onprocess = function (processEvent){
+  /* fill your own buffer */
+  var out = autoTune(processEvent.inputBuffers);
+  processEvent.outputBuffers = out;
+}
+sp.connect(context.destination);</code>
           </pre>
         </section>
 
         <section>
           <h2>Nodes : Connections</h2>
           <pre>
-            <code>
-var context = new window.AudioContext();
+            <code>var context = new window.AudioContext();
 
 var buffer = context.createBufferSource();
 
-buffer.connect(context.destination);
-            </code>
+buffer.connect(context.destination);</code>
           </pre>
           <img class="noborder" src="img/connections-basic.jpg">
         </section>
@@ -370,8 +364,7 @@ buffer.connect(context.destination);
           <h2> Parameters (AudioParams)</h2>
           <h4 style="font-size: 90%"> &rarr; Real-time Control of Nodes </h4>
            <pre>
-            <code>
-filter.frequency.value = 400;     // Set Frequency to 400Hz.
+            <code>filter.frequency.value = 400;     // Set Frequency to 400Hz.
 filter.Q                          // Filter Q-value
 filter.gain                       // Filter gain
 
@@ -383,27 +376,24 @@ delay.delayTime                   // Set the delay
 buffer.playbackRate               // Speed of playbackRate
 panner.pan                        // Left/Right Panning
 
-....
-            </code>
+....</code>
           </pre>
         </section>
 
         <section>
           <h2> Parameter Automation</h2>
           <pre>
-            <code>
-playRate.setValueAtTime(2, 5);
+            <code>playRate.setValueAtTime(2, 5);
 frequency.linearRampToValueAtTime(400, 2);
 delayTime.exponentialRampToValueAtTime(3.1, 10);
 pan.setTargetAtTime(-1, 7.2);
-gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)
-            </code>
+gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)</code>
           </pre>
           <hr>
           <button id="playButton" style="padding : 15px;"> ▶❚❚</button>
           <button id="upButton" style="padding : 15px;">Fast Ramp Up</button>
           <button id="dwButton" style="padding : 15px;">Slow Ramp Down</button>
-          <img class="noborder" src="img/FM.jpg">
+          <img class="noborder" src="img/FMwave.jpg">
           <script type="text/javascript">
             window.AudioContext = AudioContext || webkitAudioContext;
             var button = document.getElementById("playButton");
@@ -460,9 +450,8 @@ gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)
 
         <section>
           <h2> Connect Nodes to Parameters </h2>
-          <pre>
-            <code>
-var osc = context.createOscillator();
+          <pre style="margin-bottom: 0px">
+            <code>var osc = context.createOscillator();
 var gain = context.createGain();
 
 // Connect oscillator to gain
@@ -470,9 +459,9 @@ osc.connect(gain.gain);
 
 // Connect buffer to gain and gain to output
 buffer.connect(gain);
-gain.connect(context.destination);
-            </code>
+gain.connect(context.destination);</code>
           </pre>
+          <img class="noborder" style="margin-top: 0px; margin-bottom: 0px" src="img/am.jpg">
           <hr>
           AM :
           <button id="amPlayButton" style="padding : 15px;"> ▶❚❚</button>
@@ -480,20 +469,10 @@ gain.connect(context.destination);
           <input type="range" min="0" max="30" value="10" id="amMessageSlider">
           <span style="font-size: 50%">Carrier :</span>
           <input type="range" min="50" max="3000" value="300" id="amCarrierSlider">
-          <hr>
-          FM :
-          <button id="fmPlayButton" style="padding : 15px;"> ▶❚❚</button>
-          <span style="font-size: 50%">Message :</span>
-          <input type="range" min="0" max="30" value="10" id="fmMessageSlider">
-          <span style="font-size: 50%">Carrier :</span>
-          <input type="range" min="50" max="3000" value="300" id="fmCarrierSlider">
           <script type="text/javascript">
             var ambutton = document.getElementById("amPlayButton");
-            var fmbutton = document.getElementById("fmPlayButton");
             var amMessageSlider = document.getElementById("amMessageSlider");
             var amCarrierSlider = document.getElementById("amCarrierSlider");
-            var fmMessageSlider = document.getElementById("fmMessageSlider");
-            var fmCarrierSlider = document.getElementById("fmCarrierSlider");
             var playState = "stopped";
 
             //AM
@@ -518,42 +497,6 @@ gain.connect(context.destination);
               // console.log("stopping AM");
             }
 
-            //FM
-            var oscFMMsg = context.createOscillator();
-            var oscFMCar = context.createOscillator();
-            var gainFM = context.createGain();
-            gainFM.gain.value = 100;
-            oscFMCar.connect(context.destination);
-            oscFMMsg.connect(gainFM);
-            gainFM.connect(oscFMCar.frequency);
-            oscFMMsg.start(0);
-
-            var playFM = function(){
-              oscFMCar.start(0);
-              // console.log("starting FM");
-            }
-
-            var stopFM = function(){
-              oscFMCar.stop(0);
-              oscFMCar.disconnect();
-              oscFMCar = context.createOscillator();
-              oscFMCar.connect(context.destination);
-              gainAM.connect(oscFMCar.frequency);
-              // console.log("stopping FM");
-            }
-
-
-            ambutton.addEventListener('click', function() {
-              if (playState == "stopped"){
-                playAM();
-                playState = "amplaying";
-              }
-              else if (playState == "amplaying"){
-                stopAM();
-                playState = "stopped";
-              }
-            });
-
             fmbutton.addEventListener('click', function() {
               if (playState == "stopped"){
                 playFM();
@@ -574,20 +517,82 @@ gain.connect(context.destination);
               // console.log("Changing AM Car freq to ", amCarrierSlider.value)
               oscAMCar.frequency.value = parseFloat(amCarrierSlider.value);
             });
-
-            fmMessageSlider.addEventListener('input', function() {
-              // console.log("Changing FM Msg freq to ", fmMessageSlider.value)
-              oscFMMsg.frequency.value = parseFloat(fmMessageSlider.value);
-            });
-
-            fmCarrierSlider.addEventListener('input', function() {
-              // console.log("Changing FM Car freq to ", fmCarrierSlider.value)
-              oscFMCar.frequency.value = parseFloat(fmCarrierSlider.value);
-            });
-
-
           </script>
         </section>
+
+                <section>
+                  <h2> Connect Nodes to Parameters </h2>
+                  <pre>
+                    <code>var carrier = context.createOscillator();
+var message = context.createOscillator();
+
+// Connect oscillator to frequency
+message.connect(carrier.frequency);
+
+// Connect carrier to gain and gain to output
+carrier.connect(context.destination);</code>
+                  </pre>
+                  <img class="noborder" src="img/fm.jpg">
+                  <hr>
+                  FM :
+                  <button id="fmPlayButton" style="padding : 15px;"> ▶❚❚</button>
+                  <span style="font-size: 50%">Message :</span>
+                  <input type="range" min="0" max="30" value="10" id="fmMessageSlider">
+                  <span style="font-size: 50%">Carrier :</span>
+                  <input type="range" min="50" max="3000" value="300" id="fmCarrierSlider">
+                  <script type="text/javascript">
+                    var fmbutton = document.getElementById("fmPlayButton");
+                    var fmMessageSlider = document.getElementById("fmMessageSlider");
+                    var fmCarrierSlider = document.getElementById("fmCarrierSlider");
+                    var playState = "stopped";
+
+                    //FM
+                    var oscFMMsg = context.createOscillator();
+                    var oscFMCar = context.createOscillator();
+                    var gainFM = context.createGain();
+                    gainFM.gain.value = 100;
+                    oscFMCar.connect(context.destination);
+                    oscFMMsg.connect(gainFM);
+                    gainFM.connect(oscFMCar.frequency);
+                    oscFMMsg.start(0);
+
+                    var playFM = function(){
+                      oscFMCar.start(0);
+                      // console.log("starting FM");
+                    }
+
+                    var stopFM = function(){
+                      oscFMCar.stop(0);
+                      oscFMCar.disconnect();
+                      oscFMCar = context.createOscillator();
+                      oscFMCar.connect(context.destination);
+                      gainFM.connect(oscFMCar.frequency);
+                      // console.log("stopping FM");
+                    }
+
+
+                    fmbutton.addEventListener('click', function() {
+                      if (playState == "stopped"){
+                        playFM();
+                        playState = "fmplaying";
+                      }
+                      else if (playState == "fmplaying"){
+                        stopFM();
+                        playState = "stopped";
+                      }
+                    });
+
+                    fmMessageSlider.addEventListener('input', function() {
+                      // console.log("Changing FM Msg freq to ", fmMessageSlider.value)
+                      oscFMMsg.frequency.value = parseFloat(fmMessageSlider.value);
+                    });
+
+                    fmCarrierSlider.addEventListener('input', function() {
+                      // console.log("Changing FM Car freq to ", fmCarrierSlider.value)
+                      oscFMCar.frequency.value = parseFloat(fmCarrierSlider.value);
+                    });
+                  </script>
+                </section>
 
         <section data-markdown>
           ## Libraries
@@ -666,8 +671,7 @@ gain.connect(context.destination);
         <section>
           <h2>WebMIDI</h1>
           <pre>
-            <code>
-// MIDI Input
+            <code>// MIDI Input
 navigator.requestMIDIAccess(function(midi){
   for (let input of midi.inputs.values()) {
       input.onmidimessage = function(event){
@@ -677,8 +681,7 @@ navigator.requestMIDIAccess(function(midi){
 });
 
 // MIDI Output
-midi.output[0].send( [ 0x90, 0x45, 0x7f ] );
-            </code>
+midi.output[0].send( [ 0x90, 0x45, 0x7f ] );</code>
           </pre>
           <div id="midiview" style="display: none"> Incoming MIDI Message : <div class="midimsg rcornerbg"> 0 </div> <div class="midimsg rcornerbg"> 0 </div> <div class="midimsg rcornerbg"> 0 </div> </div>
           <script type="text/javascript">
@@ -745,8 +748,8 @@ midi.output[0].send( [ 0x90, 0x45, 0x7f ] );
 
         </section>
 
-        <section data-markup>
-          # Now go make some NOISE!
+        <section data-markdown>
+          #Now go make some NOISE!
         </section>
 
         <section data-markdown>
@@ -779,9 +782,26 @@ midi.output[0].send( [ 0x90, 0x45, 0x7f ] );
           </section>
 
           <section >
+            <div style="margin-bottom: 50px"><a href="http://2015.devfest.asia/">http://devfest.asia/</a></div>
+            <div class="twocolumn-wrap">
+              <div class="twocolumn-left_col">
+                <img class="noborder" src="img/devfest.png">
+              </div>
+              <div class="twocolumn-right_col">
+                <h4>NodeSchool (WebAudio)</h4>
+                  <div>15th November, 10am-5pm</div>
+                <br>
+                <h4>WebAudio Hack Day</h4>
+                  <div>21st November, 11am-9pm</div>
+              </div>
+            </div>
+
+          </section>
+
+          <section >
             <h2> WebAudio Conference </h2>
               <img class="noborder" src="img/webaudioconf.jpg">
-            </section>
+          </section>
       </div>
     </div>
 

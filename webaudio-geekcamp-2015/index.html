@@ -501,6 +501,17 @@ gain.connect(context.destination);</code>
               // console.log("stopping AM");
             }
 
+            ambutton.addEventListener('click', function() {
+              if (playState == "stopped"){
+                playAM();
+                playState = "amplaying";
+              }
+              else if (playState == "amplaying"){
+                stopAM();
+                playState = "stopped";
+              }
+            });
+
             amMessageSlider.addEventListener('input', function() {
               // console.log("Changing AM Msg freq to ", amMessageSlider.value)
               oscAMMsg.frequency.value = parseFloat(amMessageSlider.value);

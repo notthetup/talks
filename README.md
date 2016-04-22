@@ -3,6 +3,10 @@ Talks
 
 Repository of slides for talks I have given.
 
+## 2016
+
+- [SuperTDMA](http://notthetup.github.io/talks/pwl-supertdma) @ [Papers We Love](https://github.com/papers-we-love/papers-we-love) - 25th April 2016
+
 ## 2015
 
 - [WebAudio](http://notthetup.github.io/talks/webaudio-geekcamp-2015) @ [GeekCamp](http://www.geekcamp.sg/) - 26th September 2015

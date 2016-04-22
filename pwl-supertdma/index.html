@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>SuperTDMA - PWL</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -24,8 +24,36 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>Throughput of Networks With Large Propagation Delays</section>
+				<section>
+					<h2>Background</h2>
+						<img src="img/arl.jpg"/>
+						Acoustics Research Lab, NUS
+				</section>
+				<section>
+					<h2>Background</h2>
+						<img src="img/UNET.jpg"/>
+						Underwater Acoustic Communication
+				</section>
+				<section>
+					<h2>Introduction</h2>
+						<strong style="text-decoration: underline">Propagation delay</strong> is the amount of <strong style="text-decoration: underline">time</strong> it takes a communication signal to travel from the source to the destination over a <strong style="text-decoration: underline">given transmission medium</strong>.
+				</section>
+				<section>
+					<h2>Speeds of Waves</h2>
+						<div style="text-align:left; margin-left: 15%">
+							<p>Speed of radio waves in air ~= 299792458 m/s</p>
+							<p>Speed of sound waves in air ~= 343 m/s</p>
+							<p>Speed of sound waves in water ~= 1500 m/s</p>
+						</div>
+				</section>
+				<section>
+					<h2>Propagation Time in Water</h2>
+						<img class="noborder" src="img/2Nodes.png"/>
+						<p>
+							<em>"one-way trip takes over <strong>1300 ms</strong>"</em>
+						</p>
+				</section>
 			</div>
 		</div>
 
@@ -36,6 +64,8 @@
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
+				progress: false,
+			  transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [

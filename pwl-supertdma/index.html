@@ -20,39 +20,491 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Throughput of Networks With Large Propagation Delays</section>
+				<section><h3>Throughput of Networks With Large Propagation Delays</h3></section>
 				<section>
-					<h2>Background</h2>
+					<h2> background </h2>
 						<img src="img/arl.jpg"/>
-						Acoustics Research Lab, NUS
+						acoustics research lab, NUS
 				</section>
 				<section>
-					<h2>Background</h2>
+					<h2> background </h2>
 						<img src="img/UNET.jpg"/>
-						Underwater Acoustic Communication
+						underwater acoustic communication
 				</section>
 				<section>
-					<h2>Introduction</h2>
-						<strong style="text-decoration: underline">Propagation delay</strong> is the amount of <strong style="text-decoration: underline">time</strong> it takes a communication signal to travel from the source to the destination over a <strong style="text-decoration: underline">given transmission medium</strong>.
+					<h2> introduction </h2>
+						<strong style="text-decoration: underline">propagation delay</strong> is the amount of <strong style="text-decoration: underline">time</strong> it takes a communication signal to travel from the source to the destination over a <strong style="text-decoration: underline">given transmission medium</strong>.
 				</section>
 				<section>
-					<h2>Speeds of Waves</h2>
+					<h2> speeds of waves </h2>
 						<div style="text-align:left; margin-left: 15%">
-							<p>Speed of radio waves in air ~= 299792458 m/s</p>
-							<p>Speed of sound waves in air ~= 343 m/s</p>
-							<p>Speed of sound waves in water ~= 1500 m/s</p>
+							<p>speed of radio waves in air ~= 299792458 m/s</p>
+							<p>speed of sound waves in air ~= 343 m/s</p>
+							<p>speed of sound waves in water ~= 1500 m/s</p>
 						</div>
 				</section>
 				<section>
-					<h2>Propagation Time in Water</h2>
-						<img class="noborder" src="img/2Nodes.png"/>
+					<h2> propagation time in water </h2>
+						<img class="noborder" src="img/2nodes.png"/>
 						<p>
-							<em>"one-way trip takes over <strong>1300 ms</strong>"</em>
+							\("one-way trip takes over <strong>1300 ms</strong>"\)
 						</p>
+				</section>
+				<section>
+					<img class="noborder" src="img/prop-delay.jpg"/>
+				</section>
+				<section>
+					<h2> propagation delay effects... </h2>
+						<ul>
+							<li>performance of handshaking protocols</li>
+							<li>acknowledgment-based retransmission schemes</li>
+							<li>transport layer protocols like TCP</li>
+							<li>medium-access control (MAC) layer protocols which prevent data collisions</li>
+						</ul>
+				</section>
+				<section>
+					<h2> propagation delay effects... </h2>
+						<blockquote>
+							In this paper, we demonstrate the remarkable fact that, in a wireless network with nonnegligible propagation delays, the throughput performance has the potential <strong style="text-decoration:underline">to be significantly better</strong> than networks with negligible propagation delays
+						</blockquote>
+				</section>
+				<section><h2>intuitive understanding</h2></section>
+				<section>
+						<h2> assumptions... </h2>
+						<img class="noborder" src="img/2nodes.png"/>
+						<div style="text-align:left; margin-left: 10%">
+								<p>- half-duplex nodes (either transmit or receive),</p>
+								<p>- fair schedules</p>
+						</div>
+				</section>
+				<section>
+						<img class="noborder" src="img/2nodes-noprop.png"/>
+						<div style="text-align:left; margin-left: 5%">
+							<p>for radio in air at 1km, ∂t = 1000/3x10<sup>8</sup>  = 0.000000333 s </p>
+							<p>for sound in water at 1km, ∂t = 1000/1500 = 0.6667 s</p>
+							<br />
+						</div>
+							<p>1 packet per ∂t seconds</p>
+				</section>
+				<section>
+						<h2> what if... </h2>
+						<img class="noborder" src="img/2nodes-prop.png"/>
+						<div style="text-align:left; margin-left: 5%">
+						</div>
+						<p>2 packets per ∂t seconds!</p>
+				</section>
+				<section>
+						<blockquote>nodes to transmit simultaneously and letting their packets “cross in flight” </blockquote>
+						<br />
+						<blockquote>the packet duration equal to the propagation delay leads to a fair and optimal schedule</blockquote>
+				</section>
+				<section>
+					<h2> can this be generalized to N? </h2>
+					<div style="text-align:left; margin-left: 5%">
+						<p>What is the maximum throughput of a network with nonzero propagation delays?</p>
+						<p>What geometries and schedules achieve this maximum throughput?</p>
+						<p>Given a network geometry, how do we determine optimal or near-optimal schedules?</p>
+					</div>
+				</section>
+				<section>
+					<h2> system model and assumptions </h2>
+					<div style="text-align:left; margin-left: 5%">
+						<p>- nodes in the network are half-duplex </p>
+						<p>- the network carries only unicast messages </p>
+						<p>- message transmitted by a node reaches every other node </p>
+						<p>- if two messages overlap at the receiver node, that node is unable to receive either (interference) </p>
+					</div>
+				</section>
+				<section>
+					<h2> terms </h2>
+					<div style="text-align:left; margin-left: 5%">
+						<p>- \(collision\) = two messages overlap at the receiver node
+						<p>- \(interference\) = message received at all nodes other than destination node </p>
+						<p>- \(throughput\) = total number of bits successfully transmitted by all nodes per unit time, normalized by the link rate </p>
+					</div>
+				</section>
+				<section>
+					<h2> definations </h2>
+					<div style="text-align:left; margin-left: 5%">
+						<p>- \(D_{ij}\) = propagation delay between every pair of nodes</p>
+						<p>- \(N\) node network</p>
+						<p>- \(β\) (bits/s) = constant link rate of network </p>
+						<p>- information carried by a link in \(µ\) seconds = \(βµ\) </p>
+					</div>
+				</section>
+				<section>
+					<h2> two to three </h2>
+				</section>
+				<section>
+						<img src="img/3nodes.png"/>
+				</section>
+				<section>
+						<img src="img/3nodes-schedule.jpg"/>
+				</section>
+				<section>
+						<h2> analysis.. </h2>
+						<div style="text-align:left; margin-left: 5%">
+							<p>- schedule ensures that the interference from other nodes only arrives when the node is transmitting </p>
+							<p>- let each node transmit messages of duration \(µ = a\) </p>
+							<p>- nodes can successfully transmit six messages with \(βµ\) bits each every \(T = 4µ\) seconds </p>
+							<p>- throughput, \(S = (6βµ/4µ)/β  = 1.5\) </p>
+							<p>-  50% higher than the maximum throughput for a three- node network without propagation delay </p>
+						</div>
+				</section>
+				<section> <h2> it's all about the schedules! </h2></section>
+				<section>
+					<div style="display: flex; align-items: center; justify-content: center">
+						<img class="bgwhite" src="img/schedule-if1.png"/>
+						<div style="margin-left:2%; margin-right:2%;"> ➡ </div>
+						<img class="bgwhite" src="img/schedule-if2.png"/>
+						<div style="margin-left:2%; margin-right:2%;"> ➡ </div>
+						<img class="bgwhite" src="img/perfect-schedule.png"/>
+					</div>
+
+				</section>
+				<section> <h2> generalisation </h2> </section>
+				<section>
+					<h2> delay matrix </h2>
+					<div style="display:flex;align-items: center;">
+						<img class="noborder" src="img/2nodes.png"/>
+						\[D = \begin{bmatrix}
+						0 & 1 \\
+						1 & 0
+						\end{bmatrix}\]
+					</div>
+				</section>
+				<section>
+					<h2> delay matrix </h2>
+					<div style="display:flex;align-items: center;">
+						<img class="noborder" src="img/3nodes.png"/>
+						\[D = \begin{bmatrix}
+						0 & 1 & 1 \\
+						1 & 0 & 1 \\
+						1 & 1 & 0
+						\end{bmatrix}\]
+					</div>
+				</section>
+				<section>
+					<h2> schedule matrix </h2>
+						\[\textbf{Q}^{(4)} = \begin{bmatrix}
+						 2 &  3 & -3 & -2 \\
+						-3 & -1 &  1 &  3 \\
+						-2 &  1 & -1 &  2
+						\end{bmatrix}\]
+					<div style="text-align:left; margin-left: 5%">
+						<p>- \(Q_{jt} = i \gt 0 \Rightarrow \) node \(j\) transmits to node \(i\) </p>
+						<p>- \(Q_{jt} = -i \lt 0 \Rightarrow \) node \(j\) receives from node \(i\) </p>
+						<p>- \(Q_{jt} = 0 \Rightarrow \) node \(j\) does nothing </p>
+					</div>
+				</section>
+				<section>
+					<h2> schedule matrix </h2>
+					<div style="text-align:left; margin-left: 5%">
+						<p>- schedule repeats with a period, \(T \Rightarrow Q_{j,t+T} = Q_{jt} \)</p>
+						<p>- \(Q_{jt} = -i \Leftrightarrow  Q_{i,t-D_{i,j}} = j \) </p>
+						<br />
+						<p>- schedule has equal number of transmits and receives \(\Rightarrow\)</p>
+						<p>
+							\[
+								\sum\limits_{t}
+								\sum\limits_{j}
+								1I(Q_{jt}^{(T)} < 0) =
+								\sum\limits_{t}
+								\sum\limits_{j}
+								1I(Q_{jt}^{(T)} > 0)
+							\]
+						</p>
+						<br />
+						<p>
+							\[
+								1I(n) =
+								\begin{cases}
+									0 & \mbox{if \(n\) is \(false\) } \\
+									1 & \mbox{if \(n\) is \(true\) }
+									\end{cases}
+							\]
+						</p>
+					</div>
+				</section>
+				<section>
+					<h2> schedule throughput </h2>
+					<div style="text-align:left; margin-left: 5%">
+						\[
+							S = \frac{1}{T}
+							\sum\limits_{t}
+							\sum\limits_{j}
+							1I(Q_{jt}^{(T)} < 0) =
+							\frac{1}{T}
+							\sum\limits_{t}
+							\sum\limits_{j}
+							1I(Q_{jt}^{(T)} > 0)
+						\]
+					</div>
+				</section>
+				<section>
+					<h2> schedule throughput upper bound </h2>
+					<div style="text-align:left; margin-left: 5%">
+						\[
+							\mbox{Theorem 1: }
+							S \leq \frac{N}{2}
+						\]
+					</div>
+				</section>
+				<section>
+					<h2> perfect schedules </h2>
+					<div style="text-align:left; margin-left: 5%">
+						<p>- matrix of a perfect schedule has no zero entires \( \Rightarrow\)</p>
+						<p>
+							\[
+							\sum\limits_{t}
+							\sum\limits_{j}
+							1I(Q_{jt} = 0) = 0
+							\]
+						</p>
+						<p>- a perfect schedule acheives the N/2 upper bound </p>
+					</div>
+				</section>
+				<section>
+					<h2> inexistance of perfect schedules </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<p>Theorem 2: For networks with odd number of nodes, perfect schedules with odd period do not exist</p>
+						<p>Corollary 3: For a network with odd number of nodes \(N\) and a periodic schedule with an odd period \(T\) the throughput is upper bounded by \( (NT - 1)/2T \)</p>
+					</div>
+				</section>
+				<section>
+					<h2> fair schedules </h2>
+					<br />
+					<div style="text-align:left;">
+						<p>Theorem 4: For an \(N\)-node network, periodic per-link fair schedules can only exist for period \(T = 2k(N-1), k \in \mathbb{Z}^+\)</p>
+					</div>
+				</section>
+				<section>
+					<h2> linear geometry </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<p>Theorem 5: Perfect schedules do not exist for \(N\)-node linear networks for \(N > 2\) </p>
+					</div>
+				</section>
+				<section>
+					<h2> other geometries </h2>
+				</section>
+				<section>
+					<h2> two node network </h2>
+					<div style="display:flex;align-items: center;justify-content: space-around;">
+						<img class="noborder" src="img/2nodes.png"/>
+						<div style="margin-left:2%; margin-right:2%">
+							\[D = \begin{bmatrix}
+							0 & 1 \\
+							1 & 0
+							\end{bmatrix}\]
+							<br />
+							\[\textbf{Q}^{(4)} = \begin{bmatrix}
+							2 & -2 \\
+							1 & -1
+							\end{bmatrix}\]
+						</div>
+						<div>
+							<p>
+								\(S = 3/2 = 1.5\)
+							</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2> equilateral triangle network </h2>
+					<div style="display:flex;align-items: center;justify-content: space-around;">
+						<img class="noborder" src="img/3nodes.png"/>
+						<div style="margin-left:2%; margin-right:2%">
+							\[D = \begin{bmatrix}
+							0 & 1 & 1 \\
+							1 & 0 & 1 \\
+							1 & 1 & 0
+							\end{bmatrix}\]
+							<br />
+							\[\textbf{Q}^{(4)} = \begin{bmatrix}
+							 2 &  3 & -3 & -2 \\
+							-3 & -1 &  1 &  3 \\
+							-2 &  1 & -1 &  2
+							\end{bmatrix}\]
+						</div>
+						<div style="margin-left:2%; margin-right:2%">
+							<p>
+								\(S = 3/2 = 1.5\)
+							</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2> isosceles triangle network </h2>
+					<div>
+						<div>
+							\[D = \begin{bmatrix}
+							0 & 1 & 2 \\
+							1 & 0 & 2 \\
+							2 & 2 & 0
+							\end{bmatrix}\]
+							<br />
+							\[\textbf{Q}^{(4)} = \begin{bmatrix}
+							 2 & -2 & -3 &  3 & -3 &  3 &  2 & -2 \\
+							-1 & -1 &  3 & -3 &  3 & -3 &  1 & -1 \\
+							-1 &  2 &  1 &  2 & -2 & -1 & -2 & -1
+							\end{bmatrix}\]
+						</div>
+						<div>
+							<p>
+								\(S = 3/2 = 1.5\)
+							</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2> 4 node tetrahedron network </h2>
+					<div>
+						<div>
+							\[D = \begin{bmatrix}
+							0 & 1 & 1 & 1 \\
+							1 & 0 & 1 & 1 \\
+							1 & 1 & 0 & 1 \\
+							1 & 1 & 1 & 0
+							\end{bmatrix}\]
+							<br />
+							\[\textbf{Q}^{(4)} = \begin{bmatrix}
+							 2 & -2 &  \\
+							-1 & -1 &  \\
+							-4 &  4 &  \\
+							-3 &  3 &
+							\end{bmatrix}\]
+						</div>
+						<div>
+							<p>
+								\(S = 4/2 = 2\)
+							</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2> scheduling arbitary network geometries </h2>
+				</section>
+				<section>
+					<h2> solving for schedule </h2>
+					<div style="text-align:left; margin-left: 5%">
+						<br />
+						<p>- optimization problem as a sequential decision problem and solve it using dynamic programming </p>
+						<p>- resulting solution is optimal, but computationally infeasible </p>
+						<p>- approximate solution that reduces the computational complexity </p>
+					</div>
+				</section>
+				<section>
+					<h2> sequential decision problem </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<p>\[\textbf{Q}^{\{t+1\}} = \Gamma (\textbf{Q}^{\{t\}}, \textbf{x}^{\{t\}} ) \]</p>
+						<br />
+						<p>\[\Gamma() \mbox{ is the state transition function} \]</p>
+						<p>\[\textbf{Q}^{\{t\}} \mbox{ is the paritial schedule at time } t \]</p>
+						<p>\[\textbf{x}^{\{t\}} \mbox{ is a vector of actions to be taken at time } t \]</p>
+					</div>
+				</section>
+				<section>
+					<h2> rewards function </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<p>\[ C(\textbf{x}^{\{t\}}) = \sum\limits_{j=1}^{N} 1I(x_j^{\{t\}} > 0) \]</p>
+						<br />
+						<p>\[ S = \lim_{T \rightarrow \infty} \frac{1}{T} \sum\limits_{t=0}^{T} C( \textbf{x}^{\{t\}}) \]</p>
+					</div>
+				</section>
+				<section>
+					<h2> value function </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<p>\[
+							X^*(\textbf{Q}) = arg \max_{x \in \chi(\textbf{Q})}
+							(
+							C(\textbf{x}) +
+							V(\Gamma(\textbf{Q, x}))
+							)
+						\]</p>
+					</div>
+				</section>
+				<section>
+					<h2> solution </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<p>using relative value iteration (iteratively estimate the value function \(V\))</p>
+						<p>resulting algorithm works in practice and yields optimal schedules for many small networks</p>
+						<p>cardinality grows very rapidly with \(N\) and \(G\)</p>
+						<p>decision space cardinality is \(\mathcal{O}(N^N)\)</p>
+					</div>
+				</section>
+				<section>
+					<h2> improving computational efficiency </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<blockquote>
+							If we know the value function, the problem simplifies to enumerating the decision space and finding the optimal decision
+						</blockquote>
+						<blockquote>
+							Rather than estimate the value function iteratively, it is possible to develop an approximate value function based on the structure of the problem
+						</blockquote>
+					</div>
+				</section>
+				<section>
+					<h2> improving computational efficiency </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<p>approximate value function based on an intuitive understanding of the problem</p>
+						<p>make transmission decisions such that the interference they cause overlaps as much as possible</p>
+						<p>use the interfered slots for additional transmissions</p>
+					</div>
+				</section>
+				<section>
+					<h2> computationally efficient algorithm </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<p>sequentually select transmission decisions from all allowable transmissions</p>
+						<p>every transmission reduces the potential for future transmissions (value function approximation)</p>
+						<p>transmission that has minimum impact on the potential future transmissions is chosen</p>
+						<p>low-impact transmissions = interference largely overlaps with interference from previous transmissions</p>
+						<p> complexity = \(\mathcal{O}(N^3)\)</p>
+					</div>
+				</section>
+				<section>
+					<h2> conclusion </h2>
+				</section>
+				<section>
+					<h2> conclusion </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<blockquote>
+							large propagation delays in underwater networks, rather than being harmful, lead to significant performance gains as compared to wireless networks with negligible propagation delays
+						</blockquote>
+					</div>
+				</section>
+
+				<section>
+					<h2> conclusion </h2>
+					<br />
+					<div style="text-align:left; margin-left: 5%">
+						<blockquote>
+							make interfering packets overlap in time at unintended nodes and leave desired packets are interference free at the intended node
+						</blockquote>
+						<blockquote>
+							utilize the interference laden time slots for transmission
+						</blockquote>
+						<blockquote>
+							 upper bound on the throughput of a large propagation delay network of \(N\) nodes is \(N/2\)
+						</blockquote>
+					</div>
+				</section>
+				<section>
+					<h2> questions? </h2>
 				</section>
 			</div>
 		</div>

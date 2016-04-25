@@ -313,3 +313,7 @@ body {
 .reveal blockquote{
   width: 100%
 }
+
+.reveal footer.citation{
+  font-size: 0.4em
+}

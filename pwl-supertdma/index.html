@@ -20,7 +20,7 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
-		<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+		<script src="lib/js/MathJax.js?config=TeX-AMS_HTML"></script>
 	</head>
 	<body>
 		<div class="reveal">
@@ -41,13 +41,16 @@
 							formalizing schedules
 						</li>
 						<li>
-							generalizing to N
+							generalizing to N Nodes
 						</li>
 						<li>
 							other geometries
 						</li>
 						<li>
 							arbitary geometries
+						</li>
+						<li>
+							conclusion
 						</li>
 					</ul>
 				</section>
@@ -60,6 +63,13 @@
 					<h2> background </h2>
 						<img src="img/UNET.jpg"/>
 						underwater acoustic communication
+				</section>
+				<section>
+					<h2> tdma </h2>
+					<img class="noborder" src="img/tdma.png" />
+					<footer class="citation">
+						http://www.taitradioacademy.com/topic/p25-physical-logical-channels/
+					</footer>
 				</section>
 				<section>
 					<h2> introduction </h2>
@@ -75,13 +85,10 @@
 				</section>
 				<section>
 					<h2> propagation time in water </h2>
-						<img class="noborder" src="img/2nodes.png"/>
+						<img class="noborder" src="img/2Nodes.png"/>
 						<p>
 							one-way trip takes over <strong>1300 ms</strong>
 						</p>
-				</section>
-				<section>
-					<img class="noborder" src="img/prop-delay.jpg"/>
 				</section>
 				<section>
 					<h2> propagation delay effects... </h2>
@@ -93,6 +100,12 @@
 						</ul>
 				</section>
 				<section>
+					<img class="noborder" src="img/prop-delay.jpg"/>
+					<footer class="citation">
+						Chitre M., Shahabudeen S., Pendharkar C. Tutorial on Underwater Acoustic Networking, Oceans'16.
+					</footer>
+				</section>
+				<section>
 					<h2> propagation delay effects... </h2>
 						<blockquote>
 							In this paper, we demonstrate the remarkable fact that, in a wireless network with nonnegligible propagation delays, the throughput performance has the potential <strong style="text-decoration:underline">to be significantly better</strong> than networks with negligible propagation delays
@@ -101,7 +114,7 @@
 				<section><h2>intuitive understanding</h2></section>
 				<section>
 						<h2> assumptions... </h2>
-						<img class="noborder" src="img/2nodes.png"/>
+						<img class="noborder" src="img/2Nodes.png"/>
 						<div style="text-align:left; margin-left: 10%">
 								<p>- half-duplex nodes (either transmit or receive),</p>
 								<p>- fair schedules</p>
@@ -167,9 +180,15 @@
 				</section>
 				<section>
 						<img src="img/3nodes.png"/>
+						<footer class="citation">
+							Chitre M., Motani M. and Shahabudeen S., Throughput of Networks With Large Propagation Delays, IEEE JOE.
+						</footer>
 				</section>
 				<section>
 						<img src="img/3nodes-schedule.jpg"/>
+						<footer class="citation">
+							Chitre M., Motani M. and Shahabudeen S., Throughput of Networks With Large Propagation Delays, IEEE JOE.
+						</footer>
 				</section>
 				<section>
 						<h2> analysis.. </h2>
@@ -190,13 +209,15 @@
 						<div style="margin-left:2%; margin-right:2%;"> ➡ </div>
 						<img class="bgwhite" src="img/perfect-schedule.png"/>
 					</div>
-
+					<footer class="citation">
+						Chitre M., Shahabudeen S. and Pendharkar C., Tutorial on Underwater Acoustic Networking, Oceans'16.
+					</footer>
 				</section>
 				<section> <h2> generalisation </h2> </section>
 				<section>
 					<h2> delay matrix </h2>
 					<div style="display:flex;align-items: center;">
-						<img class="noborder" src="img/2nodes.png"/>
+						<img class="noborder" src="img/2Nodes.png"/>
 						\[D = \begin{bmatrix}
 						0 & 1 \\
 						1 & 0
@@ -322,7 +343,7 @@
 				<section>
 					<h2> two node network </h2>
 					<div style="display:flex;align-items: center;justify-content: space-around;">
-						<img class="noborder" src="img/2nodes.png"/>
+						<img class="noborder" src="img/2Nodes.png"/>
 						<div style="margin-left:2%; margin-right:2%">
 							\[D = \begin{bmatrix}
 							0 & 1 \\

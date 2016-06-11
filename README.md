@@ -5,6 +5,8 @@ Repository of slides for talks I have given.
 
 ## 2016
 
+- [WebAudio](http://notthetup.github.io/talks/webaudio-musictech-2016) @ [Music Tech Meetup](http://www.meetup.com/Singapore-MusicTech-Meetup/events/231387009/) - 20th June 2016
+
 - [SuperTDMA](http://notthetup.github.io/talks/pwl-supertdma) @ [Papers We Love](https://github.com/papers-we-love/papers-we-love) - 25th April 2016
 
 ## 2015

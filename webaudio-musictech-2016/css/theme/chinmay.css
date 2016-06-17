@@ -16,8 +16,12 @@
  width: 50%;
 }
 
+.reveal h2{
+  margin-bottom:40px;
+}
+
 .reveal li{
-  margin-bottom:20px;
+  margin-bottom:40px;
 }
 
 ul.nobullet li{

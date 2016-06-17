@@ -12,6 +12,8 @@
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
 
+		<link rel="stylesheet" href="css/theme/chinmay.css">
+
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -23,6 +25,14 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<script type="text/javascript" src="js/audio-player.js"></script>
+    <script type="text/javascript">
+      AudioPlayer.setup("js/player.swf", {
+        width: 290
+      });
+    </script>
+
 	</head>
 	<body>
 
@@ -37,7 +47,7 @@
 		          <img class="noborder" src="img/wa.png" width="20%">
 		          <h4>An emerging platform for Audio applications</h4>
 		          <hr>
-		          <p><em>Geekcamp 2015</em></p>
+		          <p><em>Music Tech Meetup 2016</em></p>
 		          <p><em> - Chinmay Pendharkar</em></p>
 		        </section>
 		        <section >
@@ -46,7 +56,7 @@
 		          <h4 class="strikeout">An emerging platform for Audio applications</h4></span>
 		          <h4>How to make noise on the Web</h4>
 		          <hr>
-		          <em>Geekcamp 2015</em>
+		          <em>Music Tech Meetup 2016</em>
 		          <script src="js/cracked.min.js"></script>
 		          <script type="text/javascript">
 		            //set up some sounds
@@ -797,6 +807,20 @@
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+		<script type="text/javascript">
+      Reveal.addEventListener( 'fragmentshown', function( event ) {
+         if (event.fragment.id == "objembed")
+          AudioPlayer.embed("audioplayer", {soundFile: "audio/deep10.mp3"});
+      } );
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+        if (event.indexh === 2){
+
+          __("dac").ramp(0.7, 0.05,"gain");
+        }else{
+          __("dac").ramp(0, 0.2,"gain");
+        }
+      });
+    </script>
 
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration

@@ -17,7 +17,7 @@
 }
 
 .reveal h2{
-  margin-bottom:40px;
+  margin-bottom:35px;
 }
 
 .reveal li{
@@ -58,4 +58,25 @@ ul.nobullet li{
 .reveal .citation{
   display: flex;
   font-size: x-small;
+}
+
+.reveal li.listsideimg{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.reveal img.sideimg {
+  max-width: 25%;
+  margin-left: 5%;
+}
+
+.reveal section.center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reveal pre{
+  box-shadow:none;
 }

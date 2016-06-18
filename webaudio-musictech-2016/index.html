@@ -75,6 +75,16 @@
 		          </script>
 		        </section>
 
+						<section>
+							<h2> About Me..</h2>
+							<ul>
+								<li class="listsideimg"><a target="_blank" href="https://github.com/notthetup">Developer (Audio Technologies)</a> <img class="noborder sideimg" src="img/github.jpg"> </li>
+								<li class="listsideimg"><a target="_blank" href="http://live.webuild.sg">Podcast Host</a> <img class="noborder sideimg" src="img/wbl.jpg">  </li>
+								<li class="listsideimg"><a target="_blank" href="https://www.facebook.com/groups/paperswelovesg">Make trouble at local meetups</a> <img class="noborder sideimg" src="img/pwl.jpg"> </li>
+							</ul>
+
+						</section>
+
 		        <section>
 		          <h2> Agenda </h2>
 		          <ul>
@@ -84,8 +94,8 @@
 		          </ul>
 		        </section>
 
-		        <section data-markdown>
-		        # What??
+		        <section class="center">
+		         <h1> What?? </h1>
 		        </section>
 
 		        <section data-markdown>
@@ -197,7 +207,7 @@
 		          <ul>
 		            <li>Real-time control (WebSockets)</li>
 		            <li>Peer-to-Peer collaboration (WebRTC)</li>
-		            <li>Eg. <a target="_blank" href="https://www.soundtrap.com/">SoundTrap</a></li>
+		            <li>Eg. <a target="_blank" href="https://www.bandlab.com/">BandLab</a></li>
 		          </ul>
 		        </section>
 
@@ -213,12 +223,8 @@
 		          </ul>
 		        </section>
 
-		        <section data-markdown>
-		          # How??
-		        </section>
-
-		        <section data-markdown>
-		          ## Basics
+		        <section class="center">
+		          <h1 > How?? </h1>
 		        </section>
 
 		        <section>
@@ -235,18 +241,18 @@
 		          <h2>JavaScript API</h2>
 		          <pre>
 		            <code>// Create Context and Nodex
-		var audioCtx = new AudioContext();
-		var oscillator = audioCtx.createOscillator();
-		var filter = context.createBiquadFilter();
+var audioCtx = new AudioContext();
+var oscillator = audioCtx.createOscillator();
+var filter = context.createBiquadFilter();
 
-		// Set parameter values
-		oscillator.detune.value = -400;
-		filter.type = filter.LOWPASS;
-		filter.frequency.value = 5000;
+// Set parameter values
+oscillator.detune.value = -400;
+filter.type = filter.LOWPASS;
+filter.frequency.value = 5000;
 
-		// Connect nodes
-		oscillator.connect(filter);
-		filter.connect(audioCtx.destination);</code>
+// Connect nodes
+oscillator.connect(filter);
+filter.connect(audioCtx.destination);</code>
 		          </pre>
 		        </section>
 
@@ -259,31 +265,9 @@
 
 		        </section>
 
-		        <section data-markdown>
-		          ## Nodes
+		        <section class="center">
+		         <h1> Nodes </h1>
 		        </section>
-
-		        <section >
-		          <h2> Node : Categories </h2>
-		          <div class="twocolumn-wrap">
-		            <div class="twocolumn-left_col">
-		              <h4> <em>Native Nodes</em></h4>
-		              <ul>
-		                <li>Oscillator</li>
-		                <li>Filter</li>
-		                <li>Delay</li>
-		                <li>... (many more)</li>
-		              </ul>
-		            </div>
-		            <div class="twocolumn-right_col">
-		              <h4> <em>Javascript Node</em></h4>
-		              <ul>
-		                <li>ScriptProcessor</li>
-		              </ul>
-		            </div>
-		          </div>
-		        </section>
-
 
 		        <section data-markdown>
 		          ## Sources
@@ -326,26 +310,13 @@
 		        </section>
 
 		        <section>
-		          <h2> ScriptProcessor </h2>
-		          <pre>
-		            <code>var sp = context.createScriptProcessor();
-		sp.onprocess = function (processEvent){
-		  /* fill your own buffer */
-		  var out = autoTune(processEvent.inputBuffers);
-		  processEvent.outputBuffers = out;
-		}
-		sp.connect(context.destination);</code>
-		          </pre>
-		        </section>
-
-		        <section>
 		          <h2>Nodes : Connections</h2>
 		          <pre>
 		            <code>var context = new window.AudioContext();
 
-		var buffer = context.createBufferSource();
+var buffer = context.createBufferSource();
 
-		buffer.connect(context.destination);</code>
+buffer.connect(context.destination);</code>
 		          </pre>
 		          <img class="noborder" src="img/connections-basic.jpg">
 		        </section>
@@ -355,38 +326,15 @@
 		          <img class="noborder" src="img/connections.jpg">
 		        </section>
 
-		        <section data-markdown>
-		          ## Parameters
-		        </section>
-
-		        <section>
-		          <h2> Parameters (AudioParams)</h2>
-		          <h4 style="font-size: 90%"> &rarr; Real-time Control of Nodes </h4>
-		           <pre>
-		            <code>filter.frequency.value = 400;     // Set Frequency to 400Hz.
-		filter.Q                          // Filter Q-value
-		filter.gain                       // Filter gain
-
-		oscillator.frequency              // Oscillator frequency.
-		oscillator.detune                 // Detune an oscillator
-
-		gain.gain                         // Set gain value (loudness)
-		delay.delayTime                   // Set the delay
-		buffer.playbackRate               // Speed of playbackRate
-		panner.pan                        // Left/Right Panning
-
-		....</code>
-		          </pre>
-		        </section>
 
 		        <section>
 		          <h2> Parameter Automation</h2>
 		          <pre>
 		            <code>playRate.setValueAtTime(2, 5);
-		frequency.linearRampToValueAtTime(400, 2);
-		delayTime.exponentialRampToValueAtTime(3.1, 10);
-		pan.setTargetAtTime(-1, 7.2);
-		gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)</code>
+frequency.linearRampToValueAtTime(400, 2);
+delayTime.exponentialRampToValueAtTime(3.1, 10);
+pan.setTargetAtTime(-1, 7.2);
+gain.setValueCurveAtTime([0, 1, 0.7, 0.7, 0.5, 0.2, 0], 0, 0.5)</code>
 		          </pre>
 		          <hr>
 		          <button id="playButton" style="padding : 15px;"> ▶❚❚</button>
@@ -447,18 +395,42 @@
 		          </script>
 		        </section>
 
+						<section class="center">
+							<h2>Parameters</h2>
+						</section>
+
+						<section>
+							<h2> AudioParams </h2>
+							<h4 style="font-size: 90%"> &rarr; Real-time Control of Nodes </h4>
+							 <pre>
+								<code>filter.frequency.value = 400;     // Set Frequency to 400Hz.
+filter.Q                          // Filter Q-value
+filter.gain                       // Filter gain
+
+oscillator.frequency              // Oscillator frequency.
+oscillator.detune                 // Detune an oscillator
+
+gain.gain                         // Set gain value (loudness)
+delay.delayTime                   // Set the delay
+buffer.playbackRate               // Speed of playbackRate
+panner.pan                        // Left/Right Panning
+
+....</code>
+							</pre>
+						</section>
+
 		        <section>
-		          <h2> Connect Nodes to Parameters </h2>
+		          <h2> Parameter Automation</h2>
 		          <pre style="margin-bottom: 0px">
 		            <code>var osc = context.createOscillator();
-		var gain = context.createGain();
+var gain = context.createGain();
 
-		// Connect oscillator to gain
-		osc.connect(gain.gain);
+// Connect oscillator to gain
+osc.connect(gain.gain);
 
-		// Connect buffer to gain and gain to output
-		buffer.connect(gain);
-		gain.connect(context.destination);</code>
+// Connect buffer to gain and gain to output
+buffer.connect(gain);
+gain.connect(context.destination);</code>
 		          </pre>
 		          <img class="noborder" style="margin-top: 0px; margin-bottom: 0px" src="img/am.jpg">
 		          <hr>
@@ -519,82 +491,96 @@
 		          </script>
 		        </section>
 
-		                <section>
-		                  <h2> Connect Nodes to Parameters </h2>
-		                  <pre>
-		                    <code>var carrier = context.createOscillator();
-		var message = context.createOscillator();
+            <section>
+              <h2> Connect Nodes to Parameters </h2>
+              <pre>
+                <code>var carrier = context.createOscillator();
+var message = context.createOscillator();
 
-		// Connect oscillator to frequency
-		message.connect(carrier.frequency);
+// Connect oscillator to frequency
+message.connect(carrier.frequency);
 
-		// Connect carrier to gain and gain to output
-		carrier.connect(context.destination);</code>
-		                  </pre>
-		                  <img class="noborder" src="img/FM.jpg">
-		                  <hr>
-		                  FM :
-		                  <button id="fmPlayButton" style="padding : 15px;"> ▶❚❚</button>
-		                  <span style="font-size: 50%">Message :</span>
-		                  <input type="range" min="0" max="30" value="10" id="fmMessageSlider">
-		                  <span style="font-size: 50%">Carrier :</span>
-		                  <input type="range" min="50" max="3000" value="300" id="fmCarrierSlider">
-		                  <script type="text/javascript">
-		                    var fmbutton = document.getElementById("fmPlayButton");
-		                    var fmMessageSlider = document.getElementById("fmMessageSlider");
-		                    var fmCarrierSlider = document.getElementById("fmCarrierSlider");
-		                    var playState = "stopped";
+// Connect carrier to gain and gain to output
+carrier.connect(context.destination);</code>
+              </pre>
+              <img class="noborder" src="img/FM.jpg">
+              <hr>
+              FM :
+              <button id="fmPlayButton" style="padding : 15px;"> ▶❚❚</button>
+              <span style="font-size: 50%">Message :</span>
+              <input type="range" min="0" max="30" value="10" id="fmMessageSlider">
+              <span style="font-size: 50%">Carrier :</span>
+              <input type="range" min="50" max="3000" value="300" id="fmCarrierSlider">
+              <script type="text/javascript">
+                var fmbutton = document.getElementById("fmPlayButton");
+                var fmMessageSlider = document.getElementById("fmMessageSlider");
+                var fmCarrierSlider = document.getElementById("fmCarrierSlider");
+                var playState = "stopped";
 
-		                    //FM
-		                    var oscFMMsg = context.createOscillator();
-		                    var oscFMCar = context.createOscillator();
-		                    var gainFM = context.createGain();
-		                    gainFM.gain.value = 100;
-		                    oscFMCar.connect(context.destination);
-		                    oscFMMsg.connect(gainFM);
-		                    gainFM.connect(oscFMCar.frequency);
-		                    oscFMMsg.start(0);
+                //FM
+                var oscFMMsg = context.createOscillator();
+                var oscFMCar = context.createOscillator();
+                var gainFM = context.createGain();
+                gainFM.gain.value = 100;
+                oscFMCar.connect(context.destination);
+                oscFMMsg.connect(gainFM);
+                gainFM.connect(oscFMCar.frequency);
+                oscFMMsg.start(0);
 
-		                    var playFM = function(){
-		                      oscFMCar.start(0);
-		                      // console.log("starting FM");
-		                    }
+                var playFM = function(){
+                  oscFMCar.start(0);
+                  // console.log("starting FM");
+                }
 
-		                    var stopFM = function(){
-		                      oscFMCar.stop(0);
-		                      oscFMCar.disconnect();
-		                      oscFMCar = context.createOscillator();
-		                      oscFMCar.connect(context.destination);
-		                      gainFM.connect(oscFMCar.frequency);
-		                      // console.log("stopping FM");
-		                    }
+                var stopFM = function(){
+                  oscFMCar.stop(0);
+                  oscFMCar.disconnect();
+                  oscFMCar = context.createOscillator();
+                  oscFMCar.connect(context.destination);
+                  gainFM.connect(oscFMCar.frequency);
+                  // console.log("stopping FM");
+                }
 
 
-		                    fmbutton.addEventListener('click', function() {
-		                      if (playState == "stopped"){
-		                        playFM();
-		                        playState = "fmplaying";
-		                      }
-		                      else if (playState == "fmplaying"){
-		                        stopFM();
-		                        playState = "stopped";
-		                      }
-		                    });
+                fmbutton.addEventListener('click', function() {
+                  if (playState == "stopped"){
+                    playFM();
+                    playState = "fmplaying";
+                  }
+                  else if (playState == "fmplaying"){
+                    stopFM();
+                    playState = "stopped";
+                  }
+                });
 
-		                    fmMessageSlider.addEventListener('input', function() {
-		                      // console.log("Changing FM Msg freq to ", fmMessageSlider.value)
-		                      oscFMMsg.frequency.value = parseFloat(fmMessageSlider.value);
-		                    });
+                fmMessageSlider.addEventListener('input', function() {
+                  // console.log("Changing FM Msg freq to ", fmMessageSlider.value)
+                  oscFMMsg.frequency.value = parseFloat(fmMessageSlider.value);
+                });
 
-		                    fmCarrierSlider.addEventListener('input', function() {
-		                      // console.log("Changing FM Car freq to ", fmCarrierSlider.value)
-		                      oscFMCar.frequency.value = parseFloat(fmCarrierSlider.value);
-		                    });
-		                  </script>
-		                </section>
+                fmCarrierSlider.addEventListener('input', function() {
+                  // console.log("Changing FM Car freq to ", fmCarrierSlider.value)
+                  oscFMCar.frequency.value = parseFloat(fmCarrierSlider.value);
+                });
+              </script>
+            </section>
 
-		        <section data-markdown>
-		          ## Libraries
+						<section class="center">
+		          <h2> Why is everything so low level? </h2>
+		        </section>
+
+						<section class="center">
+		          <h2> Why is everything so low level? </h2>
+		        </section>
+
+						<section class="center">
+		          <img class="noborder" src="img/hello.jpg"/>
+							<hr />
+							<img class="noborder" src="img/draw.jpg"/>
+		        </section>
+
+						<section class="center">
+		          <h2> Libraries! </h2>
 		        </section>
 
 		        <section>
@@ -615,13 +601,24 @@
 		          <p style="font-size:40%"><a target="_blank" href="http://www.babylonjs-playground.com/#PCY1J#4"> &mdash; BabylonJS</a> </p>
 		        </section>
 
-		        <section data-markdown>
-		          ## Tools
+						<section>
+		          <h2> Awesome WebAudio </h2>
+		          <a target="_blank" href="https://github.com/notthetup/awesome-webaudio"> <img class="noborder" style="width:75%; margin-bottom:0px;" src="img/awesome.jpg"></a>
+		        </section>
+
+						<section class="center">
+		          <h2> Tools </h2>
 		        </section>
 
 		        <section>
 		          <h2> Firefox WebAudio Inspector </h2>
 		          <img class="noborder" src="img/firefox.jpg">
+		        </section>
+
+						<section>
+							<h2> Canopy </h2>
+							<iframe style="width:100%; height:550px" src="https://hoch.github.io/canopy/"></iframe>
+							<p style="font-size:40%"><a target="_blank" href="https://hoch.github.io/canopy/"> &mdash; Canopy</a> </p>
 		        </section>
 
 		        <section>
@@ -630,126 +627,22 @@
 		          <p style="font-size:40%"><a target="_blank" href="https://github.com/mattdiamond/Recorderjs"> &mdash; Recorderjs</a> </p>
 		        </section>
 
-		        <section>
-		          <h2> Braid </h2>
-		          <iframe style="width:100%; height:500px" src="http://braid.nexusosc.com/"></iframe>
-		          <p style="font-size:40%"><a target="_blank" href="www.nexusosc.com/drop/braid/"> &mdash; Braid </a> </p>
-		        </section>
-
-		        <section>
-		          <img class="noborder" src="img/challenger.jpg">
-		          <a target="_blank" class="citation" href="https://www.youtube.com/watch?v=3K8eIn5vsZ8">https://www.youtube.com/watch?v=3K8eIn5vsZ8</a>
-		        </section>
-
-		        <section>
-		          <h1>WebMIDI</h1>
-		        </section>
-
-		        <section data-markdown>
-		          ## What is MIDI
-		          - Musical Instrument Digital Interface
-		          - Connecting and controling Musical Instruments
-		          - From 1983
-		          - Very widely used
-		        </section>
-
-		        <section>
-		          <h2> WebMIDI </h2>
-		          <div> Exposes MIDI Hardware to the Browser </div>
-		          <img class="noborder" src="img/midihardware.jpg" >
-		          <a target="_blank" class="citation" href="https://www.flickr.com/photos/chris_carter_/3449449295">from https://www.flickr.com/photos/chris_carter_/3449449295</a>
-		        </section>
-
-		        <section>
-		          <h2> WebMIDI </h2>
-		          <br>
-		          <h4> If your OS sees it WebMIDI sees it too </h4>
-		          <img class="noborder" src="img/audiomidi.jpg">
-		        </section>
-
-
-		        <section>
-		          <h2>WebMIDI</h1>
-		          <pre>
-		            <code>// MIDI Input
-		navigator.requestMIDIAccess(function(midi){
-		  for (let input of midi.inputs.values()) {
-		      input.onmidimessage = function(event){
-		        console.log("New MIDI Data:", event.data); // UInt8Array
-		      }
-		    }
-		});
-
-		// MIDI Output
-		midi.output[0].send( [ 0x90, 0x45, 0x7f ] );</code>
-		          </pre>
-		          <div id="midiview" style="display: none"> Incoming MIDI Message : <div class="midimsg rcornerbg"> 0 </div> <div class="midimsg rcornerbg"> 0 </div> <div class="midimsg rcornerbg"> 0 </div> </div>
-		          <script type="text/javascript">
-		          var midimsg = document.querySelectorAll('.midimsg');
-		          var midiview = document.querySelector('#midiview');
-
-		          if (navigator.requestMIDIAccess){
-		              navigator.requestMIDIAccess().then( onMIDIInit, null );
-		          }
-		          else{
-		              console.error("DOH! No MIDI support present in your browser.");
-		          }
-
-		          function onMIDIInit (midi){
-		              onMIDIConect(midi);
-
-		              midi.onstatechange = function(event){
-		                  console.log("MIDIConnectionEvent on port", event.port);
-		                  if (event.port.type === "input" && event.port.connection === "open"){
-		                      onMIDIConect(midi);
-		                  }
-		              }
-		          }
-
-		          function onMIDIConect(midi){
-		            console.log("Midi connected");
-		            midi.inputs.forEach(function(input){
-		              if (input.connection === 'open' && midiview.style.display === 'none'){
-		                console.log("Midi UI init");
-		                midiview.style.display = "flex";
-		              }
-		              input.onmidimessage = function(event){
-		                midimsg[0].innerHTML = event.data[0];
-		                midimsg[1].innerHTML = event.data[1];
-		                midimsg[2].innerHTML = event.data[2];
-		              }
-		            });
-		          }
-		          </script>
-		        </section>
-
-		        <section>
-		          <h2>WebMIDI - Status</h1>
-		          <img class="noborder" src="img/webmidi.jpg" width="80%">
-		          <a style="font-size:40%" target="_blank" href="http://webaudio.github.io/web-midi-api">http://webaudio.github.io/web-midi-api</a>
-		        </section>
-
-		        <section>
-		          <h2>WebMIDI - Status</h1>
-		            <img class="noborder" src="img/caniuse-webmidi.jpg">
-		            <p style="font-size:40%"><a target="_blank" href="http://caniuse.com/#search=midi">http://caniuse.com/#search=midi</a> </p>
-		        </section>
-
+		      
 		        <section>
 		          <h2>Demos</h2>
 
 		          <ul>
 		            <li><a target="_blank" href="http://errozero.co.uk/acid-machine/">Acid Machine</a></li>
 		            <li><a target="_blank" href="http://birdwalker.com:9090/quartet.html">BirdWalker</a></li>
-		            <li><a target="_blank" href="http://motionemotion.herokuapp.com/">motionEmotion</a></li>
+								<li><a target="_blank" href="http://chriest.studio/code-player/app.html?root=A&beatsPerBar=4&bpm=180&melodyScale=blues&bassScale=minorPentatonic&src=https://raw.githubusercontent.com/notthetup/talks/gh-pages/webaudio-musictech-2016/index.html" > Code Player</a></li>
 		            <li><a target="_blank" href="http://nexusosc.com/gameofreich/">Game of Reich</a></li>
 		            <li><a target="_blank" href="https://chinpen.net/castro">Castro</a></li>
 		          </ul>
 
 		        </section>
 
-		        <section data-markdown>
-		          #Now go make some NOISE!
+		        <section class="center">
+		          <h2> Now go make some NOISE! </h2>
 		        </section>
 
 		        <section data-markdown>
@@ -762,22 +655,6 @@
 		          @ntt
 		        </section>
 
-		        <section >
-		          <div style="margin-bottom: 50px"><a target="_blank" href="http://2015.devfest.asia/">http://devfest.asia/</a></div>
-		          <div class="twocolumn-wrap">
-		            <div class="twocolumn-left_col">
-		              <img class="noborder" src="img/devfest.png">
-		            </div>
-		            <div class="twocolumn-right_col">
-		              <h4>NodeSchool (WebAudio)</h4>
-		                <div>15th November, 10am-5pm</div>
-		              <br>
-		              <h4>WebAudio Hack Day</h4>
-		                <div>21st November, 11am-9pm</div>
-		            </div>
-		          </div>
-
-		        </section>
 
 		        <section data-markdown>
 		          ## Bonus Resources
@@ -798,10 +675,6 @@
 		          http://blog.chrislowis.co.uk/waw.html
 		          </section>
 
-		          <section >
-		            <h2> WebAudio Conference </h2>
-		              <img class="noborder" src="img/webaudioconf.jpg">
-		          </section>
 		      </div>
 		    </div>
 

@@ -44,49 +44,9 @@ ul.nobullet li{
   right: 0%;
   font-size: 0.3em;
 }
-/* .reveal .strikeout {
-    position: relative;
-}
 
-.reveal .strikeout::after {
-    border-bottom: 6px solid red;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 50%;
-}
-
-.reveal .rcornerbg {
-  margin-left: 20px;
-  border-radius: 10px;
-  background: #AAD067;
-  padding: 0 20px 0 20px;
-}
-
-
-.reveal .citation{
-  display: flex;
-  font-size: x-small;
-}
-
-.reveal li.listsideimg{
+.reveal div.social{
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  justify-content:center;
 }
-
-.reveal img.sideimg {
-  max-width: 25%;
-  margin-left: 5%;
-}
-
-.reveal section.center{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.reveal pre{
-  box-shadow:none;
-}*/

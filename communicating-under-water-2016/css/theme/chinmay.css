@@ -48,6 +48,16 @@ ul.nobullet li{
 .reveal div.social{
   display: flex;
   align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+
+
+
+.reveal div.social{
+  display: flex;
+  align-items: center;
   justify-content:center;
 }
 

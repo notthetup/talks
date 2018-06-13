@@ -6,6 +6,7 @@
 
 		<title>Web Basics</title>
 
+
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
 
@@ -55,7 +56,7 @@
 					<h1> Communication </h1>
 				</section>
 				<section>
-					<h1> Server-Client </h1>
+					<h2> Server-Client </h2>
 					<img src="img/server-client.jpg">
 				</section>
 				<section>
@@ -77,11 +78,20 @@
 					<img src="img/python-server.jpg">
 				</section>
 				<section>
-					<h1>Clients</h1>
+					<h2>Clients</h2>
 					<img src="img/main-desktop-browser-logos.jpg">
 				</section>
 				<section>
-					<h1>Request Response Model</h1>
+					<h2>Simple Client!</h2>
+					<code>
+						curl -i http://google.com
+					</code>
+					<br>
+					<br>
+					<img src="img/diy-client.jpg">
+				</section>
+				<section>
+					<h2>Request Response Model</h2>
 					<img src="img/request-response.png">
 				</section>
 				<section data-markdown>
@@ -122,7 +132,7 @@
 					```
 				</section>
 				<section data-markdown>
-					## HTTP Status Code
+					## HTTP Status Codes
 					- 200 OK
 					- 301 Moved Permanently
 					- 401 Unauthorized
@@ -130,8 +140,112 @@
 					- 404 Not Found
 				</section>
 				<section>
+					<h2>index.html</h2>
+					<p style="font-size: 0.8em">https://subnero.com → https://subnero.com/index.html</p>
+				</section>
+				<section>
 					<h2>Dev Tools</h2>
 					<img src="img/dev-tools.jpg">
+				</section>
+				<section>
+					<h2>Static vs Dynamic</h2>
+					<img src="img/non-static-server.jpg">
+				</section>
+				<section>
+					<h2>Static vs Dynamic</h2>
+					<img src="img/non-static-client.jpg">
+				</section>
+				<section>
+					<h2> User Interface </h2>
+				</section>
+				<section data-markdown>
+					### A browser understands only 3 "languages"
+					- HTML → Content/Data
+					- CSS  → Presentation/Style
+					- JS → Interactivity
+				</section>
+				<section data-markdown>
+					### HTML - Hyptetext Markup Language
+					- Structuring of content (text, image, etc).
+					- Allows grouping of content.
+
+					```
+					&lt;html&gt;
+					  &lt;head&gt;
+					    &lt;title&gt;This is a title&lt;/title&gt;
+					  &lt;/head&gt;
+					  &lt;body&gt;
+					    &lt;p id="p1" &gt;Hello world!&lt;/p&gt;
+					  &lt;/body&gt;
+					&lt;/html&gt;
+					```
+				</section>
+				<section >
+					<h3> HTML - Basic Styles</h3>
+					<code>
+						&lt;button&gt;Click Me!&lt;/button&gt;
+					</code>
+					<br>
+					<button>Click Me!</button>
+				</section>
+				<section >
+					<h3> HTML - Inline Styles</h3>
+					<code style="font-size: 0.8em">
+						&lt;button style=&quot;color:red&quot;&gt;Click Me!&lt;/button&gt;
+					</code>
+					<br>
+					<button style="color:red">Click Me!</button>
+				</section>
+				<section data-markdown>
+					### CSS - Cascading Style Sheets
+					- Affects Presentation (Look and Feel)
+					- Layout, colors, and fonts.
+					- Targets html elements using HTML `class` and `id`
+					```
+						button {
+							color: pink;
+						}
+						#p1 {
+							margin-top: 5px;
+						}
+					```
+				</section>
+				<section data-markdown>
+					### CSS - Cascading Style Sheets
+					- [100s of stylistic properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#Keyword_index)
+					- Advance layouts (tables, [mobile responsive design](https://sauvc.org/))
+					- [Basic Animation](https://daneden.github.io/animate.css/)
+					- Lots of libraries available. For eg. [Bootstrap](https://getbootstrap.com/docs/3.3/css/#buttons-active)
+				</section>
+				<section >
+					<h3>CSS - BootStrap</h3>
+					<a href="bootstrap-example.html">Example</a>
+				</section>
+				<section data-markdown>
+					### JS - Javascript
+					- NOT RELATED TO JAVA
+					- Full programing (scripting) language that runs in a browser.
+					- Able to read and write to the HTML on the page.
+					```
+document.getElementsByTagName('button')[0].style.color = 'green'
+					```
+				</section>
+				<section data-markdown>
+					### JS - Devtools
+					- Javascript REPL (Console)
+					- Javascript Debugger/IDE in every browser
+					![img](img/ide.jpg)
+				</section>
+				<section>
+					<h2> Hands On </h2>
+				</section>
+				<section data-markdown>
+					## Github Pages
+					- Free static web server.
+					- Create a file named `index.html`
+					- Add some HTML to the file.
+					- Enable in [Github settings](https://github.com/subnero1/subnero1.github.io/settings)
+					- Go to the published URL.
 				</section>
 			</div>
 		</div>

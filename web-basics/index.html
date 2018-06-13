@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Web Basics</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<img style="width: 30%" src="img/web_logo.jpg" />
+					<h1>Web Basics</h1>
+					<p>Chinmay Pendharkar | June 2018</p>
+				</section>
+				<section>
+					<h1>Internet vs Web</h1>
+					<img style="width: 70%" src="img/web-internet.jpg" />
+				</section>
+				<section data-markdown>
+					# Internet
+					- Created in : 1974
+					- Created by : Vint Cerf and Bob Kahn
+					- Created at : DARPA, USA
+					- Created for : Interconnecting networks around the world.
+				</section>
+				<section data-markdown>
+					# Web
+					- Created in : 1989
+					- Created by : Tim Berners-Lee
+					- Created at : CERN, Switzerland
+					- Created for : Accessing documents, over the internet.
+				</section>
+				<section>
+					<h2>Networking Layers</h2>
+					<img style="width: 70%" src="img/networking-layers.jpg" />
+				</section>
+				<section>
+					<h1> Communication </h1>
+				</section>
+				<section>
+					<h1> Server-Client </h1>
+					<img src="img/server-client.jpg">
+				</section>
+				<section>
+					<h1>Servers</h1>
+					<div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
+						<img style="height: 90%" src="img/apache-server-logo.png">
+						<img style="height: 90%" src="img/nginx.jpg">
+						<img style="height: 90%" src="img/tomcat.jpg">
+						<img style="height: 90%" src="img/eclipse_jetty-card.jpg">
+					</div>
+				</section>
+				<section>
+					<h2>Run you own server!</h2>
+					<code>
+						python -m http.server 8080
+					</code>
+					<br>
+					<br>
+					<img src="img/python-server.jpg">
+				</section>
+				<section>
+					<h1>Clients</h1>
+					<img src="img/main-desktop-browser-logos.jpg">
+				</section>
+				<section>
+					<h1>Request Response Model</h1>
+					<img src="img/request-response.png">
+				</section>
+				<section data-markdown>
+					# HTTP Protocol
+					| Components | Description    | Example                         |
+					| ---------- | -------------- | ------------------------------- |
+					| Verbs      | Action         | GET, PUT, POST, DELETE          |
+					| URL        | Location       | https://subnero.com/logo.png    |
+					| Headers    | Meta data      | Last-Modified: Tue, 21 Nov 2017 |
+					| Body       | Document data  | Image, Text , etc               |
+				</section>
+				<section data-markdown>
+					## HTTP Protocol (Request)
+					```
+					GET logo.png HTTP/1.1
+					Host: www.subnero.com
+					Accept: image/png, */*
+					Accept-Language: en-us
+					Accept-Encoding: gzip, deflate
+					User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)
+					(blank line)
+					```
+				</section>
+				<section data-markdown>
+					## HTTP Protocol (Response)
+					```
+					HTTP/1.1 200 OK
+					Date: Sun, 18 Oct 2009 08:56:53 GMT
+					Server: Apache/2.2.14 (Win32)
+					Last-Modified: Sat, 20 Nov 2004 07:16:26 GMT
+					ETag: "10000000565a5-2c-3e94b66c2e680"
+					Accept-Ranges: bytes
+					Content-Length: 44
+					Content-Type: text/html
+					X-Pad: avoid browser bug
+
+					&lt;html&gt;&lt;body&gt;&lt;h1&gt;It works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+					```
+				</section>
+				<section data-markdown>
+					## HTTP Status Code
+					- 200 OK
+					- 301 Moved Permanently
+					- 401 Unauthorized
+					- 403 Forbidden
+					- 404 Not Found
+				</section>
+				<section>
+					<h2>Dev Tools</h2>
+					<img src="img/dev-tools.jpg">
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				],
+				slideNumber: true,
+			});
+		</script>
+	</body>
+</html>

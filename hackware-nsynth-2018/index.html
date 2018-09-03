@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>NSynth Super</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					<textarea data-template>
+							# NSynth Super
+							__"an experimental physical interface for the NSynth algorithm"__
+							<br>
+							<br>
+							_ by Chinmay + Adnan + Brahim + ... _
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						_ In the begining, there was <span style="color:magenta">Magenta</span> _
+					</textarea>
+				</section>
+				<section data-background-image="imgs/nsynth.jpg" data-background-size="contain"></section>
+				<section data-markdown>
+					<textarea data-template>
+						## Sound + Neural Networks
+						![](/imgs/what.jpg)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Math!!!
+						![](/imgs/math.jpg)
+					</textarea>
+				</section>
+				<section data-background-iframe="https://experiments.withgoogle.com/ai/sound-maker/view/" data-background-interactive></section>
+				<section data-markdown>
+					<textarea data-template>
+					> Normally, mixing the audio of two instruments creates a sound of the two instruments being played simultaneously.
+
+					> In contrast, mixing the z-representations and then decoding results in what sounds more like a single hybrid instrument.
+					</textarea>
+				</section>
+				<section data-background-image="imgs/musik.jpg" data-background-size="contain"></section>
+				<section>
+					<iframe height="800px" width="1071px"
+					data-src="https://youtube.com/embed/iTXU9Z0NYoU?start=93" frameborder="0" allowfullscreen>
+					</iframe>
+				</section>
+				<section data-background-image="imgs/say-what.jpg" data-background-size="30%"></section>
+				<section data-background-image="imgs/open.jpg" data-background-size="contain"></section>
+				<section data-background-image="imgs/github.jpg" data-background-size="contain"></section>
+				<section>
+					<a href="https://github.com/googlecreativelab/open-nsynth-super/tree/master/pcb_hardware"><img src="imgs/pcb.jpg" height="600px" ></a>
+				</section>
+				<section data-background-image="imgs/app.jpg" data-background-size="80%"></section>
+				<section data-background-image="imgs/firmware.jpg" data-background-size="80%"></section>
+				<section data-background-image="imgs/linux.jpg" data-background-size="80%"></section>
+				<section>
+					<img src="imgs/64.jpg" width="100%">
+					<img src="imgs/huge.jpg">
+				</section>
+				<section>
+					<img src="imgs/slow.jpg" width="100%">
+				</section>
+				<section data-background-image="imgs/audio.jpg" data-background-size="80%"></section>
+				<section>
+					<img src="imgs/128.jpg" width="100%">
+					<img src="imgs/yikes.jpg">
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

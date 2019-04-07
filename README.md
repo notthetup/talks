@@ -3,6 +3,13 @@ Talks
 
 Repository of slides for talks I have given.
 
+## 2019
+- [Wakeup - Continuous monitoring on low power devices](http://notthetup.github.io/talks/wakeup-ee2028) @ NUS EE2028 - 8th April 2019
+
+## 2018
+
+- [Web Basics](http://notthetup.github.io/talks/web-basics) @ Subnero - 14th June 2018
+
 ## 2016
 
 - [Communicating Under Water](http://notthetup.github.io/talks/communicating-under-water-2016) @ [Tech Tarik Talks](http://www.techtarik.com/) - 15th July 2016

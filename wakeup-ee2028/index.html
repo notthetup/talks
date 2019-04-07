@@ -1,0 +1,405 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Wakeup!</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<style type="text/css">
+			.reveal section img {
+					border: none;
+					box-shadow: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					<textarea data-template>
+						# 😴 Wakeup!
+						#### Continuous monitoring on low power devices.
+						<span style="font-size: 0.7em;">\- Chinmay Pendharkar, 2019</span>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## 👋🏾 About Me
+						- NUS ECE Alumni (2006)
+
+						- Embedded Systems / Audio
+
+						- Organize Monthly Meetup (Hackware)
+
+						- CTO at Subnero
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						## Subnero <img style="width: 100px; vertical-align: bottom;" src="imgs/subnero.png">
+
+						- NUS Spin-off (2013)
+
+						- Located : The Hangar (I-cube Building)
+
+						- Underwater Communications and Networks
+
+						- In-Water Sensing and Monitoring Solution
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Underwater Acoustic Modems
+						<img style="width: 30%; vertical-align: middle; padding-right: 20%" src="imgs/venus7.jpg">
+						<img style="width: 25%; vertical-align: middle;" src="imgs/deployment.jpg">
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Underwater Acoustic Modems
+						<img style="width: 30%; vertical-align: middle; padding-right: 20%" src="imgs/electronics.jpg">
+						<img style="width: 25%; vertical-align: middle;" src="imgs/electronics.jpg">
+					</textarea>
+				</section>
+
+				<section>
+					<div style="display:flex; align-items: center; justify-content: space-evenly;">
+						<div>
+							<h3>Acoustic Wakeup</h3>
+							<ul>
+								<li><p>Normal Mode - 4W</p></li>
+
+								<li><p>Low Power Mode - 0.5W</p></li>
+
+								<li><p>A "wakeup signal"</p></li>
+							</ul>
+						</div>
+						<div>
+							<img style="height: 90vh; width: 41vh;" src="imgs/deployment.jpg">
+						</div>
+					</div>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						#### 🤔 Acoustic Wakeup..
+						####  where have I seen that before??
+					</textarea>
+				</section>
+
+				<section>
+					<img style="height: 90vh;" src="imgs/siri.jpeg">
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Voice Activation
+						- Normal Mode → Screen On
+						- Low Power Mode → Screen Off
+						- A "wakeup signal" → Hey Siri/OK Google 📢
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Sooo... how does this work? 🤷‍♂️
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### What's inside a phone?📲
+					</textarea>
+				</section>
+
+				<section>
+						<h3>iPhone 8</h3>
+						<img style="width: 70%; vertical-align: middle;" src="imgs/ifixit-all.jpg">
+						<p><span style="font-size: 0.5em"><a href="https://www.ifixit.com/Teardown/iPhone+8+Teardown/97481">iFixit</a></span></p>
+				</section>
+
+				<section>
+						<h3>iPhone 8</h3>
+						<img style="width: 45%; vertical-align: middle;" src="imgs/pcb-front.jpg">
+						<img style="width: 45%; vertical-align: middle;" src="imgs/pcb-back.jpg">
+						<p><span style="font-size: 0.5em; padding-top: 20%;"><a href="https://www.ifixit.com/Teardown/iPhone+8+Teardown/97481">iFixit</a></span></p>
+				</section>
+
+				<section>
+						<h3>Openmoko Neo Freerunner</h3>
+						<img style="width: 40%; vertical-align: middle;" src="imgs/neo.png">
+						<p><span style="font-size: 0.5em"><a href="https://commons.wikimedia.org/w/index.php?curid=7046183">By Freerunner02.gif: Openmoko web site</a></span></p>
+				</section>
+
+
+				<section data-markdown>
+					<textarea data-template>
+						### Mobile Phone Power Consumption
+						| Component      | Power |
+						| -------------- | ------- |
+						| Phone Call | 1054 mW |
+						| Video Playback | 454 mW |
+						| Web Browsing | 429 mW |
+						| Idle         | 269 mW |
+						| Suspended | 69 mW |
+
+						<span style="font-size: 0.5em;"><a href="https://www.usenix.org/legacy/event/atc10/tech/full_papers/Carroll.pdf">Openmoko Neo Freerunner</a></span>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### How long will it last?
+						- Battery Capacity: 4400  mWh
+
+						- **16 h** @ 269 mW (Idle)
+
+						- **64 h** @ 69 mW (Suspend)
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						To have any decent battery life, devices HAVE TO go into `Suspend` mode ASAP!😴
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						![](imgs/modes.png)
+
+						<span style="font-size: 0.5em"><a href="http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0388f/Chdejjdj.html">ARM9 TRM</a></span>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Sooo... how to wake up a sleeping phone?? 🤔
+					</textarea>
+				</section>
+
+				<section>
+						<em>"External wake-up event required to wake up."</em>
+						<p style="padding-top: 10%; font-size: 0.9em">→ an interrupt pin has to be toggled by something else</p>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### How to toggle an interrupt pin?
+						- Button👇
+
+						- "Hey Siri" 📢
+
+					</textarea>
+				</section>
+
+				<section>
+						<p style="margin: 0px"><img style="height: 80vh;" src="imgs/xkcd.png"></p>
+						<span style="font-size: 0.5em;"><a href="https://xkcd.com/208">xkcd 208</a></span>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Microcontrollers 🎯
+
+						- Low power 🔋
+
+						- Can run software ⌨️
+
+						- Built-in peripherals 🛠
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### LPC1769
+
+						<p style="margin: 0px"><img src="imgs/lpc-power.png"></p>
+						<span style="font-size: 0.5em;"><a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/lpc-cortex-m-mcus/lpc1700-cortex-m3/512kb-flash-64kb-sram-ethernet-usb-lqfp100-package:LPC1769FBD100">LPC1769 datasheet</a></span>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### LPC1769 - Power
+
+						| Mode       | Power   |
+						| ---------- | ------- |
+						| 12MHz      |  23 mW  |
+						| 100MHz     | 138 mW  |
+						| Sleep      |   7 mW  |
+						| Deep Sleep |   1 mW  |
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Algorithm
+
+						- Continuously "listen" → 🎤
+
+						- Detect "trigger words" → [🤖](https://machinelearning.apple.com/2017/10/01/hey-siri.html)
+
+						- Toggle a pin → 📌
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Listening to Audio
+
+						- Microphone 🎤 (Analog)
+
+						- Analog → Digital Converter (ADC)
+
+						- Audio Data 💽 (Digital)
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### LPC1769 - Peripherals
+						<div style="display: flex; justify-content: space-around; align-items: center;">
+							<p style="margin: 0px; width: 48%"><img src="imgs/lpc-block.png"></p>
+							<span style="font-size: 0.5em;"><a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/lpc-cortex-m-mcus/lpc1700-cortex-m3/512kb-flash-64kb-sram-ethernet-usb-lqfp100-package:LPC1769FBD100">LPC1769 datasheet</a></span>
+						</div>
+						</textarea>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Continuous Monitoring Setup
+						<p style="margin: 0px;"><img style="width: 80%" src="imgs/lp.jpg"></p>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Continuous Monitoring Setup
+						<p style="margin: 0px;"><img style="width: 80%" src="imgs/lp-wake.jpg"></p>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Continuous Monitoring Setup
+						<p style="margin: 0px;"><img style="width: 80%" src="imgs/lp-sleep.jpg"></p>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Continuous Monitoring Power
+						| Mode    |   SoC  |   µC  |  Total | Hours|
+						| ------- | ------ |------ |------- |------|
+						| Idle    | 269 mW |  1 mW | 270 mW | 16 h |
+						| Standby | 69 mW  | 23 mW |  92 mW | 48 h |
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### How to reduce power even more ?🔋
+						<p style="margin: 0px;"><img style="width: 80%" src="imgs/kl03.png"></p>
+						<span style="font-size: 0.5em;"><a href="https://www.nxp.com/docs/en/data-sheet/KL03P24M48SF0.pdf">KL03 datasheet</a></span>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### How to reduce power even more ?🔋
+						<br>
+						- Enable µC 10% of the time (10 ms ON, 90 ms OFF).
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### How to reduce power even more ?🔋
+
+						<p style="margin: 0px;"><img style="width: 60%" src="imgs/bela.png"></p>
+						<em style="font-size: 0.55em;">~ 300 µW power consumption for true "always-on" operation without affecting battery Standby life</em>
+						<br>
+						<span style="font-size: 0.5em;"><a href="https://www.nxp.com/docs/en/data-sheet/KL03P24M48SF0.pdf">BELASIGNA R281 datasheet</a></span>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### How to reduce power even more ?🔋
+
+						<p style="margin: 0px;"><img style="width: 0%" src="imgs/a11.jpg"></p>
+						<span style="font-size: 0.5em;"><a href="https://en.wikipedia.org/wiki/Apple_A11#/media/File:Apple_A11.jpg">By Henriok - Own work</a></span>
+					</textarea>
+				</section>
+
+
+				<section data-markdown>
+					<textarea data-template>
+						### Where else is this applicable?🔋
+
+						- Wearables (Fitness bands, step counters)
+
+						- Smart Watches
+
+						- Smart Cars
+
+						- Anything "Smart" + battery operated.
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						# Questions ?
+						 .. thoughts, ideas, wonderings ... ?
+					</textarea>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				],
+				transition: 'none',
+				controlsBackArrows: 'hidden',
+				hash: true,
+				progress: true
+			});
+		</script>
+	</body>
+</html>

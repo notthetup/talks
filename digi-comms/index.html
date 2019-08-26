@@ -146,6 +146,15 @@
 						### Guglielmo Marconi
 					</textarea>
 				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						![](imgs/bose.jpg)
+
+						### Jagdis Chandra Bose
+					</textarea>
+				</section>
+
 				<section>
 						<h2> Analog - Digital</h2>
 						<div style="display: flex; justify-content: space-around;">
@@ -157,17 +166,19 @@
 							<span style="padding-right: 40px">Bluetooth Headset</span>
 						</div>
 				</section>
+
 				<section data-markdown>
 					<textarea data-template>
-						## Analog - Digital
-						- Resilience to noise
+						## Digital Communications
+						- Resilience to noise and errors
 						- Features → song information, volume adjustment
-						- [Only need to send "0" or "1"](http://sticksandstones.kstrom.com/appen.html)
+						- [Compose anything from "0" and "1"](http://sticksandstones.kstrom.com/appen.html)
+						- [0 , 1] → "Symbols"
 					</textarea>
 				</section>
 
 				<section>
-					<span style="font-size: 0.90em"><span style="color: Cyan">Message → Encode → Transmit</span> → <span style="color: Salmon">Receive → Decode → Message</span></span>
+					<span style="font-size: 0.76em"><span style="color: Cyan">Message → Encode → Transmit</span> → <span style="color: Salmon"> Channel </span> → <span style="color: SlateBlue  ">Receive → Decode → Message</span></span>
 				</section>
 
 				<section data-markdown>
@@ -182,11 +193,22 @@
 
 				<section data-markdown>
 					<textarea data-template>
+						## Frequency
+
+						![](imgs/freq.png)
+						<audio src="440Hz.wav" controls="controls"></audio>
+						<audio src="1kHz.wav" controls="controls"></audio>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
 						## Transmission Medium
 
 						physical medium that carries a information between the transmitter and the receiver
 					</textarea>
 				</section>
+
 				<section data-markdown>
 					<textarea data-template>
 						## Transmission Medium
@@ -211,11 +233,11 @@
 						#### glass optical fibers for optical communications
 					</textarea>
 				</section>
+
 				<section data-markdown>
 					<textarea data-template>
-						## Transmission Medium
+						## Channel Effects
 						- Spreading → Linear, Spherical
-						- Propagation loss → softer when you're further
 						- Noise → conversations in a bar
 						- Echo/Multi-path/Reverberation
 					</textarea>
@@ -231,9 +253,25 @@
 
 				<section data-markdown>
 					<textarea data-template>
-						## Propagation Delay
+						## Noise
 
-						propagation delay is the amount of it takes a communication signal to travel from the source to the destination over a given transmission medium.
+						![https://flic.kr/p/24PTnUJ](imgs/snap.jpg)
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						## Multipath
+
+						![https://paginas.fe.up.pt/~ee05117/project_pag3.html](imgs/multipath.png)
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						## More Channel Effects!
+						- Propagation Delay
+						- Doppler Effect
 					</textarea>
 				</section>
 
@@ -241,9 +279,19 @@
 					<textarea data-template>
 						## Propagation Delay
 
-						- speed of radio waves in air   ~= 299792458 m/s
-						- speed of sound waves in air   ~= 343 m/s
-						- speed of sound waves in water ~= 1500 m/s
+						time taken for a communication signal to travel from the source to the destination
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						## Propagation Delay
+
+						|                               |               |
+						|-------------------------------|---------------|
+						| speed of radio waves in air   | 299792458 m/s |
+						| speed of sound waves in air   | 343 m/s       |
+						| speed of sound waves in water | 1500 m/s      |
 					</textarea>
 				</section>
 
@@ -261,7 +309,7 @@
 					<textarea data-template>
 						## Doppler Effect
 
-						> It's the apparent change in the frequency of a wave caused by relative motion between the source of the wave and the observer.
+						apparent change in the frequency of a signal caused by relative motion between the transmitter and the receiver.
 					</textarea>
 				</section>
 				<section>
@@ -273,13 +321,6 @@
 					<iframe width="560" height="315" src="https://www.youtube.com/embed/Djz_rtnXSfY?start=21" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</section>
 
-				<section data-markdown>
-					<textarea data-template>
-						## Multipath
-
-						![https://paginas.fe.up.pt/~ee05117/project_pag3.html](imgs/multipath.png)
-					</textarea>
-				</section>
 
 				<section data-markdown>
 					<textarea data-template>
@@ -289,29 +330,33 @@
 					</textarea>
 				</section>
 
+				<section>
+						<h2> Modulation </h2>
+						<a href="https://oona.windytan.com/posters/dialup-final.png"><img src="imgs/dialup.png"></a>
+						<audio src="https://oona.windytan.com/blogfiles/dialup.mp3" controls="controls"></audio>
+				</section>
+
+
 				<section data-markdown>
 					<textarea data-template>
-						## Frequency
-
-						![](imgs/freq.png)
-						<audio src="440Hz.wav" controls="controls"></audio>
-						<audio src="1kHz.wav" controls="controls"></audio>
+						## On/Off Keying
+						- "Smoke/No-Smoke"
+						- the presence of a signal for a specific duration represents a 1, else 0
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Frequency Shift Keying (FSK)
+						- One frequency for 0, and another for 1 → BFSK
 					</textarea>
 				</section>
 
 				<section data-markdown>
 					<textarea data-template>
-						## Modulation (Keying)
-						- On/Off Keying → Smoke/No-Smoke
-						- "the presence of a signal for a specific duration represents a 1, else 0"
-					</textarea>
-				</section>
-				<section data-markdown>
-					<textarea data-template>
-						## Modulation (Keying)
-						- Frequency Shift Keying (FSK) → "One frequency for 0, and another for 1"
+						## Other Modulations
 						- Phase Shift Keying (PSK)
 						- Orthogonal frequency-division multiplexing (OFDM)
+						- Orthogonal signal-division multiplexing (OSDM)
 					</textarea>
 				</section>
 
@@ -326,12 +371,46 @@
 				<section data-markdown>
 					<textarea data-template>
 						## Bit Rate
+						|                            |         |
+						|----------------------------|---------|
+						| WiFi (802.11n)             | 600Mbps |
+						| Bluetooth                  | 2Mbps   |
+						| UW Acoustic Modems | 2kbps   |
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						## Bit Rate - Bandwidth(Frequency)
+						|                            | Bandwith | Center Frequency | Bit rate |
+						|----------------------------|----------|------------------|--------- |
+						| WiFi (802.11n)             | 40MHz    | 2.4GHz           | 600Mbps  |
+						| Bluetooth                  | 1MHz     | 2.4GHz           | 2Mbps    |
+						| UW Acoustic Modems | 18kHz    | 24kHz            | 2Kbps    |
 					</textarea>
 				</section>
 
 				<section data-markdown>
 					<textarea data-template>
 						## Range
+
+						- Spreading
+						- Noise
+						- Frequency
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						## Range - Frequency
+
+						|                            | Bandwith | Center Frequency | Bit rate  | Range |
+						|----------------------------|----------|------------------|-----------|-------|
+						| WiFi (802.11n)             | 40MHz    | 2400MHz          | 600Mbps   | ~100m |
+						| Bluetooth                  | 1MHz     | 2400MHz          | 2Mbps     | ~10m  |
+						| UMTS (3G)                  | 15MHz    | 800MHz           | 42Mbps    | ~50km |
+						| UW Acoustic Modems | 18kHz    | 24kHz            | 2Kbps     | ~3km  |
+
 					</textarea>
 				</section>
 

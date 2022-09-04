@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>PCB Tricks</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<style>
+			li + li {
+ 			 margin-top: 2vh;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>5 PCB design tricks I learned from staring at people's designs</h3>
+					<p> <small>Chinmay Pendharkar</small> </p>
+					<p> <small style="position: absolute; right: 0px; text-align: left;">Hackware 7.0</small></p>
+				</section>
+				<section>
+					<h2>whoami</h3>
+					<ul>
+						<li>Software guy 🧑🏾‍💻</li>
+						<li>No PCB design experience 🙅🏾‍♂️</li>
+						<li>Tends to let out the magic smoke 🔥</li>
+						<li>#bodgelife 🙈 </li>
+						<li>sooo... ??</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Because TWITTER!</h2>
+					<img src="https://pbs.twimg.com/media/E0NqqA7UYAckAZn?format=jpg&name=large" style="height: 45vh; margin: 0 auto 4rem auto; background: transparent;">
+					<p><small>&mdash; Greg (@GregDavill) <a href="https://twitter.com/GregDavill/status/1388070430980722696?ref_src=twsrc%5Etfw">April 30, 2021</a></small></p>
+				</section>
+				<section>
+					<h2>But seriously</h2>
+					<ul>
+						<li>Electronics twitter 🙇🏽‍♂️</li>
+						<li>Open Source Hardware 🚀</li>
+						<li>KiCad 💕</li>
+						<li><span style="text-decoration:line-through;">Making stuff</span> Trying to make stuff</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Warning!</h2>
+					<ul>
+						<li>Extremely Basic 🐣</li>
+						<li>Have trade-offs 🔄</li>
+						<li>Rabbit hole material 🐇</li>
+					</ul>
+				</section>
+				<section>
+					<h2>1. The power of 0R</h2>
+				</section>
+				<section>
+					<h2>1. The power of 0R</h2>
+					<img src="imgs/zero-ohm-power.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+				</section>
+				<section>
+					<h2>1. The power of 0R</h2>
+					<img src="imgs/oak.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+					<p><small>&mdash; <a href="https://hutscape.com/oak/pcb/docs/schematic.pdf">Oak by Hutscape</a></small></p>
+				</section>
+				<section>
+					<h2>1. The power of 0R</h2>
+					<img src="imgs/ohm-schematic.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+				</section>
+				<section>
+					<h2>2. I2C Address Pull-up/down</h2>
+				</section>
+				<section>
+					<h2>2. I2C Address Pull-up/down</h2>
+					<img src="imgs/i2c-address-table.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+					<p><small>&mdash; <a href="https://www.ti.com/lit/ds/symlink/ina260.pdf">INA260 Datasheet</a></small></p>
+				</section>
+				<section>
+					<h2>2. I2C Address Pull-up/down</h2>
+					<img src="imgs/i2c-address-pins.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+				</section>
+				<section>
+					<h2>3. Breaking out MCU Pins</h2>
+				</section>
+				<section>
+					<h2>3. Breaking out MCU Pins</h2>
+					<img src="imgs/teensy-front.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+					<p><small>&mdash; <a href="https://www.pjrc.com/store/teensy32.html">Teensy 3.2 Front</a></small></p>
+				</section>
+				<section>
+					<h2>3. Breaking out MCU Pins</h2>
+					<img src="imgs/teensy-back.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+					<p><small>&mdash; <a href="https://www.pjrc.com/store/teensy32.html">Teensy 3.2 Back</a></small></p>
+				</section>
+				<section>
+					<h2>3. Breaking out MCU Pins</h2>
+					<img src="imgs/mcu-pinmux.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+					<p><small>&mdash; <a href="https://www.nxp.com/docs/en/data-sheet/KL03P24M48SF0.pdf">NXP KL03 TRM</a></small></p>
+				</section>
+				<section>
+					<h2>4. Reverse Polarity Protection</h2>
+				</section>
+				<section>
+					<h2>Ooopsie!!!</h2>
+					<img src="imgs/oopsie.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+					<p><small>&mdash; Your truely!</small></p>
+				</section>
+				<section>
+					<h2>4. Reverse Polarity Protection</h2>
+					<img src="imgs/mosfet-reverse.jpg" style="height: 40vh; margin: auto auto 4rem auto; background: transparent;">
+					<p><small>&mdash; <a href="http://blog.deconinck.info/post/2017/12/22/18650-Battery-charger-reverse-polarity-protection">Vince</a></small></p>
+				</section>
+				<section>
+					<h2>4. Reverse Polarity Protection</h2>
+					<iframe src="https://www.youtube.com/embed/7Tk5ghH_U2s?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 70%; height: 45vh;"></iframe>
+				</section>
+				<section>
+					<h2>YOLO</h2>
+					<img src="imgs/yolo.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+					<p><small>&mdash; Your truely!</small></p>
+				</section>
+				<section>
+					<h2>5. LEDs Everywhere</h2>
+				</section>
+				<section>
+					<a href="https://imgflip.com/i/6s3xnz"><img src="https://i.imgflip.com/6s3xnz.jpg" title="made at imgflip.com"/></a>
+					<p><small>&mdash; <a href="https://imgflip.com/memegenerator">from Imgflip Meme Generator</a></small></p>
+				</section>
+				<section>
+					<h2>5. LEDs Everywhere</h2>
+					<img src="imgs/leds.jpg" style="height: 45vh; margin: auto auto 4rem auto; background: transparent;">
+				</section>
+				<section>
+					<h2>Recap!</h2>
+					<ol>
+						<li>The power of 0R</li>
+						<li>I2C Address Pull-up/down</li>
+						<li>Breaking out MCU Pins</li>
+						<li>Reverse Polarity Protection</li>
+						<li>LEDs Everywhere</li>
+					</ol>
+				</section>
+				<section>
+					<h2>Thank You!</h2>
+					<p>Slides @ <a href="https://chinmay.audio/talks/">https://chinmay.audio/talks/</a></p>
+				</section>
+				<section>
+					<h2>#Hiring</h2>
+					<h3>Embedded Software Engineer</h3>
+					<ol>
+						<li>C/Java/Julia/Rust</li>
+						<li>Linux on ARM (drivers, device-trees)</li>
+						<li>ARM-Cortex-M</li>
+						<li>Networking (TCP/IP), I2C, SPI</li>
+						<li>Singapore 🇸🇬</li>
+					</ol>
+					<p><img src="https://subnero.com/images/subnero_logo_small.png" style="height: 10vh; margin: 1rem auto 4rem auto; background: transparent;"></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

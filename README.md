@@ -6,6 +6,8 @@ Repository of slides for talks I have given.
 
 - [5 PCB design tricks I learned from staring at people's designs](http://notthetup.github.io/talks/pcb-tricks) @ Hackware 7.0 - 6th September 2022
 
+- [Software best practices in a (hard)ware world](http://notthetup.github.io/talks/hardware-best-practices) @ GeekcampSG 2022 - 29th October 2022
+
 ## 2019
 
 - [Wakeup - Continuous monitoring on low power devices](http://notthetup.github.io/talks/wakeup-ee2028) @ NUS EE2028 - 8th April 2019

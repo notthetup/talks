@@ -4,9 +4,9 @@ Repository of slides for talks I have given.
 
 ## 2022
 
-- [5 PCB design tricks I learned from staring at people's designs](http://notthetup.github.io/talks/pcb-tricks) @ Hackware 7.0 - 6th September 2022
+- [Software best practices in a (hard)ware world](http://notthetup.github.io/talks/hardware-best-practices) @ [GeekCampSG 2022](http://www.geekcamp.sg/) - 29th October 2022
 
-- [Software best practices in a (hard)ware world](http://notthetup.github.io/talks/hardware-best-practices) @ GeekcampSG 2022 - 29th October 2022
+- [5 PCB design tricks I learned from staring at people's designs](http://notthetup.github.io/talks/pcb-tricks) @ Hackware 7.0 - 6th September 2022
 
 ## 2019
 

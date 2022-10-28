@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Hardware best practices!</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css">
+		<style>
+			.reveal .slides section .fragment.highlight-current-red.current-fragment {
+				color: orange;
+			}
+
+			li + li {
+ 			 margin-top: 2vh;
+			}
+
+			.reveal h2, .reveal h3, .reveal h4 {
+				text-transform:none
+			}
+		</style>
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- <section data-background-image="imgs/bg.jpg" data-state="dim"> -->
+				<section data-background="linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.55)), url(imgs/bg.jpg)" data-background-position="bottom" style="color:var(--r-background-color)">
+					<h2 style="color:var(--r-background-color)" >Software best practices in (Hard)ware world!</h2>
+					<p> <small>Chinmay Pendharkar</small> </p>
+					<p> <small style="position: absolute; right: 0px; text-align: left;">@GeekcampSG 2022</small></p>
+				</section>
+				<section>
+					<h2>whoami</h3>
+					<p><img src="imgs/chinmay.jpg" style="height:20vh"></p>
+					<ul>
+						<li>Engineer 🧑🏾‍💻</li>
+						<li>CTO @ Subnero <img src="imgs/subnero.png"  height="50vh" style="margin: 0;"></li>
+						<li>Hackware 🪚</li>
+						<li>Intersection of Hardware and Software</li>
+					</ul>
+				</section>
+				<section>
+					<h3 style="text-transform:none">Software best practices are NOT widely adopted in hardware world!</h3>
+				</section>
+				<section>
+					<h3>Definition</h3>
+					<p>Hardware ∈ Mechanical + Electronics + ...</p>
+				</section>
+				<section>
+					<h3>Poll 🙋</h3>
+					<p class="fragment highlight-current-red">Software Only</p>
+					<p class="fragment highlight-current-red">Software + Hardware</p>
+					<p class="fragment highlight-current-red">Hardware Only</p>
+				</section>
+				<section>
+					<h3 style="text-transform:none">Apply software best practices to hardware development?</h4>
+					<ul>
+						<li>Effectively</li>
+						<li>Practically</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Concrete Example</h3>
+					<img src="imgs/modem.png" style="height:35vh">
+					<ul>
+						<li>Mechanical & Assembly Drawings ✏️ </li>
+						<li>Electronics Schematics, Layouts, BOM 🔌</li>
+						<li>Software code 🧑‍💻 </li>
+					</ul>
+				</section>
+				<section>
+					<h3>Concrete Example</h3>
+					<img src="imgs/modem.png" style="height:35vh">
+					<ul>
+						<li>Documents → Versioning + Version Control</li>
+						<li>Components → Integration + Testing </li>
+					</ul>
+				</section>
+				<section>
+					<h2>Versioning</h2>
+				</section>
+				<section>
+					<h3>Versioning</h3>
+					<ul>
+						<li>No standard versioning scheme 🙅‍♂️</li>
+						<li>Everyone makes up their own 💥</li>
+					</ul>
+					<pre class="shell"><code>
+							../schematics > ls
+							electronics-rev-010A.PcbDoc
+							electronics-rev-010_copy.PcbDoc
+							electronics-rev-010_copy_20180809.PcbDoc
+					</code></pre>
+					<blockquote>Can I use mechanical assembly v4-MKII with PCB rev-010A?</blockquote>
+				</section>
+				<section>
+					<h3>Semantic Versioning - SemVer</h3>
+					<ul>
+						<li>Pseudo-standard 🤷‍♂️</li>
+						<li>Widely adopted 🙌</li>
+						<li>MAJOR.MINOR.PATCH</li>
+					</ul>
+					<blockquote>"we propose a simple set of rules and requirements that dictate how version numbers are assigned and incremented"</blockquote>
+				</section>
+				<section>
+					<h3>Our SemVer</h3>
+					<ul>
+						<li>MAJOR: Changes that affect other components 🙈</li>
+						<li>MINOR: Changes that only affect your component 💪</li>
+						<li>PATCH: Changes that only affect your component but don't change any functionality 🧹</li>
+					</ul>
+					<blockquote>"understand what changed at a glance"</blockquote>
+				</section>
+				<section>
+					<h2>Version Control</h2>
+				</section>
+				<section>
+					<h3>Version Control</h3>
+					<ul>
+						<li>Design Documents need version control 📄</li>
+						<li><code>git</code> ❤️</li>
+						<li>Propreitary Binary file formats 😭</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Version Control - git</h3>
+					<img src="imgs/sch-diff.png">
+				</section>
+				<section>
+					<h3>Version Control - git</h3>
+					<img src="imgs/gerber-diff.png">
+				</section>
+				<section>
+					<h3>Version Control - git</h3>
+					<ul>
+						<li>commits + tags 🏷️</li>
+						<li>branches and PRs 🌲</li>
+						<li>Custom Porcelain/GUI 🚽</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Version Control - Allspice</h3>
+					<img src="imgs/allspice.png">
+					<figcaption><a href="https://www.allspice.io/diff-tool">AllSpice.io</a></figcaption>
+				</section>
+				<section>
+					<h2>CI/CD</h2>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+					  ### CI/CD
+					  - No CD only CI. 🙅‍♂️
+					  - Even CI is hard to apply
+						- Design → Working time ⏰
+						- Testing hardware requires custom equipment 💰
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+					  ### CI/CD
+					  - Can limit the CI tests to just software 💻
+					  - Needs to be tested on the hardware though 😵
+					</textarea>
+				</section>
+				<section>
+					<h3>CI - Hardware</h3>
+					<img src="imgs/ci-setup.png">
+				</section>
+				<section>
+					<h3>CI - Hardware</h3>
+					<img src="imgs/ci-setup2.png">
+				</section>
+				<section>
+					<h3>Summary</h3>
+					<ul>
+						<li>Hard but not impossible 🏃‍♂️</li>
+						<li>Extract the essence of the best practice 💧</li>
+						<li>Apply in context 🤔</li>
+					</ul>
+				</section>
+				<section>
+					<h2>That's all folks! 👋</h2>
+					<br>
+					<p><a href="http://chinmay.audio/talks">chinmay.audio/talks</a></p>
+				</section>
+				<section>
+					<h3>#Hiring</h3>
+					<ul>
+						<li>Like to work on hard problems? 💪</li>
+						<li>Underwater wireless communications? 📡</li>
+						<li>Join us!</li>
+					</ul>
+					<p><img src="imgs/subnero.png"></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

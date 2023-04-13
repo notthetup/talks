@@ -35,6 +35,16 @@ layout: two-cols-header
 <!-- I'll start with a brief introduction. My name is Chinmay. I've worked for the last 15 years at the intersection of software and hardware. I'm currently the CTO at Subnero. I'm also the organizer of Hackware, a community of hardware hackers in Singapore. -->
 
 ---
+layout: section
+---
+
+# The journey... 🚀
+
+How we moved to using Julia for our Embedded Software...
+
+<!-- Today, I want to share with your the journey we took at Subnero in moving to use Julia lang on our embedded systems. -->
+
+---
 layout: two-cols-header
 ---
 
@@ -58,7 +68,9 @@ layout: two-cols-header
 
 </v-clicks>
 
-<!-- Today, I want to share with your the journey we took at Subnero in moving to use Julia lang on our embedded systems. Let me first start with some context of what Subnero does. Subnero makes underwater wireless communication devices. These are physical devices which allow us send and receive data underwater using sound waves. We call them modems.
+<!--
+
+Let me first start with some context of what Subnero does. Subnero makes underwater wireless communication devices. These are physical devices which allow us send and receive data underwater using sound waves. We call them modems.
 
 Subnero modems are software defined, which means most of the signal processing and numerical computing required for the communications is done in software. This is in contrast to traditional modems, where most of the signal processing and numerical computing is done in hardware (ASICs or FPGAs). Our devices are based on a nVidia Jetson SBC and run Embedded Linux.
 
@@ -92,7 +104,7 @@ layout: two-cols-header
 
 - => Embedded Linux
 
-- => High Performance + "High Level"
+- => High Performance + "High Level" + GPU access
 
 - => Low Latency + High Performance
 
@@ -281,6 +293,29 @@ end
 ```
 
 <!-- We also found that it was very simple to hook into native libraries from Julia. Julia has a `ccall` and also defines most of the common C types. So it's pretty easy to call into native libraries. In this example, we have a Julia function which makes a `IOCTL` system call to write data to an I2C bus. With that single line function call defined, we can now use it from Julia to very easily write to I2C devices. -->
+
+---
+layout: default
+---
+
+# What worked? 🤩
+
+**GPU access** - Julia has great support for GPU programming.
+
+```julia{1-6|8|10}
+function vector_mul!(x, y, out)
+    for i = 1:length(x)
+        @inbounds out[i] = x[i] * y[i]
+    end
+    return nothing
+end
+
+vector_mul([1,2,3], [4,5,6], [0,0,0])
+
+@cuda vector_mul([1,2,3], [4,5,6], [0,0,0])
+```
+
+<!-- We also were finally able to easily use the GPU we had onboard our platform without jumping through complex hoops trying to compile and access CUDA from it's C APi. -->
 
 ---
 layout: default

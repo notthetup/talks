@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Git and Github</title>
+
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/black.css">
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+        <style>
+            footer.author {
+                position: absolute;
+                bottom: -10vh;
+                right: -10vw;
+                padding: 0.5em;
+                font-size: 0.8em;
+            }
+            .column-container{
+              display: grid;
+              grid-auto-flow: column;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Git and Github Secrets</h1>
+                    <footer class="author">- <a href="">Chinmay</a>  @ Subnero 2023</footer>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                      ## What is Git?
+                      - **Version** Control System
+                      - **Distributed**
+                      - Open Source + Free
+                      - Developed by Linus Torvalds
+                      - Optimised for text based files
+                    </textarea>
+                  </section>
+                  <section data-markdown>
+                    <textarea data-template>
+                        ## How does Git work?
+
+                        ---
+                        - create or _clone_ a _repository_ 💼
+
+                        Note:
+                        - show `demo` directory
+                        - `<git-repos>`
+                        ---
+                        - snapshot of files 📸
+
+                        ---
+                        - _commit_ changes 📝
+
+                        Notes:
+                        - save a snapshot
+                        - commit messages should be descriptive
+                        - commit often
+                        ---
+                        - _checkout_ older versions 📅
+
+                        Notes:
+                        - git never forgets anything
+                        - always possible to recover lost data
+                        - if you don't have it, your collaborators might
+
+                        ---
+                        - _pull_/_push_ with other repositories 🫷
+
+                        ---
+
+                        ![git workflow](imgs/git.jpg)
+
+                        ---
+                        - _branch_ out to try new things 🌳
+
+                        Note:
+                        - allows multiple people to work on the same project
+                        ---
+                        - _merge_ branches 🤝
+
+                        Note:
+                        - move all the changes from one branch to another
+                        - can be done by "replaying" the changes
+                        - may cause conflicts
+
+                        ---
+                        - _tag_ commits for bookmarking 🏷️
+
+                        Note:
+                        - Useful to do "releases"
+                    </textarea>
+                  </section>
+                  <section data-markdown>
+                    <textarea data-template>
+                      ## ~~Why I ❤️ git?~~
+                      ## Why we use git? 🤔
+
+                      ---
+                      - Git never forgets! 🐘
+
+                      Note:
+                      - Linux Kernel has over 1.2 million commits
+                      ---
+                      - Git is fast! 🚀
+
+                      Note:
+                      - You can jump back to ANY commit in a few seconds
+                      ---
+                      - diff is Git's superpower! 🦸
+
+                      ---
+                      - Git struggles with binary files 😞
+                    </textarea>
+                  </section>
+                  <section>
+                      <div class="column-container">
+                      <div>
+                        <h3>Text</h3>
+                        <ul>
+                          <li> Markdown (.md) </li>
+                          <li> HTML (.html) </li>
+                          <li> Julia (.jl) </li>
+                          <li> Groovy (.groovy) </li>
+                          <li> Python (.py) </li>
+                          <li> Shell Script (.sh) </li>
+                          <li> Kicad (.kicad_pcb) </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h3>Binary</h3>
+                        <ul>
+                          <li> Images (.png, .jpg, .svg) </li>
+                          <li> MS Office (.docx, .xlsx, .pptx) </li>
+                          <li> PDF (.pdf) </li>
+                          <li> CAD (.dwg, .dxf) </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
+                  <section data-markdown>
+                    <textarea data-template>
+                      ## What is Github?
+                        - **Web-based** Git repository hosting service
+                        - **Collaboration** with other developers
+                        - Adds many **features** on top of Git
+                        - Alternatives: Gitlab, Bitbucket, etc.
+                    </textarea>
+                  </section>
+                  <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ## Using Github
+
+                        ---
+                        - view a repo 👩‍💻
+
+                        ---
+                        - edit files 📝
+
+                        ---
+                        - create files and directories 📁
+
+                        ---
+                        - create **branches** 🌳
+
+                        Note:
+                        - `master`/`main` is the default branch
+                        - Always create a new branch any major change
+
+                        ---
+                        - create **Pull Requests** (PR) 📤
+
+                        Note:
+                        - Create pull requests from branches
+                        - Create quick pull requests from file edits
+                        - Prefer smaller reviews
+                        - Reviews : single person only
+                        - Review comments and suggestions
+                        - Merge pull requests
+                        - Delete branches
+
+                        ---
+                        - **Issues** 📌
+
+                        Note:
+                        - Creating issue from a line in a file
+                        - Creating issue from a comment
+                        - Issue labels
+                        - Milestones
+                    </textarea>
+                  </section>
+                  <section data-markdown>
+                    <textarea data-template>
+                      ## ~~Why I ❤️ Github?~~
+                      ## Why we use Github? 🤔
+
+                      ---
+                      - Github is the defacto **standard** 📏
+
+                      ---
+                      - Github enables automation 🤖
+
+                      ---
+                      - Github keeps improving 📈
+
+                      ---
+                      - Github supports all platforms (web, desktop, mobile) 📱
+                    </textarea>
+                  </section>
+                  <section data-markdown>
+                    <textarea data-template>
+                        ## Github Tips and Trick
+
+                        ---
+                        - readme files in directories
+
+                        ---
+                        - switching to branch or tag view
+
+                        ---
+                        - searching for files
+
+                        Note:
+                        - press `t`
+
+                        ---
+                        - linking to a specific line in a file
+
+                        ---
+                        - linking to a specific section in a file
+
+                        ---
+                        - linking to a specific set of lines
+
+                        ---
+                        - viewing pull request changes
+
+                        ---
+                        - issues/PR assigned to me
+
+                        ---
+                        - web editor view
+
+                    </textarea>
+                  </section>
+                  <section data-markdown>
+                    <textarea data-template>
+                        ## Markdown
+
+                        ---
+                        - [markdown formatting tricks](https://github.blog/2020-04-09-github-protips-tips-tricks-hacks-and-secrets-from-lee-reilly/#6-must-have-markdown-formatting-tips)
+
+                        ---
+                        - [markdown tables](https://stevecat.net/table-magic/)
+                    </textarea>
+                  </section>
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+                transition: 'none',
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+            });
+        </script>
+    </body>
+</html>

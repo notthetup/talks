@@ -2,6 +2,9 @@
 
 Repository of slides for talks I have given.
 
+## 2023
+- [Git and Github Secrets](http://notthetup.github.io/talks/git-secrets) @ [Subnero](https://www.subnero.com)
+
 ## 2022
 
 - [Software best practices in a (hard)ware world](http://notthetup.github.io/talks/hardware-best-practices) @ [GeekCampSG 2022](http://www.geekcamp.sg/) - 29th October 2022

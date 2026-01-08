@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>DPS-150 Remote</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+        <style>
+            footer.author {
+                position: absolute;
+                bottom: -10vh;
+                right: -10vw;
+                padding: 0.5em;
+                font-size: 0.8em;
+            }
+            .column-container{
+              display: grid;
+              grid-auto-flow: column;
+            }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				 <section>
+                    <h1>DPS-150 Remote</h1>
+                    <footer class="author">- <a href="">Chinmay</a>  @ Hackware 2026</footer>
+                </section>
+				<section data-markdown>
+					<textarea data-template>
+						## DPS-150
+						![DPS-150](imgs/dps150.jpg)
+						<span style="font-size: small;"> https://www.eevblog.com/forum/testgear/new-miniature-programmable-dc-power-supply-fnirsi-dps-150/ </span>
+					</textarea>
+				</section>
+				<section>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/ZY2zKWzFi7E?si=H5GIi1MxcvXo5juY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![DPS-150](imgs/back.jpeg)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![DPS-150](imgs/specs.png)
+						<span style="font-size: small;"> https://www.fnirsi.com/products/dps-150/span>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Hack #1 USB-PD
+						## Requirement : 24V @ ~0.5A
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![DPS-150](imgs/pd.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![DPS-150](imgs/adapter.jpeg)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![DPS-150](imgs/anker-spec.png)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Except! 😫
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![DPS-150](imgs/dps-limit.png)
+						<span style="font-size: small;"> https://www.youtube.com/watch?v=DTASEGradWU </span>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Solution : External Trigger
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![DPS-150](imgs/trigger.png)
+						<span style="font-size: small;"> https://www.aliexpress.com/item/1005006195369379.html </span>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![DPS-150](imgs/screen.jpeg)
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Hack #2 Remote Control
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![DPS-150](imgs/windows.jpg)
+						<span style="font-size: small;"> https://www.fnirsi.com/pages/software-downloads </span>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# 🤢
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Thankfully
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![DPS-150](imgs/fnirsi-dps-150.png)
+						<span style="font-size: small;"> https://github.com/cho45/fnirsi-dps-150 </span>
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Hack #2 Remote Control
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Demo
+						<span> https://github.com/notthetup/fnirsi-dps-150-remote </span>
+					</textarea>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

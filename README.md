@@ -2,6 +2,9 @@
 
 Repository of slides for talks I have given.
 
+## 2026
+- [DPS-150 Remote Control](http://notthetup.github.io/talks/dps150-remote) @ Hackware Jan 2026
+
 ## 2023
 - [Git and Github Secrets](http://notthetup.github.io/talks/git-secrets) @ [Subnero](https://www.subnero.com)
 
